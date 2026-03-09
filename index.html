@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PixelBazaar — Own A Piece Of The Internet</title>
+<title>PixelPlot — Own A Piece Of The Internet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
 :root {
   --purple: #7B2FFF;
@@ -34,7 +35,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   overflow-x: hidden;
   cursor: default;
@@ -222,10 +223,11 @@ nav {
 }
 
 h1.hero-title {
-  font-family: 'Orbitron', monospace;
-  font-size: clamp(36px, 8vw, 88px);
-  font-weight: 900;
-  line-height: 1.05;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(40px, 8vw, 72px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
   margin-bottom: 24px;
   animation: fadeInUp 0.8s ease 0.2s both;
 }
@@ -245,11 +247,13 @@ h1.hero-title {
 }
 
 .hero-sub {
-  font-size: clamp(16px, 2.5vw, 22px);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(16px, 2.5vw, 20px);
   color: var(--text-dim);
   max-width: 600px;
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 48px;
+  opacity: 0.85;
   animation: fadeInUp 0.8s ease 0.4s both;
 }
 
@@ -266,12 +270,12 @@ h1.hero-title {
 .btn-primary {
   background: linear-gradient(135deg, var(--purple), var(--purple-dark));
   color: white;
-  padding: 16px 40px;
-  border-radius: 8px;
-  font-family: 'Orbitron', monospace;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   border: 1px solid var(--purple-light);
   cursor: pointer;
   box-shadow: 0 0 30px rgba(123,47,255,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
@@ -288,12 +292,12 @@ h1.hero-title {
 .btn-secondary {
   background: transparent;
   color: var(--cyan);
-  padding: 16px 40px;
-  border-radius: 8px;
-  font-family: 'Orbitron', monospace;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   border: 1px solid rgba(0,245,255,0.4);
   cursor: pointer;
   transition: all 0.3s;
@@ -323,9 +327,9 @@ h1.hero-title {
 }
 
 .hero-stat .num {
-  font-family: 'Orbitron', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 36px;
-  font-weight: 900;
+  font-weight: 700;
   background: linear-gradient(135deg, var(--cyan), var(--purple-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -333,11 +337,13 @@ h1.hero-title {
 }
 
 .hero-stat .label {
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   color: var(--text-dim);
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-top: 4px;
+  font-weight: 500;
 }
 
 /* ===== SCARCITY BAR ===== */
@@ -417,19 +423,21 @@ h1.hero-title {
 }
 
 .section-label {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   color: var(--cyan);
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 12px;
   opacity: 0.8;
+  font-weight: 600;
 }
 
 .section-title {
-  font-family: 'Orbitron', monospace;
-  font-size: clamp(28px, 5vw, 52px);
-  font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  letter-spacing: -1px;
   margin-bottom: 16px;
   background: linear-gradient(135deg, #fff, var(--purple-light));
   -webkit-background-clip: text;
@@ -437,11 +445,13 @@ h1.hero-title {
 }
 
 .section-sub {
+  font-family: 'Inter', sans-serif;
   color: var(--text-dim);
-  font-size: 18px;
+  font-size: 17px;
   max-width: 600px;
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 48px;
+  font-weight: 400;
 }
 
 /* ===== PIXEL GRID SECTION ===== */
@@ -592,10 +602,10 @@ h1.hero-title {
   color: #000;
   padding: 18px;
   border-radius: 10px;
-  font-family: 'Orbitron', monospace;
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: 2px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   border: none;
   cursor: pointer;
   box-shadow: 0 0 40px rgba(255,165,0,0.4);
@@ -654,9 +664,9 @@ h1.hero-title {
 }
 
 .popup-text { flex: 1; }
-.popup-name { font-weight: 700; font-size: 14px; color: var(--text); }
-.popup-action { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
-.popup-price { font-family: 'Orbitron', monospace; font-size: 13px; color: var(--cyan); font-weight: 700; }
+.popup-name { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; color: var(--text); }
+.popup-action { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--text-dim); margin-top: 2px; font-weight: 400; }
+.popup-price { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--cyan); font-weight: 700; letter-spacing: -0.3px; }
 
 /* ===== HOW IT WORKS ===== */
 #how-it-works {
@@ -719,18 +729,20 @@ h1.hero-title {
 }
 
 .step-title {
-  font-family: 'Orbitron', monospace;
-  font-size: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 12px;
-  letter-spacing: 1px;
+  letter-spacing: -0.2px;
 }
 
 .step-desc {
+  font-family: 'Inter', sans-serif;
   color: var(--text-dim);
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.65;
+  font-weight: 400;
 }
 
 /* ===== RARE PIXELS ===== */
@@ -790,10 +802,11 @@ h1.hero-title {
 }
 
 .rare-name {
-  font-family: 'Orbitron', monospace;
-  font-size: 20px;
-  font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
   margin-bottom: 8px;
+  letter-spacing: -0.5px;
 }
 
 .rare-card.gold .rare-name { color: var(--gold); }
@@ -801,10 +814,12 @@ h1.hero-title {
 .rare-card.founder .rare-name { color: var(--founder); }
 
 .rare-desc {
+  font-family: 'Inter', sans-serif;
   color: var(--text-dim);
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 20px;
+  font-weight: 400;
 }
 
 .rare-badge {
@@ -843,11 +858,12 @@ h1.hero-title {
   padding: 16px 24px;
   background: rgba(123,47,255,0.1);
   border-bottom: 1px solid var(--border);
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
   color: var(--text-dim);
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .lb-row {
@@ -864,9 +880,9 @@ h1.hero-title {
 .lb-row:hover { background: rgba(123,47,255,0.08); }
 
 .lb-rank {
-  font-family: 'Orbitron', monospace;
+  font-family: 'Orbitron', sans-serif;
   font-size: 18px;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .rank-1 { color: var(--gold); filter: drop-shadow(0 0 8px var(--gold)); }
@@ -891,19 +907,20 @@ h1.hero-title {
   border: 1px solid var(--border);
 }
 
-.lb-name { font-weight: 700; font-size: 15px; }
-.lb-sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+.lb-name { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px; }
+.lb-sub { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--text-dim); margin-top: 2px; font-weight: 400; }
 
 .lb-pixels {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Inter', sans-serif;
   color: var(--purple-light);
   font-size: 14px;
+  font-weight: 500;
 }
 
 .lb-spent {
-  font-family: 'Orbitron', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   color: var(--yellow);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -947,9 +964,10 @@ h1.hero-title {
 .referral-emoji { font-size: 64px; display: block; margin-bottom: 24px; }
 
 .referral-title {
-  font-family: 'Orbitron', monospace;
-  font-size: 28px;
-  font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
   margin-bottom: 16px;
   background: linear-gradient(135deg, var(--cyan), var(--purple-light));
   -webkit-background-clip: text;
@@ -957,10 +975,12 @@ h1.hero-title {
 }
 
 .referral-desc {
+  font-family: 'Inter', sans-serif;
   color: var(--text-dim);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 32px;
+  font-weight: 400;
 }
 
 .referral-link-box {
@@ -1075,26 +1095,28 @@ h1.hero-title {
 }
 
 .price-size {
-  font-family: 'Orbitron', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 18px;
-  font-weight: 900;
+  font-weight: 700;
   color: var(--cyan);
   margin-bottom: 8px;
+  letter-spacing: -0.3px;
 }
 
-.price-desc { color: var(--text-dim); font-size: 13px; margin-bottom: 24px; }
+.price-desc { font-family: 'Inter', sans-serif; color: var(--text-dim); font-size: 13px; margin-bottom: 24px; }
 
 .price-amount {
-  font-family: 'Orbitron', monospace;
-  font-size: 48px;
-  font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 52px;
+  font-weight: 700;
   color: var(--yellow);
   display: block;
   margin-bottom: 4px;
+  letter-spacing: -2px;
 }
 
-.price-currency { font-size: 24px; color: var(--text-dim); }
-.price-pixel-count { font-size: 13px; color: var(--text-dim); margin-bottom: 28px; }
+.price-currency { font-size: 26px; color: var(--text-dim); }
+.price-pixel-count { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-dim); margin-bottom: 28px; font-weight: 500; }
 
 .price-features {
   list-style: none;
@@ -1104,18 +1126,20 @@ h1.hero-title {
 
 .price-features li {
   padding: 8px 0;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   color: var(--text-dim);
   display: flex;
   align-items: center;
   gap: 10px;
   border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-weight: 400;
 }
 
 .price-features li::before {
   content: '✓';
   color: var(--cyan);
-  font-weight: 900;
+  font-weight: 700;
   flex-shrink: 0;
 }
 
@@ -1124,11 +1148,11 @@ h1.hero-title {
   background: linear-gradient(135deg, var(--purple), var(--purple-dark));
   color: white;
   padding: 14px;
-  border-radius: 8px;
-  font-family: 'Orbitron', monospace;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   border: 1px solid var(--purple-light);
   cursor: pointer;
   transition: all 0.3s;
@@ -1227,9 +1251,10 @@ h1.hero-title {
 }
 
 .cta-title {
-  font-family: 'Orbitron', monospace;
-  font-size: clamp(32px, 7vw, 72px);
-  font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 7vw, 68px);
+  font-weight: 700;
+  letter-spacing: -2px;
   margin-bottom: 24px;
   position: relative;
 }
@@ -1242,12 +1267,14 @@ h1.hero-title {
 }
 
 .cta-sub {
+  font-family: 'Inter', sans-serif;
   color: var(--text-dim);
   font-size: 18px;
   max-width: 500px;
   margin: 0 auto 48px;
-  line-height: 1.6;
+  line-height: 1.65;
   position: relative;
+  font-weight: 400;
 }
 
 .cta-urgency {
@@ -1342,19 +1369,22 @@ footer {
 }
 
 .counter-num {
-  font-family: 'Orbitron', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 32px;
-  font-weight: 900;
+  font-weight: 700;
   display: block;
   transition: all 0.3s;
+  letter-spacing: -1px;
 }
 
 .counter-label {
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
   color: var(--text-dim);
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-top: 4px;
+  font-weight: 500;
 }
 
 .counter-sold .counter-num { color: var(--purple-light); }
@@ -1395,13 +1425,14 @@ footer {
 
 .mystery-icon { font-size: 56px; display: block; margin-bottom: 16px; }
 .mystery-title {
-  font-family: 'Orbitron', monospace;
-  font-size: 22px;
-  font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
   color: var(--purple-light);
   margin-bottom: 12px;
+  letter-spacing: -0.5px;
 }
-.mystery-desc { color: var(--text-dim); font-size: 15px; line-height: 1.6; }
+.mystery-desc { font-family: 'Inter', sans-serif; color: var(--text-dim); font-size: 15px; line-height: 1.65; font-weight: 400; }
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeInDown {
@@ -1475,7 +1506,7 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Pixel<span>Bazaar</span></div>
+  <div class="nav-logo">Pixel<span>Plot</span></div>
   <ul class="nav-links">
     <li><a href="#pixel-wall">The Wall</a></li>
     <li><a href="#how-it-works">How It Works</a></li>
@@ -1500,20 +1531,20 @@ footer {
 
   <div class="hero-badge">
     <span class="live-dot"></span>
-    LIVE · 1,247 Pixels Sold Today
+    LIVE · Aaj 1,247 Pixels Bik Gaye
   </div>
 
   <h1 class="hero-title">
-    <span class="line1">Own A Piece</span>
+    <span class="line1">Own Your Piece</span>
     <span class="line2">Of The Internet</span>
   </h1>
 
   <p class="hero-sub">
-    India's first <strong>Million Pixel Wall</strong>. Buy pixels, place your logo, and live on the internet forever. Only <strong>10,000 blocks</strong> available — ever.
+    Buy digital plots on India's first <strong>Million Pixel Wall</strong>. Promote your brand forever from just ₹100. Only <strong>10,000 blocks</strong> available — ever.
   </p>
 
   <div class="hero-cta-group">
-    <a href="#pixel-wall" class="btn-primary">🔥 Claim Your Pixels Now</a>
+    <a href="#pixel-wall" class="btn-primary">🔥 Claim Your Pixel</a>
     <a href="#how-it-works" class="btn-secondary">See How It Works</a>
   </div>
 
@@ -1647,7 +1678,7 @@ footer {
 <section id="how-it-works" style="padding: 80px 20px; background: var(--bg);">
   <div style="max-width:1100px; margin:0 auto;">
     <div class="section-label" style="text-align:center;">Simple As 1-2-3</div>
-    <h2 class="section-title" style="text-align:center;">How PixelBazaar Works</h2>
+    <h2 class="section-title" style="text-align:center;">How PixelPlot Works</h2>
 
     <div class="steps-grid">
       <div class="step-card">
@@ -1672,7 +1703,7 @@ footer {
         <span class="step-icon">🏆</span>
         <span class="step-number">04</span>
         <div class="step-title">Own It Forever</div>
-        <p class="step-desc">Your pixel block goes live instantly. It stays on PixelBazaar permanently. You're on the internet forever.</p>
+        <p class="step-desc">Your pixel block goes live instantly. It stays on PixelPlot permanently. You're on the internet forever.</p>
       </div>
     </div>
   </div>
@@ -1719,7 +1750,7 @@ footer {
 <section id="leaderboard" style="padding: 80px 20px;">
   <div style="max-width: 1000px; margin: 0 auto;">
     <div class="section-label">Top Pixel Owners</div>
-    <h2 class="section-title">Pixel Leaderboard</h2>
+    <h2 class="section-title" style="font-family:'Orbitron',sans-serif;font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:1px;">Top Pixel Owners</h2>
     <p class="section-sub">The biggest pixel empires on the internet. Will your name be here?</p>
 
     <div class="leaderboard-table">
@@ -1803,7 +1834,7 @@ footer {
           <div class="testimonial-avatar">🚀</div>
           <div>
             <div class="testimonial-name">Aryan Kapoor</div>
-            <div class="testimonial-role">Founder, LaunchPad.in · 🏆 Gold Pixel Owner</div>
+            <div class="testimonial-role">Founder, Zepto Ads · 🏆 Gold Pixel Owner</div>
           </div>
         </div>
       </div>
@@ -1815,7 +1846,7 @@ footer {
           <div class="testimonial-avatar">🎨</div>
           <div>
             <div class="testimonial-name">Priya Sharma</div>
-            <div class="testimonial-role">CEO, DesignCraft Studio · 💎 Diamond Owner</div>
+            <div class="testimonial-role">CEO, DesignDhaba Studio · 💎 Diamond Owner</div>
           </div>
         </div>
       </div>
@@ -1840,7 +1871,7 @@ footer {
   <div style="max-width: 1100px; margin: 0 auto; text-align:center;">
     <div class="section-label">Invite & Earn</div>
     <h2 class="section-title">Go Viral, Get Free Pixels</h2>
-    <p class="section-sub" style="margin: 0 auto 0;">Invite friends to PixelBazaar and earn free pixels for every referral. The more you share, the more you own.</p>
+    <p class="section-sub" style="margin: 0 auto 0;">Invite friends to PixelPlot and earn free pixels for every referral. The more you share, the more you own.</p>
 
     <div class="referral-box">
       <span class="referral-emoji">🎁</span>
@@ -1848,7 +1879,7 @@ footer {
       <p class="referral-desc">Share your unique referral link. When 3 friends sign up and buy pixels, you get 10 FREE pixels automatically added to your account. No limits — keep referring, keep earning!</p>
 
       <div class="referral-link-box">
-        <input type="text" class="referral-link-input" value="pixelbazaar.in/ref/yourname123" readonly id="refInput" />
+        <input type="text" class="referral-link-input" value="pixelplot.in/ref/yourname123" readonly id="refInput" />
         <button class="btn-copy" onclick="copyRef()">📋 Copy Link</button>
       </div>
 
@@ -1876,7 +1907,7 @@ footer {
   </h2>
   <p class="cta-sub">Thousands of brands, creators, and dreamers have already claimed their piece. The wall won't wait.</p>
   <div class="hero-cta-group">
-    <a href="#pixel-wall" class="btn-primary" style="font-size:16px; padding: 20px 48px;">⚡ Claim Your Pixel — From ₹100</a>
+    <a href="#pixel-wall" class="btn-primary" style="font-size:18px; padding: 18px 44px;">⚡ Buy Your Plot — From ₹100</a>
   </div>
 </section>
 
@@ -1884,7 +1915,7 @@ footer {
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="logo">PixelBazaar</div>
+      <div class="logo">PixelPlot</div>
       <p>India's first million pixel wall. Own a permanent piece of the internet. Every pixel tells a story.</p>
     </div>
     <div class="footer-col">
@@ -1915,8 +1946,8 @@ footer {
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 PixelBazaar. Made with ❤️ in India. Own A Piece Of The Internet.</span>
-    <span style="color: var(--cyan);">pixelbazaar.in</span>
+    <span>© 2025 PixelPlot. Made with ❤️ in India. Own A Piece Of The Internet.</span>
+    <span style="color: var(--cyan);">pixelplot.in</span>
   </div>
 </footer>
 
@@ -1932,60 +1963,60 @@ const GRID_ROWS = 60;
 const BLOCK_SIZE = 10;
 
 const mockOwners = [
-  { name: "LaunchPad.in", emoji: "🚀", color: "#7B2FFF", col: 5, row: 3, w: 3, h: 3, link: "launchpad.in" },
-  { name: "DesignCraft", emoji: "🎨", color: "#FF6BFF", col: 15, row: 5, w: 4, h: 4, link: "designcraft.co" },
-  { name: "TechVault", emoji: "💻", color: "#00F5FF", col: 28, row: 2, w: 2, h: 2, link: "techvault.io" },
-  { name: "GrowthHack", emoji: "📈", color: "#FFD700", col: 35, row: 8, w: 5, h: 3, link: "growthhack.in" },
-  { name: "StartupX", emoji: "⚡", color: "#FF4500", col: 48, row: 1, w: 2, h: 2, link: "startupx.io" },
-  { name: "CloudBase", emoji: "☁️", color: "#00BFFF", col: 58, row: 6, w: 3, h: 3, link: "cloudbase.in" },
+  { name: "Zepto Ads", emoji: "🚀", color: "#7B2FFF", col: 5, row: 3, w: 3, h: 3, link: "zepto.in" },
+  { name: "DesignDhaba", emoji: "🎨", color: "#FF6BFF", col: 15, row: 5, w: 4, h: 4, link: "designdhaba.co" },
+  { name: "TechDuniya", emoji: "💻", color: "#00F5FF", col: 28, row: 2, w: 2, h: 2, link: "techduniya.in" },
+  { name: "GrowthGuru", emoji: "📈", color: "#FFD700", col: 35, row: 8, w: 5, h: 3, link: "growthguru.in" },
+  { name: "Instamojo", emoji: "⚡", color: "#FF4500", col: 48, row: 1, w: 2, h: 2, link: "instamojo.com" },
+  { name: "CloudKaari", emoji: "☁️", color: "#00BFFF", col: 58, row: 6, w: 3, h: 3, link: "cloudkaari.in" },
   { name: "NeonBrand", emoji: "✨", color: "#FF1493", col: 70, row: 3, w: 2, h: 4, link: "neonbrand.co" },
-  { name: "DataFlow", emoji: "🔮", color: "#9D5FFF", col: 80, row: 2, w: 4, h: 2, link: "dataflow.ai" },
-  { name: "MindLab", emoji: "🧠", color: "#00FF88", col: 88, row: 5, w: 3, h: 3, link: "mindlab.in" },
-  { name: "PixelKing", emoji: "👑", color: "#FFD700", col: 20, row: 15, w: 6, h: 5, link: "pixelking.in" },
-  { name: "ZenCart", emoji: "🛒", color: "#FF6B35", col: 40, row: 20, w: 3, h: 3, link: "zencart.in" },
-  { name: "ByteBase", emoji: "🔧", color: "#4ECDC4", col: 65, row: 18, w: 4, h: 3, link: "bytebase.dev" },
-  { name: "SaasHQ", emoji: "🏢", color: "#A8DADC", col: 10, row: 25, w: 5, h: 4, link: "saashq.io" },
-  { name: "InfoBlast", emoji: "📰", color: "#F72585", col: 75, row: 25, w: 3, h: 2, link: "infoblast.in" },
-  { name: "CryptoNet", emoji: "🪙", color: "#FFC300", col: 30, row: 35, w: 4, h: 4, link: "cryptonet.co" },
-  { name: "VoiceAI", emoji: "🎙️", color: "#0077B6", col: 55, row: 30, w: 3, h: 3, link: "voiceai.in" },
-  { name: "FitTrack", emoji: "💪", color: "#2DC653", col: 82, row: 40, w: 2, h: 3, link: "fittrack.in" },
-  { name: "EduCore", emoji: "📚", color: "#E63946", col: 15, row: 45, w: 5, h: 4, link: "educore.in" },
-  { name: "PayZip", emoji: "💸", color: "#06D6A0", col: 45, row: 50, w: 3, h: 2, link: "payzip.in" },
-  { name: "HoloShop", emoji: "🛍️", color: "#7209B7", col: 70, row: 48, w: 4, h: 3, link: "holoshop.io" },
+  { name: "DataFlow AI", emoji: "🔮", color: "#9D5FFF", col: 80, row: 2, w: 4, h: 2, link: "dataflow.ai" },
+  { name: "BrainWave", emoji: "🧠", color: "#00FF88", col: 88, row: 5, w: 3, h: 3, link: "brainwave.in" },
+  { name: "Razorpay", emoji: "👑", color: "#FFD700", col: 20, row: 15, w: 6, h: 5, link: "razorpay.com" },
+  { name: "DesiCart", emoji: "🛒", color: "#FF6B35", col: 40, row: 20, w: 3, h: 3, link: "desicart.in" },
+  { name: "ByteBazaar", emoji: "🔧", color: "#4ECDC4", col: 65, row: 18, w: 4, h: 3, link: "bytebazaar.dev" },
+  { name: "Swiggy Biz", emoji: "🏢", color: "#A8DADC", col: 10, row: 25, w: 5, h: 4, link: "swiggy.in" },
+  { name: "NewsWala", emoji: "📰", color: "#F72585", col: 75, row: 25, w: 3, h: 2, link: "newswala.in" },
+  { name: "CoinDekho", emoji: "🪙", color: "#FFC300", col: 30, row: 35, w: 4, h: 4, link: "coindekho.in" },
+  { name: "VoiceIndia", emoji: "🎙️", color: "#0077B6", col: 55, row: 30, w: 3, h: 3, link: "voiceindia.in" },
+  { name: "FitBharat", emoji: "💪", color: "#2DC653", col: 82, row: 40, w: 2, h: 3, link: "fitbharat.in" },
+  { name: "PadhaiHub", emoji: "📚", color: "#E63946", col: 15, row: 45, w: 5, h: 4, link: "padhaiHub.in" },
+  { name: "PayKaro", emoji: "💸", color: "#06D6A0", col: 45, row: 50, w: 3, h: 2, link: "paykaro.in" },
+  { name: "Meesho Studio", emoji: "🛍️", color: "#7209B7", col: 70, row: 48, w: 4, h: 3, link: "meesho.com" },
 ];
 
 const leaderboardData = [
-  { rank: 1, emoji: "🚀", name: "LaunchPad.in", sub: "Aryan Kapoor · Mumbai", pixels: "3,600", spent: "₹18,000", badge: "Gold", badgeClass: "badge-gold" },
-  { rank: 2, emoji: "👑", name: "PixelKing", sub: "Vikram Singh · Delhi", pixels: "2,400", spent: "₹12,000", badge: "Diamond", badgeClass: "badge-diamond" },
-  { rank: 3, emoji: "🎨", name: "DesignCraft", sub: "Priya Sharma · Bengaluru", pixels: "1,600", spent: "₹8,000", badge: "Founder", badgeClass: "badge-founder" },
-  { rank: 4, emoji: "📈", name: "GrowthHack", sub: "Ravi Kumar · Hyderabad", pixels: "900", spent: "₹4,500", badge: "Whale", badgeClass: "badge-whale" },
-  { rank: 5, emoji: "🔮", name: "DataFlow AI", sub: "Sneha Patel · Pune", pixels: "800", spent: "₹4,000", badge: "Gold", badgeClass: "badge-gold" },
-  { rank: 6, emoji: "🧠", name: "MindLab", sub: "Karan Mehta · Chennai", pixels: "700", spent: "₹3,500", badge: "Whale", badgeClass: "badge-whale" },
-  { rank: 7, emoji: "🏢", name: "SaasHQ", sub: "Ananya Roy · Kolkata", pixels: "500", spent: "₹2,500", badge: "Gold", badgeClass: "badge-gold" },
+  { rank: 1, emoji: "🚀", name: "Zepto Ads", sub: "Aadit Palicha · Mumbai", pixels: "3,600", spent: "₹18,000", badge: "Gold", badgeClass: "badge-gold" },
+  { rank: 2, emoji: "👑", name: "Razorpay", sub: "Harshil Mathur · Bengaluru", pixels: "2,400", spent: "₹12,000", badge: "Diamond", badgeClass: "badge-diamond" },
+  { rank: 3, emoji: "🎨", name: "DesignDhaba", sub: "Priya Sharma · Bengaluru", pixels: "1,600", spent: "₹8,000", badge: "Founder", badgeClass: "badge-founder" },
+  { rank: 4, emoji: "📈", name: "GrowthGuru.in", sub: "Ravi Kumar · Hyderabad", pixels: "900", spent: "₹4,500", badge: "Whale", badgeClass: "badge-whale" },
+  { rank: 5, emoji: "🔮", name: "Meesho Studio", sub: "Sneha Patel · Pune", pixels: "800", spent: "₹4,000", badge: "Gold", badgeClass: "badge-gold" },
+  { rank: 6, emoji: "🧠", name: "BrainWave Tech", sub: "Karan Mehta · Chennai", pixels: "700", spent: "₹3,500", badge: "Whale", badgeClass: "badge-whale" },
+  { rank: 7, emoji: "🏢", name: "Swiggy Biz", sub: "Ananya Roy · Kolkata", pixels: "500", spent: "₹2,500", badge: "Gold", badgeClass: "badge-gold" },
 ];
 
 const tickerMessages = [
-  "🔥 StartupX just bought 4 pixel blocks from Mumbai",
-  "⚡ CloudBase claimed a Diamond Pixel!",
-  "🚀 LaunchPad.in expanded their pixel empire",
-  "💎 DataFlow AI just grabbed 10 blocks",
-  "🏆 NeonBrand is now #8 on the leaderboard",
-  "🎉 247 new owners joined PixelBazaar this week",
-  "👑 PixelKing just won the Mystery Pixel challenge!",
-  "💰 GrowthHack referred 5 friends → got 50 free pixels",
-  "⚡ TechVault bought pixels from Bengaluru",
-  "🔮 VoiceAI just claimed a Golden Pixel!",
-  "🌟 EduCore is trending in the leaderboard",
-  "💸 PayZip just bought India's most valuable pixel block",
+  "🔥 Razorpay ne 4 pixel blocks kharide Mumbai se",
+  "⚡ CloudKaari ne Diamond Pixel claim kiya!",
+  "🚀 Zepto Ads ne apna pixel empire expand kiya",
+  "💎 DataFlow AI ne 10 blocks liye abhi",
+  "🏆 NeonBrand ab leaderboard mein #8 par hai",
+  "🎉 Is hafte 247 naaye owners PixelPlot se jude",
+  "👑 Razorpay ne Mystery Pixel challenge jeeta!",
+  "💰 GrowthGuru ne 5 doston ko refer kiya → 50 free pixels mile",
+  "⚡ TechDuniya ne Bengaluru se pixels kharide",
+  "🔮 VoiceIndia ne ek Golden Pixel claim kiya!",
+  "🌟 PadhaiHub leaderboard mein trend kar raha hai",
+  "💸 PayKaro ne India ka sabse valuable pixel block kharida",
 ];
 
 const purchasePopupData = [
-  { emoji: "🚀", name: "RocketBrand", action: "just bought 2 pixel blocks", price: "₹700", bg: "#7B2FFF22" },
-  { emoji: "🎯", name: "TargetX", action: "claimed a Golden Pixel!", price: "₹500", bg: "#FFD70022" },
-  { emoji: "⚡", name: "VoltMedia", action: "expanded to 5 blocks", price: "₹1,500", bg: "#00F5FF22" },
-  { emoji: "🔥", name: "FireSaaS", action: "just bought 1 pixel block", price: "₹100", bg: "#FF450022" },
-  { emoji: "💎", name: "CrystalApp", action: "claimed a Diamond Pixel!", price: "₹2,000", bg: "#A8F0FF22" },
-  { emoji: "🌟", name: "StarMark", action: "joined PixelBazaar", price: "₹350", bg: "#FF6BFF22" },
+  { emoji: "🚀", name: "Arjun Sharma", action: "ne 2 pixel blocks kharide", price: "₹700", bg: "#7B2FFF22" },
+  { emoji: "🎯", name: "Pooja Agarwal", action: "ne Golden Pixel claim kiya!", price: "₹500", bg: "#FFD70022" },
+  { emoji: "⚡", name: "Vikash Media", action: "5 blocks tak expand kiya", price: "₹1,500", bg: "#00F5FF22" },
+  { emoji: "🔥", name: "Rohit Verma", action: "ne 1 pixel block kharida", price: "₹100", bg: "#FF450022" },
+  { emoji: "💎", name: "ShopDesi.in", action: "ne Diamond Pixel claim kiya!", price: "₹2,000", bg: "#A8F0FF22" },
+  { emoji: "🌟", name: "Neha Gupta", action: "PixelPlot se judi", price: "₹350", bg: "#FF6BFF22" },
 ];
 
 // ============================
@@ -2512,9 +2543,9 @@ function revealMystery() {
   box.style.background = 'linear-gradient(135deg, rgba(0,245,255,0.1), rgba(123,47,255,0.05))';
   box.innerHTML = `
     <span class="mystery-icon">🎉</span>
-    <div class="mystery-title" style="color: var(--cyan);">Mystery Revealed!</div>
-    <p class="mystery-desc">The Mystery Pixel is hidden at coordinates (42, 17) on the wall! Claim it before someone else does. First one wins 50 FREE pixels.</p>
-    <button onclick="scrollToGrid()" style="margin-top:20px;background:linear-gradient(135deg,#00F5FF,#7B2FFF);color:#000;padding:12px 32px;border-radius:8px;border:none;font-family:'Orbitron',monospace;font-size:14px;font-weight:900;cursor:pointer;letter-spacing:1px;">Find It On The Wall →</button>
+    <div class="mystery-title" style="color: var(--cyan);">Mystery Reveal Ho Gaya!</div>
+    <p class="mystery-desc">Mystery Pixel coordinates (42, 17) par chhupa hai wall par! Koi aur utha le usse pehle claim karo. Pehla winner 50 FREE pixels jeeta hai.</p>
+    <button onclick="scrollToGrid()" style="margin-top:20px;background:linear-gradient(135deg,#00F5FF,#7B2FFF);color:#000;padding:12px 32px;border-radius:8px;border:none;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.5px;">Wall Par Dhundo →</button>
   `;
   mysteryFound = true;
   launchConfetti();
@@ -2538,13 +2569,13 @@ function copyRef() {
 }
 
 function shareTwitter() {
-  const text = encodeURIComponent("I just claimed my pixel on PixelBazaar — India's Million Pixel Wall! 🔥 Own a piece of the internet forever from just ₹100. Check it out:");
-  const url = encodeURIComponent("https://pixelbazaar.in?ref=share");
+  const text = encodeURIComponent("I just claimed my pixel on PixelPlot — India's Million Pixel Wall! 🔥 Own a piece of the internet forever from just ₹100. Check it out:");
+  const url = encodeURIComponent("https://pixelplot.in?ref=share");
   window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
 }
 
 function shareWhatsApp() {
-  const text = encodeURIComponent("🔥 I just claimed my pixel on PixelBazaar! India's first Million Pixel Wall. Own your spot on the internet forever from just ₹100 👉 pixelbazaar.in");
+  const text = encodeURIComponent("🔥 Maine apna pixel PixelPlot par claim kar liya! India ki pehli Million Pixel Wall. Apni jagah internet par forever book karo sirf ₹100 mein 👉 pixelplot.in");
   window.open(`https://wa.me/?text=${text}`, '_blank');
 }
 
