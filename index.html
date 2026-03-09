@@ -2,1276 +2,2567 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>PixelBazaar – India's ₹1 Crore Pixel Wall</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PixelBazaar — Own A Piece Of The Internet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0e1a;
-  --bg2: #0f172a;
-  --bg3: #1e293b;
-  --primary: #6366f1;
-  --primary-glow: rgba(99,102,241,0.4);
-  --accent: #22c55e;
-  --accent-glow: rgba(34,197,94,0.35);
-  --gold: #f59e0b;
-  --gold-glow: rgba(245,158,11,0.4);
-  --text: #f1f5f9;
-  --muted: #64748b;
-  --border: rgba(99,102,241,0.2);
-  --card: rgba(15,23,42,0.85);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  overflow-x:hidden;
-  cursor:default;
+  --purple: #7B2FFF;
+  --purple-light: #9D5FFF;
+  --purple-dark: #4A0FB5;
+  --cyan: #00F5FF;
+  --cyan-dark: #00A8B5;
+  --yellow: #FFD700;
+  --yellow-hot: #FF9500;
+  --bg: #050510;
+  --bg2: #0A0A1A;
+  --bg3: #0F0F25;
+  --card: #0D0D20;
+  --border: rgba(123,47,255,0.3);
+  --text: #E8E8FF;
+  --text-dim: #8888AA;
+  --gold: #FFD700;
+  --diamond: #A8F0FF;
+  --founder: #FF6BFF;
 }
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:6px;}
-::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px;}
+* { margin:0; padding:0; box-sizing:border-box; }
 
-/* GRAIN OVERLAY */
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events:none;
-  z-index:9999;
-  opacity:0.4;
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  overflow-x: hidden;
+  cursor: default;
 }
 
-/* ===== NAVBAR ===== */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2rem;height:64px;
-  background:rgba(10,14,26,0.85);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 3px; }
+
+/* ===== NOISE OVERLAY ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
 }
-.logo{
-  font-family:'Poppins',sans-serif;
-  font-weight:800;font-size:1.4rem;
-  background:linear-gradient(135deg,#6366f1,#a855f7,#22c55e);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  letter-spacing:-0.5px;
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  background: rgba(5,5,16,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
 }
-.logo span{color:var(--accent);-webkit-text-fill-color:var(--accent);}
-.nav-links{display:flex;align-items:center;gap:0.25rem;}
-.nav-links a{
-  color:var(--muted);text-decoration:none;
-  font-size:0.85rem;font-weight:500;
-  padding:0.5rem 0.9rem;border-radius:8px;
-  transition:all 0.2s;
+
+.nav-logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 22px;
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--purple-light), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
 }
-.nav-links a:hover{color:var(--text);background:rgba(99,102,241,0.1);}
-.nav-cta{
-  background:linear-gradient(135deg,var(--primary),#a855f7);
-  color:white!important;padding:0.5rem 1.2rem!important;
-  border-radius:8px!important;font-weight:600!important;
-  box-shadow:0 0 20px var(--primary-glow);
+
+.nav-logo span { color: var(--cyan); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
 }
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 30px var(--primary-glow)!important;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
-.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:0.3s;}
+
+.nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cyan); }
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  color: white !important;
+  padding: 10px 24px;
+  border-radius: 6px;
+  border: 1px solid var(--purple-light);
+  box-shadow: 0 0 20px rgba(123,47,255,0.4);
+  transition: all 0.2s !important;
+}
+.nav-cta:hover {
+  box-shadow: 0 0 35px rgba(123,47,255,0.7) !important;
+  transform: translateY(-1px);
+  color: white !important;
+}
+
+/* ===== LIVE TICKER ===== */
+.live-ticker {
+  position: fixed;
+  top: 65px; left: 0; right: 0;
+  z-index: 999;
+  background: linear-gradient(90deg, var(--purple-dark), #1a0040, var(--purple-dark));
+  border-bottom: 1px solid rgba(0,245,255,0.2);
+  padding: 6px 0;
+  overflow: hidden;
+}
+
+.ticker-inner {
+  display: flex;
+  gap: 60px;
+  animation: ticker 30s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-item {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ticker-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  animation: pulse 1s infinite;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
 
 /* ===== HERO ===== */
-.hero{
-  padding:90px 2rem 2rem;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-.hero-glow{
-  position:absolute;top:-200px;left:50%;transform:translateX(-50%);
-  width:800px;height:500px;
-  background:radial-gradient(ellipse,rgba(99,102,241,0.15) 0%,transparent 70%);
-  pointer-events:none;
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:rgba(34,197,94,0.1);
-  border:1px solid rgba(34,197,94,0.3);
-  color:var(--accent);
-  padding:0.35rem 1rem;border-radius:100px;
-  font-size:0.78rem;font-weight:600;letter-spacing:0.05em;
-  margin-bottom:1.25rem;
-  animation:pulse-badge 2s ease-in-out infinite;
-}
-@keyframes pulse-badge{
-  0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.3);}
-  50%{box-shadow:0 0 0 8px rgba(34,197,94,0);}
-}
-.badge-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:blink 1.2s ease-in-out infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
-
-h1{
-  font-family:'Poppins',sans-serif;
-  font-size:clamp(2rem,5vw,3.8rem);
-  font-weight:900;line-height:1.1;
-  margin-bottom:1rem;
-  letter-spacing:-1.5px;
-}
-h1 .rupee{
-  background:linear-gradient(135deg,var(--gold),#fb923c);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-h1 .highlight{
-  background:linear-gradient(135deg,var(--primary),#a855f7);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.hero-sub{
-  color:var(--muted);font-size:clamp(0.9rem,2vw,1.1rem);
-  max-width:500px;margin:0 auto 2rem;line-height:1.6;
-}
-.hero-sub strong{color:var(--text);}
-.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;}
-.btn-primary{
-  background:linear-gradient(135deg,var(--primary),#a855f7);
-  color:white;border:none;padding:0.85rem 2rem;
-  border-radius:12px;font-family:'Poppins',sans-serif;
-  font-size:1rem;font-weight:700;cursor:pointer;
-  box-shadow:0 0 30px var(--primary-glow);
-  transition:all 0.25s;text-decoration:none;
-  display:inline-flex;align-items:center;gap:0.5rem;
-}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 50px var(--primary-glow);}
-.btn-secondary{
-  background:transparent;
-  color:var(--text);border:1px solid rgba(99,102,241,0.4);
-  padding:0.85rem 2rem;border-radius:12px;
-  font-family:'Poppins',sans-serif;font-size:1rem;font-weight:600;
-  cursor:pointer;transition:all 0.25s;text-decoration:none;
-  display:inline-flex;align-items:center;gap:0.5rem;
-}
-.btn-secondary:hover{border-color:var(--primary);background:rgba(99,102,241,0.08);transform:translateY(-2px);}
-.hero-stats{
-  display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;
-  padding:1rem 0 0.5rem;
-}
-.hero-stat{text-align:center;}
-.hero-stat .val{
-  font-family:'Poppins',sans-serif;font-weight:800;
-  font-size:1.4rem;color:var(--accent);
-}
-.hero-stat .lbl{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
-
-/* ===== PIXEL WALL SECTION ===== */
-#wall-section{
-  padding:1.5rem 1.5rem 2rem;
-  position:relative;
-}
-.wall-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:1rem;flex-wrap:wrap;gap:0.75rem;
-}
-.wall-title{
-  font-family:'Poppins',sans-serif;
-  font-size:1.1rem;font-weight:700;
-  display:flex;align-items:center;gap:0.5rem;
-}
-.wall-title .dot{
-  width:8px;height:8px;background:var(--accent);
-  border-radius:50%;animation:blink 1.2s ease-in-out infinite;
-  box-shadow:0 0 8px var(--accent);
-}
-.wall-controls{display:flex;align-items:center;gap:0.5rem;}
-.ctrl-btn{
-  background:rgba(30,41,59,0.8);border:1px solid var(--border);
-  color:var(--text);width:36px;height:36px;border-radius:8px;
-  font-size:1.1rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:all 0.2s;
-}
-.ctrl-btn:hover{background:rgba(99,102,241,0.2);border-color:var(--primary);}
-.zoom-label{
-  font-family:'Space Mono',monospace;font-size:0.75rem;
-  color:var(--muted);min-width:50px;text-align:center;
-  background:rgba(30,41,59,0.5);padding:0.35rem 0.6rem;
-  border-radius:6px;border:1px solid var(--border);
-}
-.wall-wrapper{
-  position:relative;
-  background:var(--bg2);
-  border-radius:16px;
-  border:1px solid var(--border);
-  overflow:hidden;
-  box-shadow:0 0 60px rgba(99,102,241,0.1),0 20px 60px rgba(0,0,0,0.5);
-  cursor:grab;
-  user-select:none;
-  -webkit-user-select:none;
-}
-.wall-wrapper:active{cursor:grabbing;}
-#pixelCanvas{
-  display:block;
-  width:100%;
-  touch-action:none;
-}
-.wall-overlay-hint{
-  position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
-  background:rgba(10,14,26,0.85);backdrop-filter:blur(8px);
-  border:1px solid var(--border);color:var(--muted);
-  font-size:0.72rem;padding:0.4rem 1rem;border-radius:100px;
-  white-space:nowrap;pointer-events:none;
-  display:flex;align-items:center;gap:0.5rem;
-  transition:opacity 0.5s;
-}
-.wall-overlay-hint.hidden{opacity:0;}
-
-/* ===== COUNTER ===== */
-.counter-section{
-  padding:1.5rem;
-  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
-  max-width:700px;margin:0 auto;
-}
-.counter-card{
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:14px;padding:1.25rem 1.5rem;
-  position:relative;overflow:hidden;
-}
-.counter-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(99,102,241,0.05),transparent);
-  pointer-events:none;
-}
-.counter-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem;}
-.counter-num{
-  font-family:'Space Mono',monospace;
-  font-size:clamp(1.4rem,4vw,2rem);
-  font-weight:700;
-}
-.counter-num.sold{color:var(--primary);}
-.counter-num.remaining{color:var(--accent);}
-.counter-bar{
-  margin-top:0.75rem;
-  height:4px;background:rgba(255,255,255,0.06);
-  border-radius:2px;overflow:hidden;
-}
-.counter-fill{
-  height:100%;border-radius:2px;
-  background:linear-gradient(90deg,var(--primary),#a855f7);
-  transition:width 1s ease;
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px 80px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* ===== TRENDING SECTION ===== */
-.section{padding:3rem 1.5rem;}
-.section-header{
-  text-align:center;margin-bottom:2.5rem;
-}
-.section-tag{
-  display:inline-block;
-  font-size:0.72rem;font-weight:600;letter-spacing:0.1em;
-  text-transform:uppercase;color:var(--primary);
-  margin-bottom:0.6rem;
-}
-.section-title{
-  font-family:'Poppins',sans-serif;
-  font-size:clamp(1.5rem,4vw,2.4rem);
-  font-weight:800;letter-spacing:-0.5px;
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(123,47,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123,47,255,0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-.trending-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  gap:1rem;max-width:1100px;margin:0 auto;
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(123,47,255,0.2) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: heroGlow 4s ease-in-out infinite;
 }
-.trend-card{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:14px;overflow:hidden;
-  transition:all 0.25s;cursor:pointer;
-}
-.trend-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(99,102,241,0.5);
-  box-shadow:0 10px 40px rgba(99,102,241,0.15);
-}
-.trend-img{
-  width:100%;height:120px;object-fit:cover;
-  background:linear-gradient(135deg,var(--bg3),var(--bg2));
-  display:flex;align-items:center;justify-content:center;
-  font-size:2rem;
-}
-.trend-info{padding:0.9rem;}
-.trend-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:0.25rem;}
-.trend-pixels{
-  font-size:0.75rem;color:var(--muted);
-  display:flex;align-items:center;gap:0.4rem;
-}
-.trend-pixels span{color:var(--accent);}
 
-/* ===== LEADERBOARD ===== */
-.leaderboard-wrapper{
-  max-width:600px;margin:0 auto;
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:16px;overflow:hidden;
+@keyframes heroGlow {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
 }
-.lb-header{
-  display:grid;grid-template-columns:50px 1fr auto auto;
-  padding:0.75rem 1.25rem;
-  background:rgba(99,102,241,0.08);
-  border-bottom:1px solid var(--border);
-  font-size:0.72rem;font-weight:600;
-  color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,245,255,0.1);
+  border: 1px solid rgba(0,245,255,0.3);
+  padding: 6px 18px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  animation: fadeInDown 0.8s ease;
 }
-.lb-row{
-  display:grid;grid-template-columns:50px 1fr auto auto;
-  padding:0.9rem 1.25rem;
-  border-bottom:1px solid rgba(255,255,255,0.04);
-  align-items:center;transition:background 0.2s;cursor:pointer;
+
+.hero-badge .live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 12px #00ff88;
+  animation: pulse 1s infinite;
 }
-.lb-row:hover{background:rgba(99,102,241,0.06);}
-.lb-rank{
-  font-family:'Space Mono',monospace;font-weight:700;
-  font-size:0.9rem;
+
+h1.hero-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(36px, 8vw, 88px);
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  animation: fadeInUp 0.8s ease 0.2s both;
 }
-.lb-rank.gold{color:var(--gold);text-shadow:0 0 10px var(--gold-glow);}
-.lb-rank.silver{color:#94a3b8;}
-.lb-rank.bronze{color:#cd7c2e;}
-.lb-user{display:flex;align-items:center;gap:0.75rem;}
-.lb-avatar{
-  width:34px;height:34px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1rem;font-weight:700;
-  flex-shrink:0;
+
+.hero-title .line1 {
+  display: block;
+  background: linear-gradient(135deg, #fff 0%, var(--purple-light) 50%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.lb-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:0.9rem;}
-.lb-domain{font-size:0.72rem;color:var(--muted);}
-.lb-pixels{
-  font-family:'Space Mono',monospace;font-size:0.85rem;
-  color:var(--accent);font-weight:700;text-align:right;
+
+.hero-title .line2 {
+  display: block;
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--purple-light) 60%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.lb-amount{
-  font-size:0.75rem;color:var(--muted);text-align:right;
+
+.hero-sub {
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--text-dim);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 48px;
+  animation: fadeInUp 0.8s ease 0.4s both;
 }
+
+.hero-sub strong { color: var(--cyan); }
+
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  color: white;
+  padding: 16px 40px;
+  border-radius: 8px;
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: 1px solid var(--purple-light);
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(123,47,255,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 50px rgba(123,47,255,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--cyan);
+  padding: 16px 40px;
+  border-radius: 8px;
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: 1px solid rgba(0,245,255,0.4);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  background: rgba(0,245,255,0.1);
+  border-color: var(--cyan);
+  box-shadow: 0 0 30px rgba(0,245,255,0.3);
+  transform: translateY(-3px);
+}
+
+/* ===== HERO STATS ===== */
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 64px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease 0.8s both;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat .num {
+  font-family: 'Orbitron', monospace;
+  font-size: 36px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--cyan), var(--purple-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
+
+.hero-stat .label {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ===== SCARCITY BAR ===== */
+.scarcity-section {
+  background: linear-gradient(135deg, rgba(123,47,255,0.15), rgba(0,245,255,0.05));
+  border: 1px solid rgba(123,47,255,0.3);
+  border-radius: 16px;
+  padding: 32px 40px;
+  margin: 0 auto 80px;
+  max-width: 900px;
+  width: 90%;
+  text-align: center;
+}
+
+.scarcity-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.progress-bar {
+  background: rgba(255,255,255,0.1);
+  border-radius: 100px;
+  height: 20px;
+  overflow: hidden;
+  margin: 12px 0;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+  width: 67%;
+  position: relative;
+  animation: progressGrow 2s ease-out;
+  box-shadow: 0 0 20px rgba(0,245,255,0.5);
+}
+
+@keyframes progressGrow {
+  from { width: 0; }
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 40px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4));
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+.scarcity-text {
+  font-size: 14px;
+  color: var(--text-dim);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.scarcity-text .sold { color: var(--purple-light); }
+.scarcity-text .remaining { color: var(--cyan); }
+
+/* ===== SECTION WRAPPER ===== */
+.section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--cyan);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+
+.section-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #fff, var(--purple-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-sub {
+  color: var(--text-dim);
+  font-size: 18px;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 48px;
+}
+
+/* ===== PIXEL GRID SECTION ===== */
+#pixel-wall {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 0;
+}
+
+.pixel-wall-header {
+  text-align: center;
+  padding: 0 20px 40px;
+}
+
+.grid-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 0 60px rgba(123,47,255,0.3), 0 0 120px rgba(0,245,255,0.1);
+  background: #000;
+  cursor: crosshair;
+}
+
+#pixelCanvas {
+  display: block;
+  width: 100%;
+  image-rendering: pixelated;
+}
+
+.grid-overlay-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(0,0,0,0.6);
+  border-top: 1px solid var(--border);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.grid-hint { color: var(--cyan); }
+.grid-zoom-info { color: var(--purple-light); }
+
+/* ===== BUY PANEL ===== */
+.buy-panel {
+  max-width: 900px;
+  margin: 32px auto 0;
+  padding: 0 20px;
+  display: none;
+}
+
+.buy-panel.visible { display: block; }
+
+.buy-panel-inner {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.buy-panel-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--cyan), var(--purple));
+}
+
+.buy-panel h3 {
+  font-family: 'Orbitron', monospace;
+  font-size: 18px;
+  margin-bottom: 24px;
+  color: var(--cyan);
+}
+
+.buy-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.form-group input, .form-group select {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0,245,255,0.2);
+}
+
+.form-group.full { grid-column: 1 / -1; }
+
+.price-display {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(123,47,255,0.1);
+  border: 1px solid var(--purple);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+
+.price-label { color: var(--text-dim); font-size: 14px; }
+.price-value {
+  font-family: 'Orbitron', monospace;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--yellow);
+}
+.price-value small { font-size: 14px; color: var(--text-dim); }
+
+.btn-buy {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--yellow-hot), var(--yellow));
+  color: #000;
+  padding: 18px;
+  border-radius: 10px;
+  font-family: 'Orbitron', monospace;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 40px rgba(255,165,0,0.4);
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+
+.btn-buy:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 60px rgba(255,165,0,0.7);
+}
+
+/* ===== PURCHASE POPUP ===== */
+.purchase-popup {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.popup-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 280px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(123,47,255,0.2);
+  animation: slideInLeft 0.4s ease, fadeOut 0.4s ease 3.5s forwards;
+  pointer-events: all;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+  to { transform: translateX(-120%); opacity: 0; }
+}
+
+.popup-avatar {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.popup-text { flex: 1; }
+.popup-name { font-weight: 700; font-size: 14px; color: var(--text); }
+.popup-action { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+.popup-price { font-family: 'Orbitron', monospace; font-size: 13px; color: var(--cyan); font-weight: 700; }
 
 /* ===== HOW IT WORKS ===== */
-.how-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:1.5rem;max-width:900px;margin:0 auto;
+#how-it-works {
+  padding: 80px 20px;
+  text-align: center;
 }
-.how-card{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:16px;padding:1.75rem;
-  position:relative;overflow:hidden;
-  transition:all 0.3s;
-}
-.how-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(99,102,241,0.5);
-  box-shadow:0 15px 40px rgba(99,102,241,0.1);
-}
-.how-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--primary),#a855f7);
-}
-.how-num{
-  font-family:'Space Mono',monospace;font-size:0.75rem;
-  color:var(--primary);font-weight:700;margin-bottom:1rem;
-  letter-spacing:0.1em;
-}
-.how-icon{font-size:2.5rem;margin-bottom:1rem;}
-.how-title{
-  font-family:'Poppins',sans-serif;font-weight:700;
-  font-size:1.05rem;margin-bottom:0.5rem;
-}
-.how-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
 
-/* ===== BUY SECTION ===== */
-.buy-section{
-  padding:3rem 1.5rem;
-  background:radial-gradient(ellipse at center,rgba(99,102,241,0.08) 0%,transparent 70%);
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
 }
-.buy-inner{
-  max-width:600px;margin:0 auto;text-align:center;
+
+.step-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 24px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s;
+  overflow: hidden;
 }
-.price-display{
-  font-family:'Space Mono',monospace;
-  font-size:clamp(1rem,3vw,1.4rem);
-  color:var(--muted);margin:1.5rem 0;
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:12px;padding:1rem 1.5rem;
-  display:flex;align-items:center;justify-content:center;gap:0.5rem;flex-wrap:wrap;
+
+.step-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(123,47,255,0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
-.price-display .price{color:var(--gold);font-size:1.8rem;font-weight:700;}
+
+.step-card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,245,255,0.15);
+}
+
+.step-card:hover::before { opacity: 1; }
+
+.step-number {
+  font-family: 'Orbitron', monospace;
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--purple), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+.step-icon {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 12px rgba(0,245,255,0.5));
+}
+
+.step-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.step-desc {
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== RARE PIXELS ===== */
+#rare-pixels {
+  padding: 80px 20px;
+  background: radial-gradient(ellipse at center, rgba(123,47,255,0.08) 0%, transparent 70%);
+}
+
+.rare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.rare-card {
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.rare-card.gold {
+  background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,165,0,0.05));
+  border: 1px solid rgba(255,215,0,0.4);
+}
+
+.rare-card.diamond {
+  background: linear-gradient(135deg, rgba(168,240,255,0.1), rgba(0,245,255,0.05));
+  border: 1px solid rgba(168,240,255,0.4);
+}
+
+.rare-card.founder {
+  background: linear-gradient(135deg, rgba(255,107,255,0.1), rgba(123,47,255,0.05));
+  border: 1px solid rgba(255,107,255,0.4);
+}
+
+.rare-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.rare-card.gold:hover { box-shadow: 0 20px 60px rgba(255,215,0,0.2); }
+.rare-card.diamond:hover { box-shadow: 0 20px 60px rgba(0,245,255,0.2); }
+.rare-card.founder:hover { box-shadow: 0 20px 60px rgba(255,107,255,0.2); }
+
+.rare-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.rare-name {
+  font-family: 'Orbitron', monospace;
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.rare-card.gold .rare-name { color: var(--gold); }
+.rare-card.diamond .rare-name { color: var(--diamond); }
+.rare-card.founder .rare-name { color: var(--founder); }
+
+.rare-desc {
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.rare-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.gold .rare-badge { background: rgba(255,215,0,0.2); color: var(--gold); border: 1px solid rgba(255,215,0,0.4); }
+.diamond .rare-badge { background: rgba(0,245,255,0.2); color: var(--cyan); border: 1px solid rgba(0,245,255,0.4); }
+.founder .rare-badge { background: rgba(255,107,255,0.2); color: var(--founder); border: 1px solid rgba(255,107,255,0.4); }
+
+/* ===== LEADERBOARD ===== */
+#leaderboard {
+  padding: 80px 20px;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.leaderboard-table {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+
+.lb-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 140px 120px 100px;
+  padding: 16px 24px;
+  background: rgba(123,47,255,0.1);
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.lb-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 140px 120px 100px;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  align-items: center;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.lb-row:last-child { border-bottom: none; }
+.lb-row:hover { background: rgba(123,47,255,0.08); }
+
+.lb-rank {
+  font-family: 'Orbitron', monospace;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.rank-1 { color: var(--gold); filter: drop-shadow(0 0 8px var(--gold)); }
+.rank-2 { color: #C0C0C0; }
+.rank-3 { color: #CD7F32; }
+.rank-other { color: var(--text-dim); }
+
+.lb-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lb-avatar {
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+}
+
+.lb-name { font-weight: 700; font-size: 15px; }
+.lb-sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+.lb-pixels {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--purple-light);
+  font-size: 14px;
+}
+
+.lb-spent {
+  font-family: 'Orbitron', monospace;
+  color: var(--yellow);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.lb-badge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.badge-gold { background: rgba(255,215,0,0.15); color: var(--gold); border: 1px solid rgba(255,215,0,0.3); }
+.badge-diamond { background: rgba(0,245,255,0.15); color: var(--cyan); border: 1px solid rgba(0,245,255,0.3); }
+.badge-founder { background: rgba(255,107,255,0.15); color: var(--founder); border: 1px solid rgba(255,107,255,0.3); }
+.badge-whale { background: rgba(123,47,255,0.2); color: var(--purple-light); border: 1px solid rgba(123,47,255,0.4); }
+
+/* ===== VIRAL / REFERRAL ===== */
+#viral {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.referral-box {
+  background: linear-gradient(135deg, rgba(123,47,255,0.15), rgba(0,245,255,0.05));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px;
+  max-width: 700px;
+  margin: 48px auto 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.referral-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(0,245,255,0.03) 100%);
+}
+
+.referral-emoji { font-size: 64px; display: block; margin-bottom: 24px; }
+
+.referral-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--cyan), var(--purple-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.referral-desc {
+  color: var(--text-dim);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.referral-link-box {
+  display: flex;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto 24px;
+}
+
+.referral-link-input {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--cyan);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  outline: none;
+}
+
+.btn-copy {
+  background: var(--purple);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-copy:hover { background: var(--purple-light); transform: scale(1.05); }
+
+.share-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.share-twitter { background: rgba(29,161,242,0.15); color: #1DA1F2; border-color: rgba(29,161,242,0.3); }
+.share-whatsapp { background: rgba(37,211,102,0.15); color: #25D366; border-color: rgba(37,211,102,0.3); }
+.share-instagram { background: rgba(225,48,108,0.15); color: #E1306C; border-color: rgba(225,48,108,0.3); }
+
+.share-btn:hover { transform: translateY(-2px); filter: brightness(1.2); }
+
+/* ===== PRICING ===== */
+#pricing {
+  padding: 80px 20px;
+  background: radial-gradient(ellipse at 30% 50%, rgba(0,245,255,0.05) 0%, transparent 60%);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.price-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.price-card.popular {
+  border-color: var(--purple-light);
+  box-shadow: 0 0 40px rgba(123,47,255,0.3);
+}
+
+.price-card.popular::before {
+  content: '🔥 MOST POPULAR';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: linear-gradient(90deg, var(--purple), var(--purple-dark));
+  padding: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: white;
+  font-family: 'Orbitron', monospace;
+}
+
+.price-card.popular { padding-top: 56px; }
+
+.price-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(123,47,255,0.2);
+}
+
+.price-size {
+  font-family: 'Orbitron', monospace;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+
+.price-desc { color: var(--text-dim); font-size: 13px; margin-bottom: 24px; }
+
+.price-amount {
+  font-family: 'Orbitron', monospace;
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--yellow);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.price-currency { font-size: 24px; color: var(--text-dim); }
+.price-pixel-count { font-size: 13px; color: var(--text-dim); margin-bottom: 28px; }
+
+.price-features {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.price-features li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.price-features li::before {
+  content: '✓';
+  color: var(--cyan);
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.btn-price {
+  width: 100%;
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  color: white;
+  padding: 14px;
+  border-radius: 8px;
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: 1px solid var(--purple-light);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-price:hover {
+  box-shadow: 0 0 30px rgba(123,47,255,0.5);
+  transform: scale(1.03);
+}
+
+.price-card.popular .btn-price {
+  background: linear-gradient(135deg, var(--yellow-hot), var(--yellow));
+  color: #000;
+  border-color: var(--yellow);
+}
+
+/* ===== SOCIAL PROOF ===== */
+#social-proof {
+  padding: 80px 20px;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.testimonial-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s;
+}
+
+.testimonial-card:hover {
+  border-color: var(--purple-light);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(123,47,255,0.15);
+}
+
+.testimonial-stars {
+  color: var(--yellow);
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.testimonial-text {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  border: 2px solid var(--border);
+}
+
+.testimonial-name { font-weight: 700; font-size: 14px; }
+.testimonial-role { font-size: 12px; color: var(--text-dim); }
+
+/* ===== CTA FINAL ===== */
+#cta-final {
+  padding: 120px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#cta-final::before {
+  content: '';
+  position: absolute;
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(123,47,255,0.15) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cta-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(32px, 7vw, 72px);
+  font-weight: 900;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.cta-title span {
+  display: block;
+  background: linear-gradient(135deg, var(--yellow), var(--yellow-hot));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cta-sub {
+  color: var(--text-dim);
+  font-size: 18px;
+  max-width: 500px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+  position: relative;
+}
+
+.cta-urgency {
+  display: inline-block;
+  background: rgba(255,0,0,0.15);
+  border: 1px solid rgba(255,80,80,0.4);
+  color: #ff8080;
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+  animation: urgencePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes urgencePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,80,80,0.3); }
+  50% { box-shadow: 0 0 0 12px rgba(255,80,80,0); }
+}
 
 /* ===== FOOTER ===== */
-footer{
-  border-top:1px solid var(--border);
-  padding:2rem 1.5rem;
-  text-align:center;
-  color:var(--muted);font-size:0.8rem;
-}
-.footer-logo{
-  font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem;
-  background:linear-gradient(135deg,#6366f1,#a855f7,#22c55e);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:0.5rem;
-}
-.footer-links{
-  display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;
-  margin:1rem 0;
-}
-.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--text);}
-
-/* ===== POPUP ===== */
-.popup-overlay{
-  position:fixed;inset:0;z-index:2000;
-  background:rgba(0,0,0,0.8);backdrop-filter:blur(10px);
-  display:flex;align-items:center;justify-content:center;
-  padding:1rem;
-  opacity:0;pointer-events:none;
-  transition:opacity 0.25s;
-}
-.popup-overlay.active{opacity:1;pointer-events:all;}
-.popup-card{
-  background:var(--bg2);
-  border:1px solid rgba(99,102,241,0.4);
-  border-radius:20px;
-  padding:0;overflow:hidden;
-  max-width:360px;width:100%;
-  transform:scale(0.9) translateY(20px);
-  transition:transform 0.3s cubic-bezier(.34,1.56,.64,1);
-  box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 40px var(--primary-glow);
-}
-.popup-overlay.active .popup-card{transform:scale(1) translateY(0);}
-.popup-img{
-  width:100%;height:160px;object-fit:cover;
-  background:linear-gradient(135deg,#1e1b4b,#0f172a);
-  display:flex;align-items:center;justify-content:center;
-  font-size:4rem;
-}
-.popup-body{padding:1.5rem;}
-.popup-title{
-  font-family:'Poppins',sans-serif;font-weight:800;
-  font-size:1.2rem;margin-bottom:0.25rem;
-}
-.popup-owner{font-size:0.8rem;color:var(--muted);margin-bottom:0.75rem;}
-.popup-desc{font-size:0.85rem;color:#94a3b8;line-height:1.5;margin-bottom:1rem;}
-.popup-pixels{
-  display:flex;gap:0.5rem;margin-bottom:1.25rem;flex-wrap:wrap;
-}
-.popup-tag{
-  background:rgba(99,102,241,0.15);
-  border:1px solid rgba(99,102,241,0.3);
-  color:var(--primary);
-  font-size:0.72rem;padding:0.25rem 0.65rem;border-radius:100px;
-  font-family:'Space Mono',monospace;
-}
-.popup-btns{display:flex;gap:0.75rem;}
-.popup-visit{
-  flex:1;background:linear-gradient(135deg,var(--primary),#a855f7);
-  color:white;border:none;padding:0.75rem;
-  border-radius:10px;font-weight:700;cursor:pointer;
-  font-family:'Poppins',sans-serif;font-size:0.9rem;
-  transition:all 0.2s;
-}
-.popup-visit:hover{transform:translateY(-2px);}
-.popup-close{
-  background:rgba(255,255,255,0.05);border:1px solid var(--border);
-  color:var(--muted);width:44px;border-radius:10px;
-  cursor:pointer;font-size:1.2rem;transition:all 0.2s;
-}
-.popup-close:hover{background:rgba(255,50,50,0.1);color:#f87171;border-color:#f87171;}
-
-/* MOBILE MENU */
-.mobile-menu{
-  position:fixed;top:64px;left:0;right:0;z-index:999;
-  background:rgba(10,14,26,0.98);backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-  padding:1rem;
-  transform:translateY(-100%);opacity:0;
-  transition:all 0.3s;
-}
-.mobile-menu.open{transform:translateY(0);opacity:1;}
-.mobile-menu a{
-  display:block;color:var(--text);text-decoration:none;
-  padding:0.85rem 1rem;border-radius:10px;
-  font-size:1rem;font-weight:500;
-  transition:background 0.2s;
-}
-.mobile-menu a:hover{background:rgba(99,102,241,0.1);}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-  .nav-links{display:none;}
-  .hamburger{display:flex;}
-  .counter-section{grid-template-columns:1fr 1fr;}
-  .wall-header{flex-direction:column;align-items:flex-start;}
-  .lb-header,.lb-row{grid-template-columns:40px 1fr auto;}
-  .lb-amount{display:none;}
-}
-@media(max-width:480px){
-  nav{padding:0 1rem;}
-  .hero{padding:80px 1rem 1.5rem;}
-  .section{padding:2rem 1rem;}
-  #wall-section{padding:1rem;}
-  .counter-section{padding:1rem;}
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 48px 40px 32px;
 }
 
-/* ANIMATIONS */
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
-}
-.floating{animation:float 3s ease-in-out infinite;}
-
-@keyframes shimmer{
-  0%{background-position:-200% 0;}
-  100%{background-position:200% 0;}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 48px;
+  align-items: start;
 }
 
-.shimmer-text{
-  background:linear-gradient(90deg,var(--primary),#a855f7,var(--accent),#f59e0b,var(--primary));
-  background-size:200% auto;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  animation:shimmer 4s linear infinite;
+.footer-brand .logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 24px;
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--purple-light), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
 }
 
-/* PIXEL WALL MINI MAP */
-.minimap{
-  position:absolute;bottom:50px;right:12px;
-  width:80px;height:60px;
-  background:rgba(10,14,26,0.9);
-  border:1px solid var(--border);
-  border-radius:6px;overflow:hidden;
-  display:none;
-}
-.minimap-viewport{
-  position:absolute;
-  border:1px solid rgba(99,102,241,0.8);
-  background:rgba(99,102,241,0.1);
-  pointer-events:none;
+.footer-brand p { color: var(--text-dim); font-size: 13px; max-width: 260px; line-height: 1.6; }
+
+.footer-col h4 {
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
 }
 
-/* SECTION DIVIDER */
-.divider{
-  height:1px;
-  background:linear-gradient(90deg,transparent,var(--border),transparent);
-  margin:0 2rem;
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul a { color: var(--text-dim); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--cyan); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ===== LIVE COUNTER BAR ===== */
+.live-counter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  padding: 24px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin: 32px auto;
+  max-width: 900px;
+}
+
+.counter-item {
+  text-align: center;
+}
+
+.counter-num {
+  font-family: 'Orbitron', monospace;
+  font-size: 32px;
+  font-weight: 900;
+  display: block;
+  transition: all 0.3s;
+}
+
+.counter-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.counter-sold .counter-num { color: var(--purple-light); }
+.counter-remaining .counter-num { color: var(--cyan); }
+.counter-value .counter-num { color: var(--yellow); }
+
+/* ===== MYSTERY PIXEL ===== */
+.mystery-box {
+  background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(123,47,255,0.1));
+  border: 2px dashed rgba(123,47,255,0.5);
+  border-radius: 20px;
+  padding: 48px;
+  text-align: center;
+  margin: 48px auto;
+  max-width: 600px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.mystery-box:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 0 60px rgba(0,245,255,0.2);
+}
+
+.mystery-box::before {
+  content: '?';
+  position: absolute;
+  font-family: 'Orbitron', monospace;
+  font-size: 300px;
+  font-weight: 900;
+  color: rgba(123,47,255,0.04);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.mystery-icon { font-size: 56px; display: block; margin-bottom: 16px; }
+.mystery-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--purple-light);
+  margin-bottom: 12px;
+}
+.mystery-desc { color: var(--text-dim); font-size: 15px; line-height: 1.6; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RIPPLE ===== */
+.ripple-container {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  inset: 0;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0,245,255,0.3);
+  animation: rippleAnim 0.6s ease-out forwards;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes rippleAnim {
+  from { width: 0; height: 0; opacity: 1; }
+  to { width: 100px; height: 100px; opacity: 0; }
+}
+
+/* ===== PIXEL FLASH ===== */
+.pixel-flash {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9997;
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  color: var(--cyan);
+  font-weight: 700;
+  animation: pixelFloat 2s ease-out forwards;
+}
+
+@keyframes pixelFloat {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-80px); }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .lb-header, .lb-row {
+    grid-template-columns: 40px 1fr 80px;
+  }
+  .lb-header > *:nth-child(n+4),
+  .lb-row > *:nth-child(n+4) { display: none; }
+  .buy-form { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .referral-link-box { flex-direction: column; }
+  .hero-stats { gap: 24px; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav id="navbar">
-  <div class="logo">Pixel<span>Bazaar</span></div>
-  <div class="nav-links">
-    <a href="#wall-section">Explore Wall</a>
-    <a href="#buy">Buy Pixels</a>
-    <a href="#leaderboard">Leaderboard</a>
-    <a href="#buy" class="nav-cta">Buy ₹100</a>
-  </div>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
+<!-- RIPPLE CONTAINER -->
+<div class="ripple-container" id="rippleContainer"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Pixel<span>Bazaar</span></div>
+  <ul class="nav-links">
+    <li><a href="#pixel-wall">The Wall</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#rare-pixels">Rare Pixels</a></li>
+    <li><a href="#leaderboard">Leaderboard</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#pixel-wall" class="nav-cta">Buy Pixels →</a></li>
+  </ul>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#wall-section" onclick="toggleMenu()">🗺 Explore Wall</a>
-  <a href="#buy" onclick="toggleMenu()">🛒 Buy Pixels</a>
-  <a href="#leaderboard" onclick="toggleMenu()">🏆 Leaderboard</a>
-  <a href="#buy" onclick="toggleMenu()" style="background:rgba(99,102,241,0.15);color:var(--primary);">⚡ Buy Pixels – ₹100</a>
+<!-- LIVE TICKER -->
+<div class="live-ticker">
+  <div class="ticker-inner" id="tickerInner">
+    <!-- JS fills this -->
+  </div>
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section id="hero">
+  <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
+
   <div class="hero-badge">
-    <span class="badge-dot"></span>
-    LIVE — 243,321 Pixels Sold
+    <span class="live-dot"></span>
+    LIVE · 1,247 Pixels Sold Today
   </div>
-  <h1>Own a Piece of the<br>Internet for <span class="rupee">₹1</span></h1>
+
+  <h1 class="hero-title">
+    <span class="line1">Own A Piece</span>
+    <span class="line2">Of The Internet</span>
+  </h1>
+
   <p class="hero-sub">
-    <strong>1 Crore Pixels.</strong> Once They're Gone, They're Gone Forever.<br>
-    Join 8,400+ brands on India's most viral pixel wall.
+    India's first <strong>Million Pixel Wall</strong>. Buy pixels, place your logo, and live on the internet forever. Only <strong>10,000 blocks</strong> available — ever.
   </p>
-  <div class="hero-btns">
-    <a href="#buy" class="btn-primary">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      Buy Pixels — ₹100
-    </a>
-    <a href="#wall-section" class="btn-secondary">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      Explore Pixel Wall
-    </a>
+
+  <div class="hero-cta-group">
+    <a href="#pixel-wall" class="btn-primary">🔥 Claim Your Pixels Now</a>
+    <a href="#how-it-works" class="btn-secondary">See How It Works</a>
   </div>
+
   <div class="hero-stats">
-    <div class="hero-stat"><div class="val">₹1Cr</div><div class="lbl">Total Wall Value</div></div>
-    <div class="hero-stat"><div class="val" id="heroSold">243,321</div><div class="lbl">Pixels Sold</div></div>
-    <div class="hero-stat"><div class="val">8,400+</div><div class="lbl">Active Ads</div></div>
-    <div class="hero-stat"><div class="val">₹1</div><div class="lbl">Per Pixel</div></div>
-  </div>
-</section>
-
-<!-- PIXEL WALL -->
-<section id="wall-section">
-  <div class="wall-header">
-    <div class="wall-title">
-      <span class="dot"></span>
-      Live Pixel Wall — 10,000 × 10,000
+    <div class="hero-stat">
+      <span class="num" id="statSold">6,712</span>
+      <span class="label">Pixels Sold</span>
     </div>
-    <div class="wall-controls">
-      <button class="ctrl-btn" id="zoomOut" title="Zoom Out">−</button>
-      <div class="zoom-label" id="zoomLabel">100%</div>
-      <button class="ctrl-btn" id="zoomIn" title="Zoom In">+</button>
-      <button class="ctrl-btn" id="resetView" title="Reset View">⊡</button>
+    <div class="hero-stat">
+      <span class="num" id="statRemaining">3,288</span>
+      <span class="label">Remaining</span>
     </div>
-  </div>
-  <div class="wall-wrapper" id="wallWrapper">
-    <canvas id="pixelCanvas"></canvas>
-    <div class="wall-overlay-hint" id="wallHint">
-      🖱 Drag to pan · Scroll to zoom · Click ads to preview
+    <div class="hero-stat">
+      <span class="num">₹18.4L</span>
+      <span class="label">Total Value</span>
     </div>
-    <div class="minimap" id="minimap">
-      <canvas id="minimapCanvas" width="80" height="60"></canvas>
-      <div class="minimap-viewport" id="minimapViewport"></div>
+    <div class="hero-stat">
+      <span class="num">847</span>
+      <span class="label">Pixel Owners</span>
     </div>
   </div>
 </section>
 
-<!-- COUNTER -->
-<div class="counter-section">
-  <div class="counter-card">
-    <div class="counter-label">Pixels Sold</div>
-    <div class="counter-num sold" id="soldCount">243,321</div>
-    <div class="counter-bar"><div class="counter-fill" id="soldBar" style="width:24.3%"></div></div>
-  </div>
-  <div class="counter-card">
-    <div class="counter-label">Pixels Remaining</div>
-    <div class="counter-num remaining" id="remainCount">756,679</div>
-    <div class="counter-bar">
-      <div class="counter-fill" style="width:75.7%;background:linear-gradient(90deg,var(--accent),#16a34a)"></div>
+<!-- SCARCITY -->
+<div style="padding: 0 20px;">
+  <div class="scarcity-section">
+    <div class="scarcity-label">⚠️ Only 33% Pixels Remaining · Act Fast</div>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+    <div class="scarcity-text">
+      <span class="sold">6,712 Sold (67%)</span>
+      <span class="remaining">3,288 Remaining</span>
     </div>
   </div>
 </div>
 
-<div class="divider"></div>
-
-<!-- TRENDING ADS -->
-<section class="section" id="trending">
-  <div class="section-header">
-    <div class="section-tag">🔥 Trending Now</div>
-    <h2 class="section-title">Most Popular Pixel Ads</h2>
+<!-- PIXEL WALL -->
+<section id="pixel-wall">
+  <div class="pixel-wall-header">
+    <div class="section-label">The Million Pixel Wall</div>
+    <h2 class="section-title">Your Brand Lives Here Forever</h2>
+    <p class="section-sub" style="margin:0 auto; text-align:center;">Click any empty pixel block to claim it. Hover to see owners. Scroll to zoom in.</p>
   </div>
-  <div class="trending-grid" id="trendingGrid"></div>
-</section>
 
-<div class="divider"></div>
-
-<!-- LEADERBOARD -->
-<section class="section" id="leaderboard">
-  <div class="section-header">
-    <div class="section-tag">🏆 Top Buyers</div>
-    <h2 class="section-title">Pixel Wall Leaderboard</h2>
-  </div>
-  <div class="leaderboard-wrapper">
-    <div class="lb-header">
-      <div>Rank</div><div>Owner</div><div>Pixels</div><div>Spent</div>
+  <!-- Live Counter Bar -->
+  <div class="live-counter-bar">
+    <div class="counter-item counter-sold">
+      <span class="counter-num" id="counterSold">6,712</span>
+      <span class="counter-label">Pixels Sold</span>
     </div>
-    <div id="lbBody"></div>
+    <div class="counter-item counter-remaining">
+      <span class="counter-num" id="counterRemaining">3,288</span>
+      <span class="counter-label">Remaining</span>
+    </div>
+    <div class="counter-item counter-value">
+      <span class="counter-num">₹18.4L</span>
+      <span class="counter-label">Total Value</span>
+    </div>
+    <div class="counter-item" style="color: var(--founder);">
+      <span class="counter-num" style="color: var(--founder);">12</span>
+      <span class="counter-label">Golden Pixels Left</span>
+    </div>
+  </div>
+
+  <div class="grid-container" id="gridContainer">
+    <canvas id="pixelCanvas" width="1000" height="600"></canvas>
+    <div class="grid-overlay-info">
+      <span class="grid-hint">💡 Click empty block to buy · Hover to preview</span>
+      <span class="grid-zoom-info">🔍 Scroll to zoom · Drag to pan</span>
+    </div>
+  </div>
+
+  <!-- PIXEL TOOLTIP -->
+  <div id="pixelTooltip" style="
+    position: fixed;
+    background: rgba(10,10,26,0.95);
+    border: 1px solid rgba(0,245,255,0.4);
+    border-radius: 10px;
+    padding: 12px 16px;
+    pointer-events: none;
+    display: none;
+    z-index: 500;
+    min-width: 200px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(0,245,255,0.1);
+  ">
+    <div id="tooltipContent"></div>
+  </div>
+
+  <!-- BUY PANEL -->
+  <div class="buy-panel" id="buyPanel">
+    <div class="buy-panel-inner">
+      <h3>🎯 Claim Block <span id="selectedBlockInfo">—</span></h3>
+      <div class="buy-form">
+        <div class="form-group">
+          <label>Your Name / Brand</label>
+          <input type="text" id="inputName" placeholder="e.g. StartupX" />
+        </div>
+        <div class="form-group">
+          <label>Website URL</label>
+          <input type="text" id="inputUrl" placeholder="https://yourbrand.com" />
+        </div>
+        <div class="form-group">
+          <label>Block Size</label>
+          <select id="inputSize" onchange="updatePrice()">
+            <option value="1">1×1 Block (10×10 px) — ₹100</option>
+            <option value="4" selected>2×2 Blocks (20×20 px) — ₹350</option>
+            <option value="25">5×5 Blocks (50×50 px) — ₹1,500</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Pixel Color</label>
+          <input type="color" id="inputColor" value="#7B2FFF" style="height:48px;cursor:pointer;" />
+        </div>
+        <div class="form-group full">
+          <label>Tagline / Message (optional)</label>
+          <input type="text" id="inputTagline" placeholder="e.g. India's Best SaaS" />
+        </div>
+        <div class="price-display">
+          <span class="price-label">Total Price</span>
+          <span class="price-value" id="priceDisplay">₹350 <small>one-time forever</small></span>
+        </div>
+        <button class="btn-buy" onclick="purchasePixel()">⚡ BUY NOW — CLAIM FOREVER</button>
+      </div>
+    </div>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- HOW IT WORKS -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-tag">📖 Simple Process</div>
-    <h2 class="section-title">How It Works</h2>
-  </div>
-  <div class="how-grid">
-    <div class="how-card">
-      <div class="how-num">STEP 01</div>
-      <div class="how-icon">🗺</div>
-      <div class="how-title">Select Your Pixels</div>
-      <div class="how-desc">Explore the live wall, choose your location and size. Minimum 100 pixels (₹100). Prime spots go fast!</div>
-    </div>
-    <div class="how-card">
-      <div class="how-num">STEP 02</div>
-      <div class="how-icon">🖼</div>
-      <div class="how-title">Upload Your Ad</div>
-      <div class="how-desc">Upload your brand image or logo. We auto-resize it perfectly to fit your selected pixel area.</div>
-    </div>
-    <div class="how-card">
-      <div class="how-num">STEP 03</div>
-      <div class="how-icon">🚀</div>
-      <div class="how-title">Go Live Forever</div>
-      <div class="how-desc">Pay via UPI, card, or net banking. Your ad goes live instantly and stays there forever — permanently.</div>
+<section id="how-it-works" style="padding: 80px 20px; background: var(--bg);">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label" style="text-align:center;">Simple As 1-2-3</div>
+    <h2 class="section-title" style="text-align:center;">How PixelBazaar Works</h2>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-icon">🖱️</span>
+        <span class="step-number">01</span>
+        <div class="step-title">Pick Your Block</div>
+        <p class="step-desc">Browse the live pixel wall. Click any glowing empty block to claim it. Choose your size.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-icon">🎨</span>
+        <span class="step-number">02</span>
+        <div class="step-title">Add Your Brand</div>
+        <p class="step-desc">Enter your name, website link, choose your color. Upload a logo if you want.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-icon">💳</span>
+        <span class="step-number">03</span>
+        <div class="step-title">Pay Once</div>
+        <p class="step-desc">One-time payment starting at just ₹100. No subscriptions. No hidden fees. Ever.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-icon">🏆</span>
+        <span class="step-number">04</span>
+        <div class="step-title">Own It Forever</div>
+        <p class="step-desc">Your pixel block goes live instantly. It stays on PixelBazaar permanently. You're on the internet forever.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- BUY SECTION -->
-<section class="buy-section section" id="buy">
-  <div class="buy-inner">
-    <div class="section-tag">⚡ Limited Pixels Left</div>
-    <h2 class="section-title" style="margin-bottom:0.5rem">Claim Your Space</h2>
-    <p style="color:var(--muted);font-size:0.9rem;margin-bottom:0.5rem">756,679 pixels still available. Prices never change.</p>
-    <div class="price-display">
-      Min 100px =&nbsp;<span class="price">₹100</span>&nbsp;· Forever Yours
+<!-- RARE PIXELS -->
+<section id="rare-pixels" style="padding: 80px 20px;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">Limited Edition</div>
+    <h2 class="section-title">Rare Pixel Types</h2>
+    <p class="section-sub">Some pixels are more valuable than others. Rare pixels come with special perks, badges, and eternal glory.</p>
+
+    <div class="rare-grid">
+      <div class="rare-card gold">
+        <span class="rare-icon">🥇</span>
+        <div class="rare-name">Golden Pixel</div>
+        <p class="rare-desc">Only 100 exist. Golden-bordered pixel blocks with animated glow effect. Top placement in leaderboard. Gold badge forever.</p>
+        <span class="rare-badge">Only 12 Left</span>
+      </div>
+      <div class="rare-card diamond">
+        <span class="rare-icon">💎</span>
+        <div class="rare-name">Diamond Pixel</div>
+        <p class="rare-desc">Top 50 spots only. Diamond shimmer animation on your pixel. Featured on homepage. Priority support. Eternal fame.</p>
+        <span class="rare-badge">Only 3 Left</span>
+      </div>
+      <div class="rare-card founder">
+        <span class="rare-icon">👑</span>
+        <div class="rare-name">Founder Pixel</div>
+        <p class="rare-desc">First 10 buyers become Founders. Animated crown, featured profile, early access to future products. True OG status.</p>
+        <span class="rare-badge">Sold Out</span>
+      </div>
     </div>
-    <a href="#wall-section" class="btn-primary" style="width:100%;justify-content:center;font-size:1.1rem;padding:1rem 2rem">
-      🛒 Buy Pixels Now — Starting ₹100
-    </a>
-    <p style="color:var(--muted);font-size:0.75rem;margin-top:1rem">
-      Secure UPI · Razorpay · 100% permanent placement · No recurring fees
-    </p>
+
+    <!-- Mystery Pixel -->
+    <div class="mystery-box" onclick="revealMystery()">
+      <span class="mystery-icon">🔮</span>
+      <div class="mystery-title">Find The Mystery Pixel</div>
+      <p class="mystery-desc">Hidden somewhere in the grid is a Mystery Pixel. The first person to find and click it wins 50 FREE pixels. Are you curious enough?</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section id="leaderboard" style="padding: 80px 20px;">
+  <div style="max-width: 1000px; margin: 0 auto;">
+    <div class="section-label">Top Pixel Owners</div>
+    <h2 class="section-title">Pixel Leaderboard</h2>
+    <p class="section-sub">The biggest pixel empires on the internet. Will your name be here?</p>
+
+    <div class="leaderboard-table">
+      <div class="lb-header">
+        <span>Rank</span>
+        <span>Owner</span>
+        <span>Pixels Owned</span>
+        <span>Total Spent</span>
+        <span>Badge</span>
+      </div>
+
+      <div id="leaderboardRows"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="padding: 80px 20px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label" style="text-align:center;">Simple Pricing</div>
+    <h2 class="section-title" style="text-align:center;">Own Your Pixels</h2>
+    <p class="section-sub" style="text-align:center; margin: 0 auto 48px;">Starting at just ₹100. One-time payment. Yours forever. No renewal, no catch.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-size">Starter Block</div>
+        <p class="price-desc">10×10 pixels on the wall</p>
+        <span class="price-amount"><span class="price-currency">₹</span>100</span>
+        <p class="price-pixel-count">1 Block · 100 pixels</p>
+        <ul class="price-features">
+          <li>Your name on the pixel</li>
+          <li>Website link</li>
+          <li>Custom color</li>
+          <li>Pixel owner badge</li>
+        </ul>
+        <button class="btn-price" onclick="scrollToGrid()">Claim Block →</button>
+      </div>
+
+      <div class="price-card popular">
+        <div class="price-size">Growth Block</div>
+        <p class="price-desc">20×20 pixels on the wall</p>
+        <span class="price-amount"><span class="price-currency">₹</span>350</span>
+        <p class="price-pixel-count">4 Blocks · 400 pixels</p>
+        <ul class="price-features">
+          <li>Everything in Starter</li>
+          <li>Logo upload</li>
+          <li>Tagline text</li>
+          <li>Featured in showcase</li>
+        </ul>
+        <button class="btn-price" onclick="scrollToGrid()">🔥 Claim Block →</button>
+      </div>
+
+      <div class="price-card">
+        <div class="price-size">Empire Block</div>
+        <p class="price-desc">50×50 pixels on the wall</p>
+        <span class="price-amount"><span class="price-currency">₹</span>1,500</span>
+        <p class="price-pixel-count">25 Blocks · 2,500 pixels</p>
+        <ul class="price-features">
+          <li>Everything in Growth</li>
+          <li>Animated border glow</li>
+          <li>Top leaderboard listing</li>
+          <li>Golden pixel eligible</li>
+        </ul>
+        <button class="btn-price" onclick="scrollToGrid()">Claim Block →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section id="social-proof" style="padding: 80px 20px; background: var(--bg2); border-top: 1px solid var(--border);">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label" style="text-align:center;">What Owners Say</div>
+    <h2 class="section-title" style="text-align:center;">Real Pixel Owners</h2>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Bought my pixel block in 2 minutes. My startup is now permanently on the internet. Best ₹350 I ever spent!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🚀</div>
+          <div>
+            <div class="testimonial-name">Aryan Kapoor</div>
+            <div class="testimonial-role">Founder, LaunchPad.in · 🏆 Gold Pixel Owner</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"This is genius. My agency's logo is now part of internet history. The glow animation on my block looks insane!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🎨</div>
+          <div>
+            <div class="testimonial-name">Priya Sharma</div>
+            <div class="testimonial-role">CEO, DesignCraft Studio · 💎 Diamond Owner</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I referred 3 friends and got 10 free pixels! Now I have 35 pixels and I'm on the leaderboard. Addictive!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">💰</div>
+          <div>
+            <div class="testimonial-name">Rohan Mehta</div>
+            <div class="testimonial-role">Product Manager · Pixel Enthusiast</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIRAL / REFERRAL -->
+<section id="viral" style="padding: 80px 20px;">
+  <div style="max-width: 1100px; margin: 0 auto; text-align:center;">
+    <div class="section-label">Invite & Earn</div>
+    <h2 class="section-title">Go Viral, Get Free Pixels</h2>
+    <p class="section-sub" style="margin: 0 auto 0;">Invite friends to PixelBazaar and earn free pixels for every referral. The more you share, the more you own.</p>
+
+    <div class="referral-box">
+      <span class="referral-emoji">🎁</span>
+      <div class="referral-title">Invite 3 Friends → Get 10 Free Pixels</div>
+      <p class="referral-desc">Share your unique referral link. When 3 friends sign up and buy pixels, you get 10 FREE pixels automatically added to your account. No limits — keep referring, keep earning!</p>
+
+      <div class="referral-link-box">
+        <input type="text" class="referral-link-input" value="pixelbazaar.in/ref/yourname123" readonly id="refInput" />
+        <button class="btn-copy" onclick="copyRef()">📋 Copy Link</button>
+      </div>
+
+      <div class="share-buttons">
+        <button class="share-btn share-twitter" onclick="shareTwitter()">
+          𝕏 Share on X
+        </button>
+        <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">
+          💬 WhatsApp
+        </button>
+        <button class="share-btn share-instagram" onclick="shareIG()">
+          📸 Instagram
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta-final">
+  <div class="cta-urgency">🔴 LIVE · Only 3,288 Pixels Remaining</div>
+  <h2 class="cta-title">
+    Your Pixel is Waiting.
+    <span>Don't Miss History.</span>
+  </h2>
+  <p class="cta-sub">Thousands of brands, creators, and dreamers have already claimed their piece. The wall won't wait.</p>
+  <div class="hero-cta-group">
+    <a href="#pixel-wall" class="btn-primary" style="font-size:16px; padding: 20px 48px;">⚡ Claim Your Pixel — From ₹100</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">PixelBazaar</div>
-  <p style="margin-bottom:0.5rem">India's ₹1 Crore Pixel Wall — Own your piece of internet history.</p>
-  <div class="footer-links">
-    <a href="#">About</a>
-    <a href="#">FAQ</a>
-    <a href="#">Terms</a>
-    <a href="#">Privacy</a>
-    <a href="#">Contact</a>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">PixelBazaar</div>
+      <p>India's first million pixel wall. Own a permanent piece of the internet. Every pixel tells a story.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#pixel-wall">The Wall</a></li>
+        <li><a href="#rare-pixels">Rare Pixels</a></li>
+        <li><a href="#leaderboard">Leaderboard</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Press Kit</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+    </div>
   </div>
-  <p>© 2025 PixelBazaar. All rights reserved. Made with ❤ in India 🇮🇳</p>
+  <div class="footer-bottom">
+    <span>© 2025 PixelBazaar. Made with ❤️ in India. Own A Piece Of The Internet.</span>
+    <span style="color: var(--cyan);">pixelbazaar.in</span>
+  </div>
 </footer>
 
-<!-- POPUP -->
-<div class="popup-overlay" id="popupOverlay" onclick="closePopup(event)">
-  <div class="popup-card" id="popupCard">
-    <div class="popup-img" id="popupImg">🎯</div>
-    <div class="popup-body">
-      <div class="popup-title" id="popupTitle">Ad Title</div>
-      <div class="popup-owner" id="popupOwner">by Owner</div>
-      <div class="popup-desc" id="popupDesc">Description</div>
-      <div class="popup-pixels">
-        <span class="popup-tag" id="popupPixels">100 pixels</span>
-        <span class="popup-tag" id="popupLocation">Zone A</span>
-      </div>
-      <div class="popup-btns">
-        <button class="popup-visit" id="popupVisit" onclick="visitAd()">🌐 Visit Website</button>
-        <button class="popup-close" onclick="closePopup()">✕</button>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- PURCHASE POPUP CONTAINER -->
+<div class="purchase-popup" id="purchasePopup"></div>
 
 <script>
-/* ============================================================
-   PIXEL WALL ENGINE
-   ============================================================ */
+// ============================
+// DATA
+// ============================
+const GRID_COLS = 100;
+const GRID_ROWS = 60;
+const BLOCK_SIZE = 10;
 
-const ADS_DATA = [
-  {id:1, x:50, y:50, w:120, h:80, emoji:"🚀", title:"TechLaunch India", owner:"RahulTech", url:"#", desc:"India's fastest growing SaaS startup. Join 50K users.", pixels:9600, color:"#6366f1"},
-  {id:2, x:200, y:30, w:100, h:100, emoji:"🎮", title:"GamerZone Pro", owner:"GamerZone", url:"#", desc:"India's #1 gaming platform. Play, Win, Repeat.", pixels:10000, color:"#a855f7"},
-  {id:3, x:350, y:60, w:80, h:60, emoji:"🛍", title:"QuickMart", owner:"QuickMart", url:"#", desc:"Hyperlocal grocery delivery in 10 minutes.", pixels:4800, color:"#22c55e"},
-  {id:4, x:100, y:170, w:130, h:90, emoji:"💊", title:"HealthFirst", owner:"HealthFirst", url:"#", desc:"India's largest online pharmacy platform.", pixels:11700, color:"#f59e0b"},
-  {id:5, x:270, y:160, w:90, h:80, emoji:"🏠", title:"NestFinder", owner:"NestFinder", url:"#", desc:"Find your dream home across 100+ cities.", pixels:7200, color:"#ef4444"},
-  {id:6, x:400, y:140, w:110, h:70, emoji:"📱", title:"AppCraft Studio", owner:"AppCraft", url:"#", desc:"Build mobile apps in 48 hours.", pixels:7700, color:"#06b6d4"},
-  {id:7, x:50, y:290, w:150, h:100, emoji:"🎓", title:"EduReach Academy", owner:"EduReach", url:"#", desc:"Online education for Bharat's next gen.", pixels:15000, color:"#8b5cf6"},
-  {id:8, x:240, y:280, w:100, h:90, emoji:"🍕", title:"FoodieFlash", owner:"FoodieFlash", url:"#", desc:"Food delivery from 1000+ restaurants.", pixels:9000, color:"#f97316"},
-  {id:9, x:380, y:250, w:80, h:110, emoji:"💰", title:"InvestNow", owner:"InvestNow", url:"#", desc:"Start SIP with ₹100. AI-powered portfolio.", pixels:8800, color:"#eab308"},
-  {id:10, x:50, y:420, w:100, h:80, emoji:"✈", title:"TripBolt", owner:"TripBolt", url:"#", desc:"Cheap flights. Cheapest guaranteed.", pixels:8000, color:"#3b82f6"},
-  {id:11, x:190, y:400, w:120, h:90, emoji:"🎵", title:"BeatDrop Music", owner:"BeatDrop", url:"#", desc:"Stream 80M songs, ad-free. Try free.", pixels:10800, color:"#ec4899"},
-  {id:12, x:350, y:390, w:90, h:80, emoji:"🔧", title:"FixMyDevice", owner:"FixMyDevice", url:"#", desc:"Phone repair at your doorstep in 60 mins.", pixels:7200, color:"#10b981"},
-  {id:13, x:80, y:530, w:110, h:70, emoji:"🌿", title:"GreenEarth", owner:"GreenEarth", url:"#", desc:"Sustainable products for conscious consumers.", pixels:7700, color:"#22c55e"},
-  {id:14, x:230, y:520, w:130, h:90, emoji:"🤖", title:"AIBotFactory", owner:"AIBotFactory", url:"#", desc:"Build AI chatbots without coding. Free trial.", pixels:11700, color:"#6366f1"},
-  {id:15, x:400, y:510, w:80, h:80, emoji:"👗", title:"StyleKart", owner:"StyleKart", url:"#", desc:"Trending fashion. Next-day delivery.", pixels:6400, color:"#f43f5e"},
-  {id:16, x:50, y:640, w:120, h:100, emoji:"🏋", title:"FitZone Club", owner:"FitZone", url:"#", desc:"AI fitness coach. 10X your results.", pixels:12000, color:"#a855f7"},
-  {id:17, x:210, y:660, w:100, h:80, emoji:"📊", title:"DataBridge Analytics", owner:"DataBridge", url:"#", desc:"Business analytics made simple.", pixels:8000, color:"#0ea5e9"},
-  {id:18, x:350, y:650, w:90, h:70, emoji:"🛡", title:"CyberShield", owner:"CyberShield", url:"#", desc:"Enterprise cybersecurity for Indian SMBs.", pixels:6300, color:"#f59e0b"},
-  {id:19, x:60, y:770, w:140, h:90, emoji:"☁", title:"CloudNest Hosting", owner:"CloudNest", url:"#", desc:"₹99/month hosting. 99.99% uptime.", pixels:12600, color:"#06b6d4"},
-  {id:20, x:250, y:780, w:110, h:80, emoji:"🎨", title:"DesignPulse", owner:"DesignPulse", url:"#", desc:"Canva killer. Made in India.", pixels:8800, color:"#ef4444"},
+const mockOwners = [
+  { name: "LaunchPad.in", emoji: "🚀", color: "#7B2FFF", col: 5, row: 3, w: 3, h: 3, link: "launchpad.in" },
+  { name: "DesignCraft", emoji: "🎨", color: "#FF6BFF", col: 15, row: 5, w: 4, h: 4, link: "designcraft.co" },
+  { name: "TechVault", emoji: "💻", color: "#00F5FF", col: 28, row: 2, w: 2, h: 2, link: "techvault.io" },
+  { name: "GrowthHack", emoji: "📈", color: "#FFD700", col: 35, row: 8, w: 5, h: 3, link: "growthhack.in" },
+  { name: "StartupX", emoji: "⚡", color: "#FF4500", col: 48, row: 1, w: 2, h: 2, link: "startupx.io" },
+  { name: "CloudBase", emoji: "☁️", color: "#00BFFF", col: 58, row: 6, w: 3, h: 3, link: "cloudbase.in" },
+  { name: "NeonBrand", emoji: "✨", color: "#FF1493", col: 70, row: 3, w: 2, h: 4, link: "neonbrand.co" },
+  { name: "DataFlow", emoji: "🔮", color: "#9D5FFF", col: 80, row: 2, w: 4, h: 2, link: "dataflow.ai" },
+  { name: "MindLab", emoji: "🧠", color: "#00FF88", col: 88, row: 5, w: 3, h: 3, link: "mindlab.in" },
+  { name: "PixelKing", emoji: "👑", color: "#FFD700", col: 20, row: 15, w: 6, h: 5, link: "pixelking.in" },
+  { name: "ZenCart", emoji: "🛒", color: "#FF6B35", col: 40, row: 20, w: 3, h: 3, link: "zencart.in" },
+  { name: "ByteBase", emoji: "🔧", color: "#4ECDC4", col: 65, row: 18, w: 4, h: 3, link: "bytebase.dev" },
+  { name: "SaasHQ", emoji: "🏢", color: "#A8DADC", col: 10, row: 25, w: 5, h: 4, link: "saashq.io" },
+  { name: "InfoBlast", emoji: "📰", color: "#F72585", col: 75, row: 25, w: 3, h: 2, link: "infoblast.in" },
+  { name: "CryptoNet", emoji: "🪙", color: "#FFC300", col: 30, row: 35, w: 4, h: 4, link: "cryptonet.co" },
+  { name: "VoiceAI", emoji: "🎙️", color: "#0077B6", col: 55, row: 30, w: 3, h: 3, link: "voiceai.in" },
+  { name: "FitTrack", emoji: "💪", color: "#2DC653", col: 82, row: 40, w: 2, h: 3, link: "fittrack.in" },
+  { name: "EduCore", emoji: "📚", color: "#E63946", col: 15, row: 45, w: 5, h: 4, link: "educore.in" },
+  { name: "PayZip", emoji: "💸", color: "#06D6A0", col: 45, row: 50, w: 3, h: 2, link: "payzip.in" },
+  { name: "HoloShop", emoji: "🛍️", color: "#7209B7", col: 70, row: 48, w: 4, h: 3, link: "holoshop.io" },
 ];
 
-const TRENDING = [
-  {emoji:"🚀", name:"TechLaunch India", owner:"RahulTech", pixels:9600},
-  {emoji:"🎮", name:"GamerZone Pro", owner:"GamerZone", pixels:10000},
-  {emoji:"💊", name:"HealthFirst", owner:"HealthFirst", pixels:11700},
-  {emoji:"🎓", name:"EduReach Academy", owner:"EduReach", pixels:15000},
-  {emoji:"🤖", name:"AIBotFactory", owner:"AIBotFactory", pixels:11700},
-  {emoji:"🏋", name:"FitZone Club", owner:"FitZone", pixels:12000},
+const leaderboardData = [
+  { rank: 1, emoji: "🚀", name: "LaunchPad.in", sub: "Aryan Kapoor · Mumbai", pixels: "3,600", spent: "₹18,000", badge: "Gold", badgeClass: "badge-gold" },
+  { rank: 2, emoji: "👑", name: "PixelKing", sub: "Vikram Singh · Delhi", pixels: "2,400", spent: "₹12,000", badge: "Diamond", badgeClass: "badge-diamond" },
+  { rank: 3, emoji: "🎨", name: "DesignCraft", sub: "Priya Sharma · Bengaluru", pixels: "1,600", spent: "₹8,000", badge: "Founder", badgeClass: "badge-founder" },
+  { rank: 4, emoji: "📈", name: "GrowthHack", sub: "Ravi Kumar · Hyderabad", pixels: "900", spent: "₹4,500", badge: "Whale", badgeClass: "badge-whale" },
+  { rank: 5, emoji: "🔮", name: "DataFlow AI", sub: "Sneha Patel · Pune", pixels: "800", spent: "₹4,000", badge: "Gold", badgeClass: "badge-gold" },
+  { rank: 6, emoji: "🧠", name: "MindLab", sub: "Karan Mehta · Chennai", pixels: "700", spent: "₹3,500", badge: "Whale", badgeClass: "badge-whale" },
+  { rank: 7, emoji: "🏢", name: "SaasHQ", sub: "Ananya Roy · Kolkata", pixels: "500", spent: "₹2,500", badge: "Gold", badgeClass: "badge-gold" },
 ];
 
-const LEADERBOARD = [
-  {rank:1, name:"RahulTech", domain:"techlaunch.in", pixels:9600, avatar:"🚀", avatarBg:"#1e1b4b", spent:"₹9,600"},
-  {rank:2, name:"StartupLab", domain:"startuplab.co", pixels:8800, avatar:"⚡", avatarBg:"#1a1a2e", spent:"₹8,800"},
-  {rank:3, name:"GamerZone", domain:"gamerzone.gg", pixels:7500, avatar:"🎮", avatarBg:"#1f0a2a", spent:"₹7,500"},
-  {rank:4, name:"EduReach", domain:"edureach.in", pixels:6200, avatar:"🎓", avatarBg:"#0a1f2a", spent:"₹6,200"},
-  {rank:5, name:"HealthFirst", domain:"healthfirst.co", pixels:5800, avatar:"💊", avatarBg:"#1a1a0a", spent:"₹5,800"},
-  {rank:6, name:"FitZone", domain:"fitzone.club", pixels:4900, avatar:"🏋", avatarBg:"#1f0a1f", spent:"₹4,900"},
-  {rank:7, name:"CloudNest", domain:"cloudnest.io", pixels:4200, avatar:"☁", avatarBg:"#0a1a2a", spent:"₹4,200"},
-  {rank:8, name:"AIBotFactory", domain:"aibots.in", pixels:3800, avatar:"🤖", avatarBg:"#1a0a2a", spent:"₹3,800"},
+const tickerMessages = [
+  "🔥 StartupX just bought 4 pixel blocks from Mumbai",
+  "⚡ CloudBase claimed a Diamond Pixel!",
+  "🚀 LaunchPad.in expanded their pixel empire",
+  "💎 DataFlow AI just grabbed 10 blocks",
+  "🏆 NeonBrand is now #8 on the leaderboard",
+  "🎉 247 new owners joined PixelBazaar this week",
+  "👑 PixelKing just won the Mystery Pixel challenge!",
+  "💰 GrowthHack referred 5 friends → got 50 free pixels",
+  "⚡ TechVault bought pixels from Bengaluru",
+  "🔮 VoiceAI just claimed a Golden Pixel!",
+  "🌟 EduCore is trending in the leaderboard",
+  "💸 PayZip just bought India's most valuable pixel block",
 ];
 
-/* Canvas & Viewport State */
-let canvas, ctx, wrapper;
-let viewX = 0, viewY = 0;
-let scale = 1;
-const WALL_W = 10000, WALL_H = 10000;
-const BLOCK = 10;
-const COLS = WALL_W / BLOCK, ROWS = WALL_H / BLOCK;
-const MIN_SCALE = 0.05, MAX_SCALE = 8;
-let isDragging = false, lastMouseX = 0, lastMouseY = 0;
-let hoveredAd = null;
-let currentPopupAd = null;
-let animFrame;
-let hintTimer;
-let isPointerDown = false;
-let pointerStartX, pointerStartY;
-let lastTouchDist = 0;
-let didDrag = false;
+const purchasePopupData = [
+  { emoji: "🚀", name: "RocketBrand", action: "just bought 2 pixel blocks", price: "₹700", bg: "#7B2FFF22" },
+  { emoji: "🎯", name: "TargetX", action: "claimed a Golden Pixel!", price: "₹500", bg: "#FFD70022" },
+  { emoji: "⚡", name: "VoltMedia", action: "expanded to 5 blocks", price: "₹1,500", bg: "#00F5FF22" },
+  { emoji: "🔥", name: "FireSaaS", action: "just bought 1 pixel block", price: "₹100", bg: "#FF450022" },
+  { emoji: "💎", name: "CrystalApp", action: "claimed a Diamond Pixel!", price: "₹2,000", bg: "#A8F0FF22" },
+  { emoji: "🌟", name: "StarMark", action: "joined PixelBazaar", price: "₹350", bg: "#FF6BFF22" },
+];
 
-/* BG tile cache */
-let bgCanvas, bgCtx;
+// ============================
+// CANVAS GRID
+// ============================
+const canvas = document.getElementById('pixelCanvas');
+const ctx = canvas.getContext('2d');
+let pixelMap = {}; // key: "col,row" -> owner data
 
-function initBgTile() {
-  bgCanvas = document.createElement('canvas');
-  bgCanvas.width = 400; bgCanvas.height = 400;
-  bgCtx = bgCanvas.getContext('2d');
-  
-  // Dark grid pattern
-  bgCtx.fillStyle = '#0d1323';
-  bgCtx.fillRect(0, 0, 400, 400);
-  
-  // Grid lines
-  bgCtx.strokeStyle = 'rgba(99,102,241,0.06)';
-  bgCtx.lineWidth = 0.5;
-  for(let x=0;x<400;x+=10) {bgCtx.beginPath();bgCtx.moveTo(x,0);bgCtx.lineTo(x,400);bgCtx.stroke();}
-  for(let y=0;y<400;y+=10) {bgCtx.beginPath();bgCtx.moveTo(0,y);bgCtx.lineTo(400,y);bgCtx.stroke();}
-  
-  // Occasional colored pixels (random sold pixels)
-  const colors = ['#6366f1','#a855f7','#22c55e','#f59e0b','#ef4444','#06b6d4','#ec4899'];
-  for(let i=0;i<300;i++) {
-    const px = Math.floor(Math.random()*40)*10;
-    const py = Math.floor(Math.random()*40)*10;
-    bgCtx.fillStyle = colors[Math.floor(Math.random()*colors.length)];
-    bgCtx.globalAlpha = 0.15 + Math.random()*0.2;
-    bgCtx.fillRect(px, py, 10, 10);
+let viewX = 0, viewY = 0, zoom = 1;
+let isDragging = false, dragStartX, dragStartY, viewStartX, viewStartY;
+let hoveredBlock = null;
+let selectedBlock = null;
+
+function blockKey(c, r) { return `${c},${r}`; }
+
+// Populate pixel map from mock data
+mockOwners.forEach(o => {
+  for (let r = o.row; r < o.row + o.h; r++) {
+    for (let c = o.col; c < o.col + o.w; c++) {
+      pixelMap[blockKey(c, r)] = { name: o.name, emoji: o.emoji, color: o.color, link: o.link };
+    }
   }
-  bgCtx.globalAlpha = 1;
+});
+
+function worldToCanvas(wx, wy) {
+  return {
+    x: (wx - viewX) * zoom,
+    y: (wy - viewY) * zoom,
+  };
 }
 
-function initWall() {
-  canvas = document.getElementById('pixelCanvas');
-  ctx = canvas.getContext('2d');
-  wrapper = document.getElementById('wallWrapper');
-  
-  resizeCanvas();
-  initBgTile();
-  
-  // Center view
-  const cw = canvas.width, ch = canvas.height;
-  scale = Math.min(cw / WALL_W * 4, ch / WALL_H * 4, 0.4);
-  viewX = (cw - WALL_W * scale) / 2;
-  viewY = (ch - WALL_H * scale) / 2;
-  
-  draw();
-  updateZoomLabel();
-  
-  // Events
-  canvas.addEventListener('wheel', onWheel, {passive:false});
-  canvas.addEventListener('mousedown', onMouseDown);
-  window.addEventListener('mousemove', onMouseMove);
-  window.addEventListener('mouseup', onMouseUp);
-  canvas.addEventListener('touchstart', onTouchStart, {passive:false});
-  canvas.addEventListener('touchmove', onTouchMove, {passive:false});
-  canvas.addEventListener('touchend', onTouchEnd);
-  
-  document.getElementById('zoomIn').onclick = () => zoomStep(1.3);
-  document.getElementById('zoomOut').onclick = () => zoomStep(0.77);
-  document.getElementById('resetView').onclick = resetView;
-  
-  // Hide hint after 4s
-  hintTimer = setTimeout(() => {
-    document.getElementById('wallHint').classList.add('hidden');
-  }, 4000);
-  
-  window.addEventListener('resize', () => { resizeCanvas(); draw(); });
+function canvasToWorld(cx, cy) {
+  const rect = canvas.getBoundingClientRect();
+  const scale = canvas.width / rect.width;
+  return {
+    x: (cx * scale) / zoom + viewX,
+    y: (cy * scale) / zoom + viewY,
+  };
 }
 
-function resizeCanvas() {
-  const w = wrapper.clientWidth;
-  const h = Math.min(Math.max(w * 0.62, 320), window.innerHeight * 0.72);
-  canvas.width = w;
-  canvas.height = h;
-  wrapper.style.height = h + 'px';
-}
+function drawGrid() {
+  const W = canvas.width;
+  const H = canvas.height;
 
-function draw() {
-  const w = canvas.width, h = canvas.height;
-  ctx.clearRect(0, 0, w, h);
-  
-  // BG
-  ctx.fillStyle = '#0a0e1a';
-  ctx.fillRect(0, 0, w, h);
-  
-  const bgPattern = ctx.createPattern(bgCanvas, 'repeat');
-  ctx.save();
-  ctx.translate(viewX % 400, viewY % 400);
-  ctx.fillStyle = bgPattern;
-  ctx.fillRect(-400, -400, w+800, h+800);
-  ctx.restore();
-  
-  // Wall bounds
-  ctx.save();
-  ctx.translate(viewX, viewY);
-  ctx.scale(scale, scale);
-  
-  // Wall border glow
-  ctx.shadowColor = 'rgba(99,102,241,0.3)';
-  ctx.shadowBlur = 20 / scale;
-  ctx.strokeStyle = 'rgba(99,102,241,0.4)';
-  ctx.lineWidth = 2 / scale;
-  ctx.strokeRect(0, 0, WALL_W, WALL_H);
-  ctx.shadowBlur = 0;
-  
-  // Draw ads
-  for(const ad of ADS_DATA) {
-    const isHovered = hoveredAd && hoveredAd.id === ad.id;
-    drawAd(ad, isHovered);
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#030310';
+  ctx.fillRect(0, 0, W, H);
+
+  const blockPx = BLOCK_SIZE * zoom;
+  const startCol = Math.max(0, Math.floor(viewX / BLOCK_SIZE));
+  const startRow = Math.max(0, Math.floor(viewY / BLOCK_SIZE));
+  const endCol = Math.min(GRID_COLS - 1, Math.ceil((viewX + W / zoom) / BLOCK_SIZE));
+  const endRow = Math.min(GRID_ROWS - 1, Math.ceil((viewY + H / zoom) / BLOCK_SIZE));
+
+  // Draw grid lines
+  if (zoom > 0.5) {
+    ctx.strokeStyle = 'rgba(123,47,255,0.15)';
+    ctx.lineWidth = 0.5;
+    for (let c = startCol; c <= endCol + 1; c++) {
+      const { x } = worldToCanvas(c * BLOCK_SIZE, 0);
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, H);
+      ctx.stroke();
+    }
+    for (let r = startRow; r <= endRow + 1; r++) {
+      const { y } = worldToCanvas(0, r * BLOCK_SIZE);
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
+    }
   }
-  
-  ctx.restore();
-  
-  updateMinimap();
+
+  // Draw blocks
+  for (let r = startRow; r <= endRow; r++) {
+    for (let c = startCol; c <= endCol; c++) {
+      const key = blockKey(c, r);
+      const owner = pixelMap[key];
+      const { x, y } = worldToCanvas(c * BLOCK_SIZE, r * BLOCK_SIZE);
+      const isHovered = hoveredBlock && hoveredBlock.c === c && hoveredBlock.r === r;
+      const isSelected = selectedBlock && selectedBlock.c === c && selectedBlock.r === r;
+
+      if (owner) {
+        // Draw owned block
+        ctx.fillStyle = owner.color;
+        ctx.fillRect(x, y, blockPx - 0.5, blockPx - 0.5);
+
+        if (blockPx > 12) {
+          ctx.font = `${Math.min(blockPx * 0.6, 16)}px serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(owner.emoji, x + blockPx / 2, y + blockPx / 2);
+        }
+
+        if (isHovered) {
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(x + 1, y + 1, blockPx - 2.5, blockPx - 2.5);
+          // Glow
+          ctx.shadowColor = '#ffffff';
+          ctx.shadowBlur = 15;
+          ctx.strokeRect(x + 1, y + 1, blockPx - 2.5, blockPx - 2.5);
+          ctx.shadowBlur = 0;
+        }
+      } else {
+        // Empty block
+        if (isHovered) {
+          ctx.fillStyle = 'rgba(0,245,255,0.15)';
+          ctx.fillRect(x, y, blockPx - 0.5, blockPx - 0.5);
+          ctx.strokeStyle = 'rgba(0,245,255,0.8)';
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(x + 0.75, y + 0.75, blockPx - 2, blockPx - 2);
+          ctx.shadowColor = 'rgba(0,245,255,0.8)';
+          ctx.shadowBlur = 10;
+          ctx.strokeRect(x + 0.75, y + 0.75, blockPx - 2, blockPx - 2);
+          ctx.shadowBlur = 0;
+        } else if (isSelected) {
+          ctx.fillStyle = 'rgba(255,215,0,0.2)';
+          ctx.fillRect(x, y, blockPx - 0.5, blockPx - 0.5);
+          ctx.strokeStyle = '#FFD700';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(x + 1, y + 1, blockPx - 2.5, blockPx - 2.5);
+        } else {
+          // Subtle dot
+          if (blockPx > 6) {
+            ctx.fillStyle = 'rgba(123,47,255,0.08)';
+            ctx.fillRect(x, y, blockPx - 0.5, blockPx - 0.5);
+          }
+        }
+      }
+    }
+  }
+
+  // Animated sparkle on random empty blocks
+  const t = Date.now() / 1000;
+  for (let i = 0; i < 5; i++) {
+    const c = Math.floor((Math.sin(t * 0.3 + i * 13.7) * 0.5 + 0.5) * GRID_COLS);
+    const r = Math.floor((Math.cos(t * 0.4 + i * 7.3) * 0.5 + 0.5) * GRID_ROWS);
+    const key = blockKey(c, r);
+    if (!pixelMap[key]) {
+      const { x, y } = worldToCanvas(c * BLOCK_SIZE, r * BLOCK_SIZE);
+      const alpha = (Math.sin(t * 2 + i) * 0.5 + 0.5) * 0.4;
+      ctx.fillStyle = `rgba(0,245,255,${alpha})`;
+      ctx.fillRect(x + blockPx * 0.3, y + blockPx * 0.3, blockPx * 0.4, blockPx * 0.4);
+    }
+  }
 }
 
-function drawAd(ad, isHovered) {
-  const {x, y, w, h, emoji, color} = ad;
-  
-  if(isHovered) {
-    ctx.save();
-    ctx.translate(x + w/2, y + h/2);
-    ctx.scale(1.04, 1.04);
-    ctx.translate(-(x + w/2), -(y + h/2));
+function loop() {
+  drawGrid();
+  requestAnimationFrame(loop);
+}
+loop();
+
+// ============================
+// MOUSE EVENTS
+// ============================
+canvas.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const cx = e.clientX - rect.left;
+  const cy = e.clientY - rect.top;
+
+  if (isDragging) {
+    const dx = (cx - dragStartX) * (canvas.width / rect.width) / zoom;
+    const dy = (cy - dragStartY) * (canvas.width / rect.width) / zoom;
+    viewX = viewStartX - dx;
+    viewY = viewStartY - dy;
+    viewX = Math.max(0, Math.min(viewX, GRID_COLS * BLOCK_SIZE - canvas.width / zoom));
+    viewY = Math.max(0, Math.min(viewY, GRID_ROWS * BLOCK_SIZE - canvas.height / zoom));
+    hoveredBlock = null;
+    hideTooltip();
+    return;
   }
-  
-  // Ad background
-  const grad = ctx.createLinearGradient(x, y, x+w, y+h);
-  grad.addColorStop(0, color + 'cc');
-  grad.addColorStop(1, color + '66');
-  ctx.fillStyle = grad;
-  ctx.beginPath();
-  ctx.roundRect(x, y, w, h, 6/scale);
-  ctx.fill();
-  
-  // Glow on hover
-  if(isHovered) {
-    ctx.shadowColor = color;
-    ctx.shadowBlur = 20 / scale;
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 2 / scale;
-    ctx.beginPath();
-    ctx.roundRect(x, y, w, h, 6/scale);
-    ctx.stroke();
-    ctx.shadowBlur = 0;
+
+  const { x: wx, y: wy } = canvasToWorld(cx, cy);
+  const col = Math.floor(wx / BLOCK_SIZE);
+  const row = Math.floor(wy / BLOCK_SIZE);
+
+  if (col >= 0 && col < GRID_COLS && row >= 0 && row < GRID_ROWS) {
+    hoveredBlock = { c: col, r: row };
+    const key = blockKey(col, row);
+    const owner = pixelMap[key];
+    if (owner) {
+      showTooltip(e.clientX, e.clientY, owner);
+    } else {
+      showEmptyTooltip(e.clientX, e.clientY, col, row);
+    }
   } else {
-    ctx.strokeStyle = color + '80';
-    ctx.lineWidth = 1 / scale;
-    ctx.beginPath();
-    ctx.roundRect(x, y, w, h, 6/scale);
-    ctx.stroke();
+    hoveredBlock = null;
+    hideTooltip();
   }
-  
-  // Emoji in center
-  const fontSize = Math.max(Math.min(w, h) * 0.35, 8);
-  ctx.font = `${fontSize}px serif`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(emoji, x + w/2, y + h/2);
-  
-  // Name text if large enough
-  if(w * scale > 60) {
-    const fsize = Math.max(Math.min(w * 0.1, 10), 6);
-    ctx.font = `bold ${fsize}px Poppins, sans-serif`;
-    ctx.fillStyle = 'rgba(255,255,255,0.9)';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'bottom';
-    ctx.fillText(ad.owner, x + w/2, y + h - 4/scale);
-  }
-  
-  if(isHovered) ctx.restore();
-}
+});
 
-function getAdAtPos(cx, cy) {
-  const wx = (cx - viewX) / scale;
-  const wy = (cy - viewY) / scale;
-  for(const ad of [...ADS_DATA].reverse()) {
-    if(wx >= ad.x && wx <= ad.x+ad.w && wy >= ad.y && wy <= ad.y+ad.h) return ad;
-  }
-  return null;
-}
+canvas.addEventListener('mousedown', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  isDragging = true;
+  dragStartX = e.clientX - rect.left;
+  dragStartY = e.clientY - rect.top;
+  viewStartX = viewX;
+  viewStartY = viewY;
+  canvas.style.cursor = 'grabbing';
+});
 
-function onWheel(e) {
+canvas.addEventListener('mouseup', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const cx = e.clientX - rect.left;
+  const cy = e.clientY - rect.top;
+  const moved = Math.abs(cx - dragStartX) + Math.abs(cy - dragStartY) < 5;
+
+  isDragging = false;
+  canvas.style.cursor = 'crosshair';
+
+  if (!moved) {
+    const { x: wx, y: wy } = canvasToWorld(cx, cy);
+    const col = Math.floor(wx / BLOCK_SIZE);
+    const row = Math.floor(wy / BLOCK_SIZE);
+    if (col >= 0 && col < GRID_COLS && row >= 0 && row < GRID_ROWS) {
+      handleBlockClick(col, row, e.clientX, e.clientY);
+    }
+  }
+});
+
+canvas.addEventListener('mouseleave', () => {
+  isDragging = false;
+  hoveredBlock = null;
+  hideTooltip();
+  canvas.style.cursor = 'crosshair';
+});
+
+canvas.addEventListener('wheel', (e) => {
   e.preventDefault();
   const rect = canvas.getBoundingClientRect();
-  const cx = e.clientX - rect.left, cy = e.clientY - rect.top;
-  const delta = e.deltaY > 0 ? 0.85 : 1.18;
-  zoomAt(cx, cy, delta);
-}
+  const cx = (e.clientX - rect.left) * (canvas.width / rect.width);
+  const cy = (e.clientY - rect.top) * (canvas.height / rect.height);
+  const worldBefore = {
+    x: cx / zoom + viewX,
+    y: cy / zoom + viewY,
+  };
+  zoom *= e.deltaY < 0 ? 1.15 : 0.87;
+  zoom = Math.max(0.3, Math.min(zoom, 8));
+  viewX = worldBefore.x - cx / zoom;
+  viewY = worldBefore.y - cy / zoom;
+  viewX = Math.max(0, Math.min(viewX, GRID_COLS * BLOCK_SIZE - canvas.width / zoom));
+  viewY = Math.max(0, Math.min(viewY, GRID_ROWS * BLOCK_SIZE - canvas.height / zoom));
+}, { passive: false });
 
-function zoomAt(cx, cy, delta) {
-  const newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale * delta));
-  viewX = cx - (cx - viewX) * (newScale / scale);
-  viewY = cy - (cy - viewY) * (newScale / scale);
-  scale = newScale;
-  updateZoomLabel();
-  draw();
-}
-
-function zoomStep(delta) {
-  const cx = canvas.width/2, cy = canvas.height/2;
-  zoomAt(cx, cy, delta);
-}
-
-function resetView() {
-  const cw = canvas.width, ch = canvas.height;
-  scale = Math.min(cw / WALL_W * 4, ch / WALL_H * 4, 0.4);
-  viewX = (cw - WALL_W * scale) / 2;
-  viewY = (ch - WALL_H * scale) / 2;
-  updateZoomLabel();
-  draw();
-}
-
-function onMouseDown(e) {
-  if(e.button !== 0) return;
-  isDragging = true; didDrag = false;
-  lastMouseX = e.clientX; lastMouseY = e.clientY;
-  canvas.style.cursor = 'grabbing';
-}
-
-function onMouseMove(e) {
-  if(isDragging) {
-    const dx = e.clientX - lastMouseX, dy = e.clientY - lastMouseY;
-    if(Math.abs(dx)+Math.abs(dy) > 3) didDrag = true;
-    viewX += dx; viewY += dy;
-    lastMouseX = e.clientX; lastMouseY = e.clientY;
-    draw();
-  } else {
-    const rect = canvas.getBoundingClientRect();
-    const cx = e.clientX - rect.left, cy = e.clientY - rect.top;
-    const ad = getAdAtPos(cx, cy);
-    if(ad !== hoveredAd) {
-      hoveredAd = ad;
-      canvas.style.cursor = ad ? 'pointer' : 'grab';
-      draw();
-    }
+function handleBlockClick(col, row, clientX, clientY) {
+  createRipple(clientX, clientY);
+  const key = blockKey(col, row);
+  if (pixelMap[key]) {
+    // Show tooltip for owned block
+    return;
   }
+  selectedBlock = { c: col, r: row };
+  document.getElementById('buyPanel').classList.add('visible');
+  document.getElementById('selectedBlockInfo').textContent = `(${col}, ${row})`;
+  document.getElementById('buyPanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  showPixelFlash(clientX, clientY, 'Block Selected!');
 }
 
-function onMouseUp(e) {
-  if(!isDragging) return;
-  isDragging = false;
-  canvas.style.cursor = hoveredAd ? 'pointer' : 'grab';
-  if(!didDrag) {
-    const rect = canvas.getBoundingClientRect();
-    const cx = e.clientX - rect.left, cy = e.clientY - rect.top;
-    const ad = getAdAtPos(cx, cy);
-    if(ad) openPopup(ad);
-  }
-}
-
-// Touch
-function onTouchStart(e) {
-  e.preventDefault();
-  document.getElementById('wallHint').classList.add('hidden');
-  if(e.touches.length === 1) {
-    isDragging = true; didDrag = false;
-    lastMouseX = e.touches[0].clientX;
-    lastMouseY = e.touches[0].clientY;
-  } else if(e.touches.length === 2) {
-    lastTouchDist = getTouchDist(e);
-    isDragging = false;
-  }
-}
-
-function onTouchMove(e) {
-  e.preventDefault();
-  if(e.touches.length === 1 && isDragging) {
-    const dx = e.touches[0].clientX - lastMouseX;
-    const dy = e.touches[0].clientY - lastMouseY;
-    if(Math.abs(dx)+Math.abs(dy) > 4) didDrag = true;
-    viewX += dx; viewY += dy;
-    lastMouseX = e.touches[0].clientX;
-    lastMouseY = e.touches[0].clientY;
-    draw();
-  } else if(e.touches.length === 2) {
-    const dist = getTouchDist(e);
-    if(lastTouchDist > 0) {
-      const delta = dist / lastTouchDist;
-      const cx = (e.touches[0].clientX + e.touches[1].clientX)/2 - canvas.getBoundingClientRect().left;
-      const cy = (e.touches[0].clientY + e.touches[1].clientY)/2 - canvas.getBoundingClientRect().top;
-      zoomAt(cx, cy, delta);
-    }
-    lastTouchDist = dist;
-  }
-}
-
-function onTouchEnd(e) {
-  if(!didDrag && e.changedTouches.length === 1) {
-    const rect = canvas.getBoundingClientRect();
-    const cx = e.changedTouches[0].clientX - rect.left;
-    const cy = e.changedTouches[0].clientY - rect.top;
-    const ad = getAdAtPos(cx, cy);
-    if(ad) openPopup(ad);
-  }
-  isDragging = false; lastTouchDist = 0;
-}
-
-function getTouchDist(e) {
-  const dx = e.touches[0].clientX - e.touches[1].clientX;
-  const dy = e.touches[0].clientY - e.touches[1].clientY;
-  return Math.sqrt(dx*dx+dy*dy);
-}
-
-function updateZoomLabel() {
-  document.getElementById('zoomLabel').textContent = Math.round(scale*100)+'%';
-}
-
-/* MINIMAP */
-let minimapCanvas, mmCtx;
-function initMinimap() {
-  minimapCanvas = document.getElementById('minimapCanvas');
-  if(!minimapCanvas) return;
-  mmCtx = minimapCanvas.getContext('2d');
-  document.getElementById('minimap').style.display = 'block';
-}
-
-function updateMinimap() {
-  if(!mmCtx) return;
-  const mw = 80, mh = 60;
-  mmCtx.fillStyle = '#0a0e1a';
-  mmCtx.fillRect(0,0,mw,mh);
-  
-  const scaleX = mw/WALL_W, scaleY = mh/WALL_H;
-  for(const ad of ADS_DATA) {
-    mmCtx.fillStyle = ad.color + 'cc';
-    mmCtx.fillRect(ad.x*scaleX, ad.y*scaleY, ad.w*scaleX, ad.h*scaleY);
-  }
-  
-  // Viewport rect
-  const vx = (-viewX/scale)*scaleX;
-  const vy = (-viewY/scale)*scaleY;
-  const vw = (canvas.width/scale)*scaleX;
-  const vh = (canvas.height/scale)*scaleY;
-  const el = document.getElementById('minimapViewport');
-  el.style.left = Math.max(0,vx)+'px';
-  el.style.top = Math.max(0,vy)+'px';
-  el.style.width = Math.min(mw,vw)+'px';
-  el.style.height = Math.min(mh,vh)+'px';
-}
-
-/* POPUP */
-function openPopup(ad) {
-  currentPopupAd = ad;
-  document.getElementById('popupImg').textContent = ad.emoji;
-  document.getElementById('popupImg').style.background = `linear-gradient(135deg,${ad.color}44,${ad.color}11)`;
-  document.getElementById('popupTitle').textContent = ad.title;
-  document.getElementById('popupOwner').textContent = 'by ' + ad.owner;
-  document.getElementById('popupDesc').textContent = ad.desc;
-  document.getElementById('popupPixels').textContent = ad.pixels.toLocaleString('en-IN') + ' pixels';
-  document.getElementById('popupLocation').textContent = '₹' + ad.pixels.toLocaleString('en-IN');
-  document.getElementById('popupOverlay').classList.add('active');
-}
-
-function closePopup(e) {
-  if(e && e.target !== document.getElementById('popupOverlay')) return;
-  document.getElementById('popupOverlay').classList.remove('active');
-}
-
-function visitAd() {
-  if(currentPopupAd) alert('Visiting: ' + currentPopupAd.url + '\n(In production, this opens the advertiser website)');
-}
-
-document.addEventListener('keydown', e => { if(e.key==='Escape') document.getElementById('popupOverlay').classList.remove('active'); });
-
-/* COUNTER ANIMATION */
-function animateCounter(el, target, prefix='') {
-  let current = 0;
-  const step = Math.ceil(target / 60);
-  const timer = setInterval(() => {
-    current = Math.min(current + step, target);
-    el.textContent = current.toLocaleString('en-IN');
-    if(current >= target) clearInterval(timer);
-  }, 20);
-}
-
-/* TRENDING */
-function renderTrending() {
-  const grid = document.getElementById('trendingGrid');
-  grid.innerHTML = TRENDING.map(t => `
-    <div class="trend-card" onclick="scrollToWall()">
-      <div class="trend-img">${t.emoji}</div>
-      <div class="trend-info">
-        <div class="trend-name">${t.name}</div>
-        <div class="trend-pixels">by ${t.owner} · <span>${t.pixels.toLocaleString('en-IN')} px</span></div>
+// ============================
+// TOOLTIP
+// ============================
+const tooltip = document.getElementById('pixelTooltip');
+function showTooltip(x, y, owner) {
+  tooltip.style.display = 'block';
+  tooltip.style.left = (x + 16) + 'px';
+  tooltip.style.top = (y - 60) + 'px';
+  document.getElementById('tooltipContent').innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+      <span style="font-size:24px;">${owner.emoji}</span>
+      <div>
+        <div style="font-weight:700;font-size:14px;color:#E8E8FF;">${owner.name}</div>
+        <div style="font-size:11px;color:#00F5FF;">${owner.link}</div>
       </div>
     </div>
+    <div style="font-size:11px;color:#8888AA;">🏆 Pixel Owner · Click to visit</div>
+  `;
+}
+
+function showEmptyTooltip(x, y, col, row) {
+  tooltip.style.display = 'block';
+  tooltip.style.left = (x + 16) + 'px';
+  tooltip.style.top = (y - 60) + 'px';
+  document.getElementById('tooltipContent').innerHTML = `
+    <div style="color:#00F5FF;font-weight:700;font-size:13px;margin-bottom:6px;">✨ Available Block</div>
+    <div style="font-size:12px;color:#8888AA;">Position: (${col}, ${row})</div>
+    <div style="font-size:12px;color:#FFD700;margin-top:6px;">Click to claim from ₹100</div>
+  `;
+}
+
+function hideTooltip() {
+  tooltip.style.display = 'none';
+}
+
+// ============================
+// BUY PANEL
+// ============================
+const prices = { "1": 100, "4": 350, "25": 1500 };
+
+function updatePrice() {
+  const size = document.getElementById('inputSize').value;
+  const price = prices[size];
+  document.getElementById('priceDisplay').innerHTML = `₹${price.toLocaleString()} <small>one-time forever</small>`;
+}
+
+function purchasePixel() {
+  const name = document.getElementById('inputName').value.trim() || 'Anonymous';
+  const url = document.getElementById('inputUrl').value.trim() || '#';
+  const color = document.getElementById('inputColor').value;
+  const size = parseInt(document.getElementById('inputSize').value);
+  const side = Math.sqrt(size);
+
+  if (!selectedBlock) return;
+
+  // Place blocks
+  const emojis = ['🚀','⚡','🎯','💎','🔮','🌟','🏆','🎨','💡','🔥'];
+  const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+
+  for (let dr = 0; dr < side; dr++) {
+    for (let dc = 0; dc < side; dc++) {
+      const c = selectedBlock.c + dc;
+      const r = selectedBlock.r + dr;
+      if (c < GRID_COLS && r < GRID_ROWS) {
+        pixelMap[blockKey(c, r)] = { name, emoji, color, link: url };
+      }
+    }
+  }
+
+  // Hide panel, clear selection
+  document.getElementById('buyPanel').classList.remove('visible');
+  selectedBlock = null;
+
+  // Update counters
+  updateCounters();
+
+  // Show success popup
+  showPurchasePopup(emoji, name, prices[String(size)]);
+
+  // Flash
+  showPixelFlash(window.innerWidth / 2, window.innerHeight / 2, '🎉 Pixel Claimed!');
+
+  // Clear form
+  document.getElementById('inputName').value = '';
+  document.getElementById('inputUrl').value = '';
+  document.getElementById('inputTagline').value = '';
+
+  // Confetti
+  launchConfetti();
+}
+
+// ============================
+// LIVE COUNTER
+// ============================
+let soldCount = 6712;
+
+function updateCounters() {
+  soldCount++;
+  const remaining = 10000 - soldCount;
+  document.getElementById('counterSold').textContent = soldCount.toLocaleString();
+  document.getElementById('counterRemaining').textContent = remaining.toLocaleString();
+  document.getElementById('statSold').textContent = soldCount.toLocaleString();
+  document.getElementById('statRemaining').textContent = remaining.toLocaleString();
+}
+
+// Slow live updates
+setInterval(() => {
+  if (Math.random() > 0.6) {
+    soldCount++;
+    const remaining = 10000 - soldCount;
+    document.getElementById('counterSold').textContent = soldCount.toLocaleString();
+    document.getElementById('counterRemaining').textContent = remaining.toLocaleString();
+    document.getElementById('statSold').textContent = soldCount.toLocaleString();
+    document.getElementById('statRemaining').textContent = remaining.toLocaleString();
+  }
+}, 5000);
+
+// ============================
+// PURCHASE POPUPS
+// ============================
+function showPurchasePopup(emoji, name, price) {
+  const container = document.getElementById('purchasePopup');
+  const item = document.createElement('div');
+  item.className = 'popup-item';
+  item.innerHTML = `
+    <div class="popup-avatar" style="background: rgba(123,47,255,0.2);">${emoji}</div>
+    <div class="popup-text">
+      <div class="popup-name">${name}</div>
+      <div class="popup-action">just claimed their pixel!</div>
+    </div>
+    <div class="popup-price">₹${price}</div>
+  `;
+  container.appendChild(item);
+  setTimeout(() => item.remove(), 4200);
+}
+
+// Auto purchase popups
+let popupIdx = 0;
+function autoPopup() {
+  const d = purchasePopupData[popupIdx % purchasePopupData.length];
+  const container = document.getElementById('purchasePopup');
+  const item = document.createElement('div');
+  item.className = 'popup-item';
+  item.innerHTML = `
+    <div class="popup-avatar" style="background: ${d.bg};">${d.emoji}</div>
+    <div class="popup-text">
+      <div class="popup-name">${d.name}</div>
+      <div class="popup-action">${d.action}</div>
+    </div>
+    <div class="popup-price">${d.price}</div>
+  `;
+  container.appendChild(item);
+  setTimeout(() => item.remove(), 4200);
+  popupIdx++;
+}
+
+setInterval(autoPopup, 7000);
+setTimeout(autoPopup, 3000);
+
+// ============================
+// TICKER
+// ============================
+function buildTicker() {
+  const inner = document.getElementById('tickerInner');
+  const items = [...tickerMessages, ...tickerMessages];
+  inner.innerHTML = items.map(m => `
+    <span class="ticker-item">
+      <span class="ticker-dot"></span>
+      ${m}
+    </span>
   `).join('');
 }
+buildTicker();
 
-function scrollToWall() {
-  document.getElementById('wall-section').scrollIntoView({behavior:'smooth'});
-}
-
-/* LEADERBOARD */
-function renderLeaderboard() {
-  const rankClasses = ['gold','silver','bronze','','','','',''];
-  const rankEmoji = ['🥇','🥈','🥉','4','5','6','7','8'];
-  document.getElementById('lbBody').innerHTML = LEADERBOARD.map((r,i) => `
+// ============================
+// LEADERBOARD
+// ============================
+function buildLeaderboard() {
+  const container = document.getElementById('leaderboardRows');
+  container.innerHTML = leaderboardData.map(row => `
     <div class="lb-row">
-      <div class="lb-rank ${rankClasses[i]}">${rankEmoji[i]}</div>
+      <span class="lb-rank rank-${row.rank <= 3 ? row.rank : 'other'}">${row.rank <= 3 ? ['🥇','🥈','🥉'][row.rank-1] : '#'+row.rank}</span>
       <div class="lb-user">
-        <div class="lb-avatar" style="background:${r.avatarBg}">${r.avatar}</div>
+        <div class="lb-avatar">${row.emoji}</div>
         <div>
-          <div class="lb-name">${r.name}</div>
-          <div class="lb-domain">${r.domain}</div>
+          <div class="lb-name">${row.name}</div>
+          <div class="lb-sub">${row.sub}</div>
         </div>
       </div>
-      <div class="lb-pixels">${r.pixels.toLocaleString('en-IN')}</div>
-      <div class="lb-amount">${r.spent}</div>
+      <div class="lb-pixels">${row.pixels} px</div>
+      <div class="lb-spent">${row.spent}</div>
+      <span class="lb-badge ${row.badgeClass}">${row.badge}</span>
     </div>
   `).join('');
 }
+buildLeaderboard();
 
-/* MOBILE MENU */
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
+// ============================
+// EFFECTS
+// ============================
+function createRipple(x, y) {
+  const container = document.getElementById('rippleContainer');
+  const el = document.createElement('div');
+  el.className = 'ripple';
+  el.style.left = x + 'px';
+  el.style.top = y + 'px';
+  container.appendChild(el);
+  setTimeout(() => el.remove(), 700);
 }
 
-/* LIVE COUNTER SIMULATION */
-let soldPixels = 243321;
-setInterval(() => {
-  const inc = Math.floor(Math.random() * 3);
-  if(inc > 0 && soldPixels < 1000000) {
-    soldPixels += inc;
-    const remaining = 1000000 - soldPixels;
-    document.getElementById('soldCount').textContent = soldPixels.toLocaleString('en-IN');
-    document.getElementById('remainCount').textContent = remaining.toLocaleString('en-IN');
-    document.getElementById('heroSold').textContent = soldPixels.toLocaleString('en-IN');
-    const pct = (soldPixels/1000000*100).toFixed(1);
-    document.getElementById('soldBar').style.width = pct + '%';
-  }
-}, 2500);
+function showPixelFlash(x, y, text) {
+  const el = document.createElement('div');
+  el.className = 'pixel-flash';
+  el.textContent = text;
+  el.style.left = x + 'px';
+  el.style.top = (y - 20) + 'px';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 2100);
+}
 
-/* INIT */
-window.addEventListener('DOMContentLoaded', () => {
-  initWall();
-  initMinimap();
-  renderTrending();
-  renderLeaderboard();
-  animateCounter(document.getElementById('soldCount'), 243321);
-  animateCounter(document.getElementById('remainCount'), 756679);
+function launchConfetti() {
+  for (let i = 0; i < 80; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.style.cssText = `
+        position: fixed;
+        width: ${Math.random() * 10 + 4}px;
+        height: ${Math.random() * 10 + 4}px;
+        background: ${['#7B2FFF','#00F5FF','#FFD700','#FF6BFF','#FF4500','#00FF88'][Math.floor(Math.random()*6)]};
+        border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+        left: ${Math.random() * 100}vw;
+        top: -20px;
+        z-index: 9999;
+        pointer-events: none;
+        animation: confettiDrop ${Math.random() * 2 + 1.5}s ease-out forwards;
+        transform: rotate(${Math.random() * 360}deg);
+      `;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3000);
+    }, i * 30);
+  }
+}
+
+// Inject confetti animation
+const confettiStyle = document.createElement('style');
+confettiStyle.textContent = `
+  @keyframes confettiDrop {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+`;
+document.head.appendChild(confettiStyle);
+
+// ============================
+// MYSTERY PIXEL
+// ============================
+let mysteryFound = false;
+function revealMystery() {
+  if (mysteryFound) return;
+  const box = document.querySelector('.mystery-box');
+  box.style.borderColor = 'var(--cyan)';
+  box.style.background = 'linear-gradient(135deg, rgba(0,245,255,0.1), rgba(123,47,255,0.05))';
+  box.innerHTML = `
+    <span class="mystery-icon">🎉</span>
+    <div class="mystery-title" style="color: var(--cyan);">Mystery Revealed!</div>
+    <p class="mystery-desc">The Mystery Pixel is hidden at coordinates (42, 17) on the wall! Claim it before someone else does. First one wins 50 FREE pixels.</p>
+    <button onclick="scrollToGrid()" style="margin-top:20px;background:linear-gradient(135deg,#00F5FF,#7B2FFF);color:#000;padding:12px 32px;border-radius:8px;border:none;font-family:'Orbitron',monospace;font-size:14px;font-weight:900;cursor:pointer;letter-spacing:1px;">Find It On The Wall →</button>
+  `;
+  mysteryFound = true;
+  launchConfetti();
+}
+
+// ============================
+// REFERRAL
+// ============================
+function copyRef() {
+  const input = document.getElementById('refInput');
+  navigator.clipboard.writeText(input.value).catch(() => {});
+  const btn = document.querySelector('.btn-copy');
+  btn.textContent = '✓ Copied!';
+  btn.style.background = '#00FF88';
+  btn.style.color = '#000';
+  setTimeout(() => {
+    btn.textContent = '📋 Copy Link';
+    btn.style.background = 'var(--purple)';
+    btn.style.color = 'white';
+  }, 2000);
+}
+
+function shareTwitter() {
+  const text = encodeURIComponent("I just claimed my pixel on PixelBazaar — India's Million Pixel Wall! 🔥 Own a piece of the internet forever from just ₹100. Check it out:");
+  const url = encodeURIComponent("https://pixelbazaar.in?ref=share");
+  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+}
+
+function shareWhatsApp() {
+  const text = encodeURIComponent("🔥 I just claimed my pixel on PixelBazaar! India's first Million Pixel Wall. Own your spot on the internet forever from just ₹100 👉 pixelbazaar.in");
+  window.open(`https://wa.me/?text=${text}`, '_blank');
+}
+
+function shareIG() {
+  showPixelFlash(window.innerWidth / 2, 200, '📸 Screenshot & share on IG!');
+}
+
+function scrollToGrid() {
+  document.getElementById('pixel-wall').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ============================
+// CLICK RIPPLE ON WHOLE PAGE
+// ============================
+document.addEventListener('click', (e) => {
+  if (e.target !== canvas) {
+    createRipple(e.clientX, e.clientY);
+  }
 });
 </script>
 </body>
