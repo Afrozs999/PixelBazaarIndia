@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="PixelBazaar – India's viral pixel advertising wall. Buy pixels, place your ad, get traffic!">
+  <meta property="og:title" content="PixelBazaar – India's Pixel Ad Wall">
+  <meta property="og:description" content="Own a piece of the internet! Buy pixel blocks and advertise to millions.">
+  <title>PixelBazaar – India's Pixel Advertising Wall</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ── Variables ─────────────────────────────────────────────── */
+    :root {
+      --bg-primary:   #060d1f;
+      --bg-card:      #0f1a2e;
+      --bg-glass:     rgba(15,26,46,0.7);
+      --border:       rgba(99,102,241,0.18);
+      --accent:       #6366f1;
+      --accent2:      #22c55e;
+      --accent3:      #f59e0b;
+      --text:         #e2e8f0;
+      --text-muted:   #64748b;
+      --glow:         0 0 30px rgba(99,102,241,0.25);
+      --glow2:        0 0 20px rgba(34,197,94,0.2);
+      --radius:       12px;
+      --radius-lg:    20px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.4);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: default;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+    h1,h2,h3,h4,h5 { font-family: 'Syne', sans-serif; font-weight: 700; line-height: 1.2; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent2); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .hidden { display: none !important; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #4f46e5);
+      color: #fff; box-shadow: var(--glow);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(99,102,241,0.4); }
+    .btn-green { background: linear-gradient(135deg, var(--accent2), #16a34a); color: #fff; box-shadow: var(--glow2); }
+    .btn-green:hover { transform: translateY(-2px); }
+    .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-sm { padding: 7px 14px; font-size: 13px; }
+    .btn-lg { padding: 14px 32px; font-size: 16px; border-radius: 14px; }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(6,13,31,0.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border); padding: 0 20px;
+    }
+    .navbar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+      color: var(--text);
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; padding: 5px;
+    }
+    .logo-pixel { background: rgba(255,255,255,0.9); border-radius: 1px; }
+    .logo span.highlight { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    #user-avatar-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--bg-card); border: 2px solid var(--accent);
+      overflow: hidden; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #user-avatar-btn img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── Hero ── */
+    #hero { padding: 80px 20px 40px; text-align: center; position: relative; }
+    .hero-glow {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(99,102,241,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800;
+      background: linear-gradient(135deg, #fff 30%, var(--accent) 60%, var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 16px;
+    }
+    #hero p { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-muted); max-width: 560px; margin: 0 auto 32px; }
+    .hero-stats { display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ── Wall Section ── */
+    #wall-section { padding: 0 20px 60px; display: flex; flex-direction: column; align-items: center; }
+    .wall-wrap {
+      position: relative; border-radius: var(--radius-lg);
+      border: 1px solid var(--border); overflow: hidden;
+      box-shadow: var(--glow), var(--shadow); background: #0a0f1e;
+    }
+    #pixel-canvas { display: block; }
+    .wall-controls { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+
+    /* Hover tooltip */
+    #pixel-tooltip {
+      position: fixed; z-index: 200;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 14px;
+      pointer-events: none; opacity: 0; transition: opacity 0.15s;
+      max-width: 200px; box-shadow: var(--shadow);
+    }
+    #pixel-tooltip.visible { opacity: 1; }
+    #pixel-tooltip img { width: 100%; border-radius: 6px; margin-bottom: 6px; }
+    #pixel-tooltip .tip-title { font-weight: 600; font-size: 13px; }
+    #pixel-tooltip .tip-link { font-size: 11px; color: var(--accent); }
+    #pixel-tooltip .tip-clicks { font-size: 11px; color: var(--text-muted); }
+
+    /* ── Sections ── */
+    .section { padding: 60px 20px; }
+    .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 32px; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; }
+    .section-badge {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(99,102,241,0.15); color: var(--accent);
+      border: 1px solid rgba(99,102,241,0.3);
+    }
+    .section-badge.green { background: rgba(34,197,94,0.1); color: var(--accent2); border-color: rgba(34,197,94,0.3); }
+
+    /* ── Ad Cards ── */
+    .ads-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+    .ad-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; cursor: pointer;
+      transition: all 0.22s ease;
+    }
+    .ad-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--glow); }
+    .ad-card-img { aspect-ratio: 1; overflow: hidden; background: #0a0f1e; }
+    .ad-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .ad-card-info { padding: 10px 12px; }
+    .ad-card-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ad-card-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); }
+    .ad-clicks { color: var(--accent2); }
+
+    /* ── Leaderboard ── */
+    .users-list { display: flex; flex-direction: column; gap: 10px; }
+    .user-card {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 14px 16px; transition: all 0.2s;
+    }
+    .user-card:hover { border-color: var(--accent); }
+    .user-rank { font-size: 1.3rem; width: 32px; text-align: center; }
+    .user-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: var(--accent); }
+    .user-info { flex: 1; }
+    .user-name { font-weight: 600; font-size: 14px; }
+    .user-spent { font-size: 12px; color: var(--accent2); }
+    .user-pixels { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+
+    /* ── Lucky Pixel ── */
+    .lucky-banner {
+      background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(34,197,94,0.1));
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: var(--radius-lg); padding: 32px 24px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .lucky-banner::before { content: '🎁'; position: absolute; font-size: 100px; opacity: 0.06; right: -10px; top: -10px; }
+    .lucky-banner h3 { font-size: 1.5rem; margin-bottom: 8px; }
+    .lucky-timer { font-size: 2rem; font-family: 'Syne',sans-serif; font-weight: 800; color: var(--accent3); letter-spacing: 0.1em; }
+
+    /* ── Steps ── */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .step-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px 22px;
+      position: relative; overflow: hidden;
+    }
+    .step-card::before {
+      content: attr(data-step);
+      position: absolute; top: -10px; right: 10px;
+      font-size: 5rem; font-family: 'Syne',sans-serif; font-weight: 800;
+      color: rgba(99,102,241,0.08); line-height: 1;
+    }
+    .step-icon { font-size: 2rem; margin-bottom: 14px; }
+    .step-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    .step-desc { font-size: 13px; color: var(--text-muted); }
+
+    /* ── Modals ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      opacity: 0; pointer-events: none; transition: opacity 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px;
+      width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto;
+      transform: translateY(20px); transition: transform 0.25s;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .modal-title { font-size: 1.3rem; font-weight: 700; }
+    .modal-close {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text); cursor: pointer; font-size: 18px;
+      display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .modal-close:hover { background: rgba(99,102,241,0.15); border-color: var(--accent); }
+    .form-group { margin-bottom: 18px; }
+    .form-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-muted); }
+    .form-input {
+      width: 100%; padding: 10px 14px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: var(--radius); color: var(--text);
+      font-family: 'DM Sans', sans-serif; font-size: 14px; transition: border-color 0.2s;
+    }
+    .form-input:focus { outline: none; border-color: var(--accent); background: rgba(99,102,241,0.05); }
+    .form-input::placeholder { color: var(--text-muted); }
+    .upload-zone {
+      border: 2px dashed var(--border); border-radius: var(--radius);
+      padding: 30px 20px; text-align: center; cursor: pointer;
+      transition: all 0.2s; background: rgba(255,255,255,0.02);
+    }
+    .upload-zone:hover, .upload-zone.dragover { border-color: var(--accent); background: rgba(99,102,241,0.05); }
+    .upload-zone p { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
+    .img-preview { width: 100%; aspect-ratio: 1; border-radius: var(--radius); object-fit: cover; border: 1px solid var(--border); margin-top: 10px; display: none; }
+    .img-preview.visible { display: block; }
+    .size-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .size-option {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 12px; cursor: pointer; text-align: center;
+      transition: all 0.2s; background: rgba(255,255,255,0.02);
+    }
+    .size-option:hover, .size-option.selected { border-color: var(--accent); background: rgba(99,102,241,0.1); }
+    .size-name { font-weight: 700; font-size: 14px; }
+    .size-price { font-size: 12px; color: var(--accent2); margin-top: 2px; }
+    .price-summary {
+      background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2);
+      border-radius: var(--radius); padding: 16px; margin: 16px 0;
+    }
+    .price-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px; }
+    .price-total { font-size: 1.2rem; font-weight: 800; color: var(--accent2); }
+    .steps-indicator { display: flex; align-items: center; gap: 0; margin-bottom: 28px; }
+    .step-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--bg-primary); border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; transition: all 0.3s;
+    }
+    .step-dot.active   { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: var(--glow); }
+    .step-dot.complete { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+    .step-line { flex: 1; height: 2px; background: var(--border); transition: background 0.3s; }
+    .step-line.complete { background: var(--accent2); }
+
+    /* ── Ad Popup ── */
+    #ad-popup {
+      position: fixed; z-index: 250; top: 50%; left: 50%;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 20px;
+      max-width: 280px; width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+      transform: translate(-50%,-50%) scale(.9); opacity: 0;
+      transition: all .2s; pointer-events: none;
+    }
+    #ad-popup.open { transform: translate(-50%,-50%) scale(1); opacity: 1; pointer-events: all; }
+
+    /* ── Toast ── */
+    #toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 400; display: flex; flex-direction: column; gap: 8px; }
+    .toast {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 12px 16px;
+      font-size: 14px; max-width: 320px;
+      animation: slideIn 0.3s ease; box-shadow: var(--shadow);
+    }
+    .toast.success { border-color: var(--accent2); }
+    .toast.error   { border-color: #ef4444; }
+    .toast.info    { border-color: var(--accent); }
+    @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    @keyframes slideOut { to { transform: translateX(120%); opacity: 0; } }
+    .toast.removing { animation: slideOut 0.3s ease forwards; }
+
+    /* ── Spinner ── */
+    .spinner { width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Footer ── */
+    footer { border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; color: var(--text-muted); font-size: 13px; }
+    footer .footer-logo { font-family: 'Syne',sans-serif; font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+    footer .footer-links { display: flex; justify-content: center; gap: 20px; margin: 12px 0; flex-wrap: wrap; }
+    footer .footer-links a { color: var(--text-muted); font-size: 13px; }
+    footer .footer-links a:hover { color: var(--accent); }
+
+    /* ── Animations ── */
+    .fade-in { animation: fadeIn 0.5s ease forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .pulse-badge { display: inline-flex; align-items: center; gap: 6px; }
+    .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); animation: pulsate 1.5s ease-in-out infinite; }
+    @keyframes pulsate { 0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); } 50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); } }
+    @keyframes blink { from {opacity:.2;transform:scale(.8)} to {opacity:1;transform:scale(1)} }
+
+    /* ── Demo Banner ── */
+    .demo-banner {
+      background: linear-gradient(90deg, rgba(245,158,11,0.15), rgba(99,102,241,0.15));
+      border-bottom: 1px solid rgba(245,158,11,0.3);
+      padding: 10px 20px; text-align: center; font-size: 13px;
+      color: var(--accent3);
+    }
+    .demo-banner strong { color: #fbbf24; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      #hero h1 { font-size: 2rem; }
+      .hero-stats { gap: 24px; }
+      .stat-num { font-size: 1.5rem; }
+      .nav-links .btn-ghost:not(#login-btn) { display: none; }
+      .ads-grid { grid-template-columns: repeat(2, 1fr); }
+      .modal { padding: 20px; }
+      .size-grid { grid-template-columns: 1fr; }
+      #toast-container { bottom: 12px; right: 12px; }
+      .lb-grid { grid-template-columns: 1fr !important; }
+    }
+
+    /* ── Admin page ── */
+    .admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .admin-table th, .admin-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    .admin-table th { font-weight: 700; color: var(--text-muted); font-size: 11px; text-transform: uppercase; }
+    .admin-table tr:hover td { background: rgba(99,102,241,0.04); }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+    .badge-green { background: rgba(34,197,94,0.15); color: var(--accent2); }
+    .badge-amber { background: rgba(245,158,11,0.15); color: var(--accent3); }
+    .badge-red   { background: rgba(239,68,68,0.15);  color: #f87171; }
+    .tab-btn { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; background: transparent; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; transition: all 0.2s; }
+    .tab-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  </style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="app-loading" style="position:fixed;inset:0;background:#060d1f;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999">
+  <div style="display:grid;grid-template-columns:repeat(4,12px);gap:3px;margin-bottom:24px">
+    <div style="background:#6366f1;border-radius:2px;animation:blink 1s .0s infinite alternate;height:12px"></div>
+    <div style="background:#22c55e;border-radius:2px;animation:blink 1s .1s infinite alternate;height:12px"></div>
+    <div style="background:#f59e0b;border-radius:2px;animation:blink 1s .2s infinite alternate;height:12px"></div>
+    <div style="background:#6366f1;border-radius:2px;animation:blink 1s .3s infinite alternate;height:12px"></div>
+    <div style="background:#22c55e;border-radius:2px;animation:blink 1s .4s infinite alternate;height:12px"></div>
+    <div style="background:#6366f1;border-radius:2px;animation:blink 1s .5s infinite alternate;height:12px"></div>
+    <div style="background:#f59e0b;border-radius:2px;animation:blink 1s .1s infinite alternate;height:12px"></div>
+    <div style="background:#22c55e;border-radius:2px;animation:blink 1s .3s infinite alternate;height:12px"></div>
+    <div style="background:#6366f1;border-radius:2px;animation:blink 1s .2s infinite alternate;height:12px"></div>
+    <div style="background:#f59e0b;border-radius:2px;animation:blink 1s .0s infinite alternate;height:12px"></div>
+    <div style="background:#22c55e;border-radius:2px;animation:blink 1s .4s infinite alternate;height:12px"></div>
+    <div style="background:#6366f1;border-radius:2px;animation:blink 1s .1s infinite alternate;height:12px"></div>
+    <div style="background:#f59e0b;border-radius:2px;animation:blink 1s .2s infinite alternate;height:12px"></div>
+    <div style="background:#22c55e;border-radius:2px;animation:blink 1s .3s infinite alternate;height:12px"></div>
+    <div style="background:#6366f1;border-radius:2px;animation:blink 1s .5s infinite alternate;height:12px"></div>
+    <div style="background:#f59e0b;border-radius:2px;animation:blink 1s .0s infinite alternate;height:12px"></div>
+  </div>
+  <p style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#e2e8f0">Loading PixelBazaar…</p>
+</div>
+
+<div id="app-content" class="hidden">
+
+<!-- Demo Banner -->
+<div class="demo-banner">
+  🎨 <strong>Demo Mode</strong> — Connect Firebase + Razorpay to go live. All features are fully functional in this preview.
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <div class="logo-pixel"></div><div class="logo-pixel" style="opacity:.4"></div><div class="logo-pixel"></div>
+        <div class="logo-pixel" style="opacity:.4"></div><div class="logo-pixel"></div><div class="logo-pixel" style="opacity:.4"></div>
+        <div class="logo-pixel"></div><div class="logo-pixel" style="opacity:.4"></div><div class="logo-pixel"></div>
+      </div>
+      Pixel<span class="highlight">Bazaar</span>
+    </a>
+    <div class="nav-links">
+      <div class="pulse-badge" style="font-size:12px;color:var(--text-muted);margin-right:8px">
+        <div class="pulse-dot"></div>
+        <span id="online-count">1,247</span> online
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('leaderboard-section').scrollIntoView({behavior:'smooth'})">🏆 Leaderboard</button>
+      <button class="btn btn-primary btn-sm" id="buy-pixels-btn">✦ Buy Pixels</button>
+      <button class="btn btn-ghost btn-sm" id="login-btn">Sign in with Google</button>
+      <div id="user-avatar-btn" class="hidden">
+        <img id="avatar-img" src="" alt="User">
+      </div>
+      <div id="user-menu" class="hidden" style="position:absolute;top:70px;right:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;min-width:200px;z-index:200;box-shadow:var(--shadow)">
+        <div style="font-weight:700;margin-bottom:2px" id="user-name">User</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px" id="user-email"></div>
+        <a href="#" style="display:block;padding:8px;border-radius:8px;font-size:13px;color:var(--text);margin-bottom:4px" onclick="openBuyModal()">📢 My Ads</a>
+        <a href="#" onclick="showAdminPanel()" style="display:block;padding:8px;border-radius:8px;font-size:13px;color:var(--text);margin-bottom:4px">🛡 Admin Panel</a>
+        <button class="btn btn-ghost btn-sm" id="logout-btn" style="width:100%;justify-content:center;margin-top:8px">Sign Out</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <h1>India's Pixel<br>Ad Wall</h1>
+  <p>Own your piece of digital real estate. Buy pixel blocks, place your brand, and get seen by millions. Inspired by the Million Dollar Homepage.</p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num"><span data-count="10000">0</span></div>
+      <div class="stat-label">Total Pixels</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span data-count="847">0</span></div>
+      <div class="stat-label">Blocks Sold</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">₹<span data-count="84700">0</span></div>
+      <div class="stat-label">Revenue</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span data-count="9153">0</span></div>
+      <div class="stat-label">Blocks Available</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <button class="btn btn-primary btn-lg" onclick="openBuyModal()">✦ Buy Your Pixels — From ₹100</button>
+    <button class="btn btn-ghost btn-lg" onclick="document.getElementById('wall-section').scrollIntoView({behavior:'smooth'})">👁 View the Wall</button>
+  </div>
+</section>
+
+<!-- PIXEL WALL -->
+<section id="wall-section">
+  <div class="container" style="width:100%">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px">
+      <div>
+        <h2 style="font-size:1.6rem">The Wall</h2>
+        <p style="font-size:13px;color:var(--text-muted)">1000×1000 pixel canvas • Zoom with scroll • Pan with Alt+drag</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input type="text" id="pixel-search" class="form-input" placeholder="🔍 Search ads…" style="width:180px;padding:8px 12px">
+        <button class="btn btn-primary btn-sm" onclick="openBuyModal()">✦ Claim Space</button>
+      </div>
+    </div>
+    <div class="wall-wrap">
+      <canvas id="pixel-canvas"></canvas>
+    </div>
+    <div class="wall-controls">
+      <button class="btn btn-ghost btn-sm" id="btn-zoom-in" title="Zoom In">＋</button>
+      <button class="btn btn-ghost btn-sm" id="btn-zoom-out" title="Zoom Out">－</button>
+      <button class="btn btn-ghost btn-sm" id="btn-zoom-reset" title="Reset">⊙</button>
+      <span style="font-size:12px;color:var(--text-muted);margin-left:8px">Scroll to zoom • Alt+drag to pan • Click ad to visit</span>
+    </div>
+    <div id="select-hint" class="hidden" style="margin-top:12px;padding:12px 16px;background:rgba(99,102,241,.1);border:1px dashed rgba(99,102,241,.5);border-radius:var(--radius);font-size:13px;text-align:center">
+      🖱 Click and drag on the canvas to select your pixel area → then click "Done"
+      <button class="btn btn-green btn-sm" id="done-selection-btn" style="margin-left:10px">Done Selecting</button>
+    </div>
+  </div>
+</section>
+
+<!-- TRENDING ADS -->
+<section class="section" id="trending-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">🔥 Trending Ads</h2>
+      <span class="section-badge">Most Clicked</span>
+    </div>
+    <div class="ads-grid" id="trending-grid">
+      <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">
+        <div class="spinner" style="margin:0 auto 12px"></div> Loading trending ads…
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST ADS -->
+<section class="section" id="latest-section" style="padding-top:0">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">🆕 Latest Ads</h2>
+      <span class="section-badge green">Just Added</span>
+    </div>
+    <div class="ads-grid" id="latest-grid">
+      <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">
+        <div class="spinner" style="margin:0 auto 12px"></div> Loading latest ads…
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD + LUCKY PIXEL -->
+<section class="section" id="leaderboard-section" style="padding-top:0">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start" class="lb-grid">
+      <div>
+        <div class="section-header">
+          <h2 class="section-title">🏆 Top Advertisers</h2>
+          <span class="section-badge">This Month</span>
+        </div>
+        <div class="users-list" id="top-advertisers-list">
+          <div style="text-align:center;padding:40px;color:var(--text-muted)">
+            <div class="spinner" style="margin:0 auto 12px"></div> Loading leaderboard…
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-header"><h2 class="section-title">🎁 Lucky Pixel</h2></div>
+        <div class="lucky-banner">
+          <h3>Free Pixel Block Daily!</h3>
+          <p style="color:var(--text-muted);font-size:13px;margin:8px 0 16px">Claim one free 10×10 block every 24 hours. Next reset in:</p>
+          <div class="lucky-timer" id="lucky-timer">00:00:00</div>
+          <button class="btn btn-primary" style="margin-top:16px" onclick="claimLuckyPixel()">🎲 Claim Free Block</button>
+        </div>
+        <div style="margin-top:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px">
+          <h3 style="margin-bottom:16px;font-size:1rem">💰 Pixel Pricing</h3>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px;background:rgba(99,102,241,.06);border-radius:8px"><span>10×10 px</span><strong style="color:var(--accent2)">₹100</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px;background:rgba(99,102,241,.06);border-radius:8px"><span>20×20 px</span><strong style="color:var(--accent2)">₹400</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px;background:rgba(99,102,241,.06);border-radius:8px"><span>50×50 px</span><strong style="color:var(--accent2)">₹2,500</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px;background:rgba(99,102,241,.06);border-radius:8px"><span>100×100 px</span><strong style="color:var(--accent2)">₹10,000</strong></div>
+            <div style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:4px">Custom sizes: ₹10 per 10×10 block</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-header"><h2 class="section-title">⚡ How It Works</h2></div>
+    <div class="steps-grid">
+      <div class="step-card" data-step="1"><div class="step-icon">🖱</div><div class="step-title">Select Pixels</div><div class="step-desc">Drag on the pixel wall to select any unclaimed area. Choose your ideal location and size.</div></div>
+      <div class="step-card" data-step="2"><div class="step-icon">🖼</div><div class="step-title">Upload Your Ad</div><div class="step-desc">Upload your logo or image. We auto-compress it for blazing fast loading.</div></div>
+      <div class="step-card" data-step="3"><div class="step-icon">💳</div><div class="step-title">Pay Securely</div><div class="step-desc">Pay via Razorpay — UPI, cards, net banking all supported. ₹100 minimum.</div></div>
+      <div class="step-card" data-step="4"><div class="step-icon">🚀</div><div class="step-title">Go Live Instantly</div><div class="step-desc">Your ad appears on the wall immediately after payment. Track clicks in real-time.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section style="padding:0 20px 60px">
+  <div class="container">
+    <div style="background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(34,197,94,.1));border:1px solid rgba(99,102,241,.3);border-radius:24px;padding:48px 32px;text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(99,102,241,.1),transparent 70%)"></div>
+      <h2 style="font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:12px;position:relative">Claim Your Space on the Internet</h2>
+      <p style="color:var(--text-muted);margin-bottom:28px;position:relative;max-width:480px;margin-left:auto;margin-right:auto">Join thousands of advertisers who own a permanent piece of India's viral pixel wall. Your ad stays forever.</p>
+      <button class="btn btn-primary btn-lg" style="position:relative" onclick="openBuyModal()">✦ Buy Pixels Now — From ₹100</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">Pixel<span style="color:#6366f1">Bazaar</span></div>
+    <p style="margin:8px 0;color:#64748b;font-size:13px">India's first pixel advertising wall. Inspired by the Million Dollar Homepage.</p>
+    <div class="footer-links">
+      <a href="#">About</a><a href="#">FAQ</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Contact</a>
+      <a href="#" onclick="showAdminPanel()">Admin</a>
+    </div>
+    <p style="margin-top:16px;color:#374151;font-size:12px">© 2024 PixelBazaar. Made with ❤️ in India 🇮🇳</p>
+  </div>
+</footer>
+
+</div><!-- end #app-content -->
+
+<!-- ── MODALS ── -->
+
+<!-- Buy Pixels Modal -->
+<div class="modal-overlay" id="buy-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">✦ Buy Pixels</h2>
+      <button class="modal-close">✕</button>
+    </div>
+    <div class="steps-indicator">
+      <div class="step-dot active">1</div>
+      <div class="step-line"></div>
+      <div class="step-dot">2</div>
+      <div class="step-line"></div>
+      <div class="step-dot">3</div>
+    </div>
+
+    <!-- Step 0: Select area -->
+    <div class="buy-step">
+      <h3 style="margin-bottom:8px">Choose Your Pixel Area</h3>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px">Select a size or draw on the wall</p>
+      <div class="size-grid">
+        <div class="size-option selected" data-size="10x10"><div class="size-name">10×10 px</div><div class="size-price">₹100 — Starter</div></div>
+        <div class="size-option" data-size="20x20"><div class="size-name">20×20 px</div><div class="size-price">₹400 — Small</div></div>
+        <div class="size-option" data-size="50x50"><div class="size-name">50×50 px</div><div class="size-price">₹2,500 — Medium</div></div>
+        <div class="size-option" data-size="100x100"><div class="size-name">100×100 px</div><div class="size-price">₹10,000 — Large</div></div>
+      </div>
+      <div style="text-align:center;margin:16px 0;color:var(--text-muted);font-size:13px">— or —</div>
+      <button class="btn btn-ghost" style="width:100%" id="select-on-wall-btn">🖱 Draw Custom Area on Wall</button>
+      <div id="selection-info" style="margin-top:12px;font-size:13px;color:var(--accent2)"></div>
+      <div style="margin-top:20px">
+        <button class="btn btn-primary" style="width:100%" data-next-step="1">Next: Upload Image →</button>
+      </div>
+    </div>
+
+    <!-- Step 1: Upload -->
+    <div class="buy-step hidden">
+      <h3 style="margin-bottom:16px">Your Ad Details</h3>
+      <div class="form-group">
+        <label class="form-label">Ad Image / Logo</label>
+        <div class="upload-zone" id="upload-zone">
+          <div style="font-size:2rem">🖼</div>
+          <p>Click to upload or drag & drop<br><span style="color:#374151">JPG, PNG, GIF • Auto-compressed to 200KB</span></p>
+        </div>
+        <input type="file" id="file-input" accept="image/*" style="display:none">
+        <img class="img-preview" id="img-preview" src="" alt="Preview">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Ad Title</label>
+        <input type="text" class="form-input" id="ad-title" placeholder="My Awesome Brand" maxlength="60">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Destination URL</label>
+        <input type="url" class="form-input" id="ad-link" placeholder="https://yourwebsite.com">
+      </div>
+      <div style="display:flex;gap:10px;margin-top:20px">
+        <button class="btn btn-ghost" data-prev-step="0">← Back</button>
+        <button class="btn btn-primary" style="flex:1" data-next-step="2">Review & Pay →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Confirm -->
+    <div class="buy-step hidden">
+      <h3 style="margin-bottom:16px">Confirm Purchase</h3>
+      <div class="price-summary">
+        <div class="price-row"><span>Pixel Size</span><span id="summary-size">—</span></div>
+        <div class="price-row"><span>Blocks</span><span id="summary-blocks">—</span></div>
+        <div class="price-row" style="border-top:1px solid var(--border);padding-top:10px;margin-top:8px">
+          <span style="font-weight:700">Total</span>
+          <span class="price-total" id="summary-price">₹0</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:20px">
+        ✓ Your ad goes live instantly after payment<br>
+        ✓ Permanent placement — no recurring fees<br>
+        ✓ Secure payment via Razorpay
+      </p>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-ghost" data-prev-step="1">← Back</button>
+        <button class="btn btn-green" style="flex:1" id="confirm-buy-btn">💳 Confirm & Pay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal-overlay" id="login-modal">
+  <div class="modal" style="max-width:380px;text-align:center">
+    <div class="modal-header"><h2 class="modal-title">Sign In</h2><button class="modal-close">✕</button></div>
+    <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px">Sign in to buy pixels and manage your ads</p>
+    <button class="btn btn-ghost" style="width:100%;justify-content:center;gap:12px;padding:14px;font-size:15px" id="google-signin-btn">
+      <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="#FBBC05" d="M10.53 28.59c-.5-1.45-.79-2.99-.79-4.59s.27-3.14.79-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/></svg>
+      Continue with Google
+    </button>
+    <p style="margin-top:20px;font-size:12px;color:var(--text-muted)">Demo mode: click to simulate login</p>
+  </div>
+</div>
+
+<!-- Admin Modal -->
+<div class="modal-overlay" id="admin-modal">
+  <div class="modal" style="max-width:800px;width:100%">
+    <div class="modal-header">
+      <h2 class="modal-title">🛡 Admin Panel</h2>
+      <button class="modal-close">✕</button>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap">
+      <button class="tab-btn active" data-tab="pixels">Pixel Ads</button>
+      <button class="tab-btn" data-tab="users">Users</button>
+      <button class="tab-btn" data-tab="transactions">Transactions</button>
+    </div>
+    <div id="admin-tab-pixels">
+      <table class="admin-table">
+        <thead><tr><th>Ad</th><th>Title</th><th>Size</th><th>Owner</th><th>Clicks</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody id="admin-pixels-tbody"></tbody>
+      </table>
+    </div>
+    <div id="admin-tab-users" class="hidden">
+      <table class="admin-table">
+        <thead><tr><th>User</th><th>Email</th><th>Ads</th><th>Spent</th><th>Joined</th></tr></thead>
+        <tbody id="admin-users-tbody"></tbody>
+      </table>
+    </div>
+    <div id="admin-tab-transactions" class="hidden">
+      <table class="admin-table">
+        <thead><tr><th>ID</th><th>User</th><th>Amount</th><th>Size</th><th>Date</th><th>Status</th></tr></thead>
+        <tbody id="admin-txn-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Ad Click Popup -->
+<div id="ad-popup">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <span style="font-size:13px;font-weight:700;color:var(--text-muted)">ADVERTISEMENT</span>
+    <button id="popup-close" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:18px">✕</button>
+  </div>
+  <img id="popup-img" src="" alt="" style="width:100%;border-radius:8px;margin-bottom:10px;display:block">
+  <h4 id="popup-title" style="margin-bottom:4px;font-size:15px"></h4>
+  <p id="popup-link-text" style="font-size:11px;color:var(--text-muted);margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></p>
+  <p id="popup-clicks" style="font-size:11px;color:var(--accent2);margin-bottom:14px"></p>
+  <button id="popup-visit" class="btn btn-primary" style="width:100%;justify-content:center">🚀 Visit Website</button>
+</div>
+
+<!-- Hover Tooltip -->
+<div id="pixel-tooltip">
+  <img src="" alt="" style="width:100%;border-radius:6px;margin-bottom:6px;display:none">
+  <div class="tip-title"></div>
+  <div class="tip-link"></div>
+  <div class="tip-clicks"></div>
+</div>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+//  DEMO DATA
+// ══════════════════════════════════════════════════════════════
+const DEMO_ADS = [
+  { id:'1', x:10,  y:10,  width:50, height:50, title:'TechStartup.in',   link:'https://example.com', image:'', clicks:342, ownerId:'u1', ownerName:'Rahul Sharma' },
+  { id:'2', x:70,  y:20,  width:30, height:30, title:'SwiggyDeals',      link:'https://example.com', image:'', clicks:891, ownerId:'u2', ownerName:'Priya Nair' },
+  { id:'3', x:110, y:10,  width:40, height:40, title:'ZomatoPro',        link:'https://example.com', image:'', clicks:1203,ownerId:'u2', ownerName:'Priya Nair' },
+  { id:'4', x:10,  y:70,  width:20, height:20, title:'FlipkartAds',      link:'https://example.com', image:'', clicks:567, ownerId:'u3', ownerName:'Amit Patel' },
+  { id:'5', x:40,  y:80,  width:60, height:60, title:'OLAelectric',      link:'https://example.com', image:'', clicks:234, ownerId:'u4', ownerName:'Sneha Reddy' },
+  { id:'6', x:160, y:50,  width:30, height:30, title:'NykaaBeauty',      link:'https://example.com', image:'', clicks:789, ownerId:'u5', ownerName:'Kavya Menon' },
+  { id:'7', x:200, y:10,  width:50, height:50, title:'CREDapp',          link:'https://example.com', image:'', clicks:445, ownerId:'u3', ownerName:'Amit Patel' },
+  { id:'8', x:10,  y:140, width:80, height:30, title:'DreamPixels',      link:'https://example.com', image:'', clicks:112, ownerId:'u6', ownerName:'Vikram Singh' },
+  { id:'9', x:200, y:70,  width:40, height:40, title:'MahindraEV',       link:'https://example.com', image:'', clicks:678, ownerId:'u7', ownerName:'Arjun Mehta' },
+  { id:'10',x:110, y:60,  width:40, height:30, title:'ByJuLearn',        link:'https://example.com', image:'', clicks:923, ownerId:'u1', ownerName:'Rahul Sharma' },
+  { id:'11',x:260, y:10,  width:20, height:20, title:'PhonePe',          link:'https://example.com', image:'', clicks:2341,ownerId:'u8', ownerName:'Deepa Kumar' },
+  { id:'12',x:290, y:10,  width:10, height:10, title:'Paytm',            link:'https://example.com', image:'', clicks:1876,ownerId:'u8', ownerName:'Deepa Kumar' },
+];
+
+const DEMO_USERS = [
+  { id:'u2', displayName:'Priya Nair',    email:'priya@example.com',   photoURL:'', totalSpent:2094, pixelCount:12 },
+  { id:'u8', displayName:'Deepa Kumar',   email:'deepa@example.com',   photoURL:'', totalSpent:1800, pixelCount:8  },
+  { id:'u1', displayName:'Rahul Sharma',  email:'rahul@example.com',   photoURL:'', totalSpent:1400, pixelCount:7  },
+  { id:'u3', displayName:'Amit Patel',    email:'amit@example.com',    photoURL:'', totalSpent:1200, pixelCount:6  },
+  { id:'u5', displayName:'Kavya Menon',   email:'kavya@example.com',   photoURL:'', totalSpent:800,  pixelCount:4  },
+];
+
+const DEMO_TXN = [
+  { id:'t001', user:'Priya Nair',   amount:400,  size:'20×20',   date:'2024-12-01', status:'success' },
+  { id:'t002', user:'Rahul Sharma', amount:2500, size:'50×50',   date:'2024-12-02', status:'success' },
+  { id:'t003', user:'Deepa Kumar',  amount:100,  size:'10×10',   date:'2024-12-03', status:'success' },
+  { id:'t004', user:'Amit Patel',   amount:10000,size:'100×100', date:'2024-12-04', status:'success' },
+  { id:'t005', user:'Sneha Reddy',  amount:400,  size:'20×20',   date:'2024-12-05', status:'pending' },
+];
+
+// ══════════════════════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════════════════════
+const state = {
+  user: null,
+  currentStep: 0,
+  selectionMode: false,
+  buyModalSelection: { x:0, y:0, w:10, h:10 },
+  selectedFile: null,
+  selectedDataUrl: null,
+  ads: [...DEMO_ADS],
+  adMap: new Map(), // key x,y => ad
+};
+
+// ══════════════════════════════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════════════════════════════
+function toast(msg, type='info', dur=3500) {
+  const icons = { success:'✅', error:'❌', info:'ℹ️' };
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.innerHTML = `<span>${icons[type]||'📢'}</span><span>${msg}</span>`;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(() => { el.classList.add('removing'); setTimeout(() => el.remove(), 300); }, dur);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  MODAL
+// ══════════════════════════════════════════════════════════════
+function openModal(id)  { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+});
+document.querySelectorAll('.modal-close').forEach(btn => {
+  btn.addEventListener('click', () => btn.closest('.modal-overlay').classList.remove('open'));
+});
+
+// ══════════════════════════════════════════════════════════════
+//  AUTH (DEMO)
+// ══════════════════════════════════════════════════════════════
+document.getElementById('login-btn').addEventListener('click', () => openModal('login-modal'));
+document.getElementById('google-signin-btn').addEventListener('click', () => {
+  state.user = { displayName: 'Demo User', email: 'demo@pixelbazaar.in', photoURL: '' };
+  document.getElementById('login-btn').classList.add('hidden');
+  document.getElementById('user-avatar-btn').classList.remove('hidden');
+  document.getElementById('avatar-img').src = '';
+  document.getElementById('user-name').textContent  = state.user.displayName;
+  document.getElementById('user-email').textContent = state.user.email;
+  closeModal('login-modal');
+  toast('👋 Welcome, Demo User!', 'success');
+});
+document.getElementById('logout-btn').addEventListener('click', () => {
+  state.user = null;
+  document.getElementById('login-btn').classList.remove('hidden');
+  document.getElementById('user-avatar-btn').classList.add('hidden');
+  document.getElementById('user-menu').classList.add('hidden');
+  toast('Signed out', 'info');
+});
+document.getElementById('user-avatar-btn').addEventListener('click', () => {
+  document.getElementById('user-menu').classList.toggle('hidden');
+});
+document.addEventListener('click', e => {
+  const btn = document.getElementById('user-avatar-btn');
+  const menu = document.getElementById('user-menu');
+  if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) menu.classList.add('hidden');
+});
+
+// ══════════════════════════════════════════════════════════════
+//  BUY FLOW
+// ══════════════════════════════════════════════════════════════
+function openBuyModal() {
+  if (!state.user) { openModal('login-modal'); return; }
+  goToStep(0);
+  openModal('buy-modal');
+}
+document.getElementById('buy-pixels-btn').addEventListener('click', openBuyModal);
+
+function goToStep(step) {
+  state.currentStep = step;
+  document.querySelectorAll('.buy-step').forEach((el, i) => el.classList.toggle('hidden', i !== step));
+  document.querySelectorAll('.step-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === step);
+    dot.classList.toggle('complete', i < step);
+  });
+  document.querySelectorAll('.step-line').forEach((line, i) => line.classList.toggle('complete', i < step));
+  if (step === 2) updatePriceSummary();
+}
+
+document.querySelectorAll('[data-next-step]').forEach(btn => btn.addEventListener('click', () => goToStep(+btn.dataset.nextStep)));
+document.querySelectorAll('[data-prev-step]').forEach(btn => btn.addEventListener('click', () => goToStep(+btn.dataset.prevStep)));
+
+// Size picker
+document.querySelectorAll('.size-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.size-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    const [w,h] = opt.dataset.size.split('x').map(Number);
+    state.buyModalSelection = { x:0, y:0, w, h };
+    document.getElementById('selection-info').textContent = `Size: ${w}×${h} px`;
+  });
+});
+
+// Selection mode
+document.getElementById('select-on-wall-btn').addEventListener('click', () => {
+  closeModal('buy-modal');
+  pixelWall.enableSelectionMode(true);
+  state.selectionMode = true;
+  document.getElementById('select-hint').classList.remove('hidden');
+  toast('Click and drag on the wall to select pixels', 'info', 5000);
+});
+document.getElementById('done-selection-btn').addEventListener('click', () => {
+  const sel = pixelWall.getSelection();
+  if (!sel) { toast('Please select a region first', 'error'); return; }
+  state.buyModalSelection = sel;
+  pixelWall.enableSelectionMode(false);
+  state.selectionMode = false;
+  document.getElementById('select-hint').classList.add('hidden');
+  document.getElementById('selection-info').textContent = `Selected: ${sel.w}×${sel.h} px at (${sel.x}, ${sel.y})`;
+  openModal('buy-modal');
+  goToStep(1);
+});
+
+// Image upload
+const uploadZone = document.getElementById('upload-zone');
+const fileInput  = document.getElementById('file-input');
+const imgPreview = document.getElementById('img-preview');
+uploadZone.addEventListener('click', () => fileInput.click());
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+uploadZone.addEventListener('drop', e => { e.preventDefault(); uploadZone.classList.remove('dragover'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
+fileInput.addEventListener('change', () => { if (fileInput.files[0]) handleFile(fileInput.files[0]); });
+
+function handleFile(file) {
+  if (!file.type.startsWith('image/')) { toast('Please select an image file', 'error'); return; }
+  state.selectedFile = file;
+  const reader = new FileReader();
+  reader.onload = e => {
+    state.selectedDataUrl = e.target.result;
+    imgPreview.src = e.target.result;
+    imgPreview.classList.add('visible');
+    uploadZone.querySelector('p').textContent = file.name + ' selected ✓';
+  };
+  reader.readAsDataURL(file);
+}
+
+function updatePriceSummary() {
+  const sel = state.buyModalSelection;
+  if (!sel) return;
+  const blocks = (sel.w/10) * (sel.h/10);
+  const price  = blocks * 100;
+  document.getElementById('summary-size').textContent   = `${sel.w}×${sel.h} pixels`;
+  document.getElementById('summary-blocks').textContent = `${blocks} block${blocks>1?'s':''}`;
+  document.getElementById('summary-price').textContent  = `₹${price.toLocaleString('en-IN')}`;
+}
+
+document.getElementById('confirm-buy-btn').addEventListener('click', () => {
+  const title = document.getElementById('ad-title').value.trim();
+  const link  = document.getElementById('ad-link').value.trim();
+  if (!title) { toast('Please enter an ad title', 'error'); return; }
+  if (!link)  { toast('Please enter a destination URL', 'error'); return; }
+  if (!state.selectedFile) { toast('Please upload an image', 'error'); return; }
+
+  const btn = document.getElementById('confirm-buy-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Processing…';
+
+  setTimeout(() => {
+    // Demo: place ad on wall
+    const sel = state.buyModalSelection;
+    const newAd = {
+      id: 'demo_' + Date.now(),
+      x: sel.x || Math.floor(Math.random()*90)*10,
+      y: sel.y || Math.floor(Math.random()*90)*10,
+      width: sel.w, height: sel.h,
+      title, link,
+      image: state.selectedDataUrl || '',
+      clicks: 0,
+      ownerId: 'demo', ownerName: state.user?.displayName || 'Demo User',
+    };
+    state.ads.unshift(newAd);
+    pixelWall.addAd(newAd);
+    renderLeaderboards();
+    closeModal('buy-modal');
+    toast('🎉 Your ad is live on the wall!', 'success', 5000);
+    goToStep(0);
+    state.selectedFile = null; state.selectedDataUrl = null;
+    imgPreview.classList.remove('visible');
+    document.getElementById('ad-title').value = '';
+    document.getElementById('ad-link').value  = '';
+    uploadZone.querySelector('p').innerHTML   = 'Click to upload or drag & drop<br><span style="color:#374151">JPG, PNG, GIF • Auto-compressed to 200KB</span>';
+    btn.disabled = false; btn.innerHTML = '💳 Confirm & Pay';
+  }, 1500);
+});
+
+// ══════════════════════════════════════════════════════════════
+//  LEADERBOARDS
+// ══════════════════════════════════════════════════════════════
+function renderAdCard(ad) {
+  const color = ['#6366f1','#22c55e','#f59e0b','#ec4899','#14b8a6'][parseInt(ad.id) % 5] || '#6366f1';
+  const imgHtml = ad.image
+    ? `<img src="${ad.image}" alt="${ad.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover">`
+    : `<div style="width:100%;height:100%;background:linear-gradient(135deg,${color},${color}aa);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:rgba(255,255,255,0.8)">${ad.title.charAt(0)}</div>`;
+  return `<div class="ad-card" onclick="window.open('${ad.link}','_blank','noopener')">
+    <div class="ad-card-img">${imgHtml}</div>
+    <div class="ad-card-info">
+      <div class="ad-card-title">${ad.title}</div>
+      <div class="ad-card-meta">
+        <span class="ad-clicks">👁 ${(ad.clicks||0).toLocaleString('en-IN')}</span>
+        <span>${ad.width}×${ad.height}px</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderUserCard(user, rank) {
+  const medals = ['🥇','🥈','🥉','4️⃣','5️⃣'];
+  const initials = (user.displayName||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+  const avatarHtml = user.photoURL
+    ? `<img class="user-avatar" src="${user.photoURL}" alt="${user.displayName}">`
+    : `<div class="user-avatar" style="background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff">${initials}</div>`;
+  return `<div class="user-card">
+    <div class="user-rank">${medals[rank]||rank+1}</div>
+    ${avatarHtml}
+    <div class="user-info">
+      <div class="user-name">${user.displayName||'Anonymous'}</div>
+      <div class="user-spent">₹${(user.totalSpent||0).toLocaleString('en-IN')} spent</div>
+    </div>
+    <div class="user-pixels">${user.pixelCount||0} blocks</div>
+  </div>`;
+}
+
+function renderLeaderboards() {
+  const byClicks = [...state.ads].sort((a,b) => (b.clicks||0)-(a.clicks||0)).slice(0,6);
+  const latest   = state.ads.slice(0,6);
+
+  document.getElementById('trending-grid').innerHTML = byClicks.length
+    ? byClicks.map(renderAdCard).join('')
+    : '<p style="grid-column:1/-1;padding:20px;color:var(--text-muted)">No ads yet. Be the first!</p>';
+
+  document.getElementById('latest-grid').innerHTML = latest.length
+    ? latest.map(renderAdCard).join('')
+    : '<p style="grid-column:1/-1;padding:20px;color:var(--text-muted)">No ads yet. Be the first!</p>';
+
+  document.getElementById('top-advertisers-list').innerHTML =
+    DEMO_USERS.map((u, i) => renderUserCard(u, i)).join('');
+}
+
+// Search
+document.getElementById('pixel-search').addEventListener('input', e => {
+  const q = e.target.value.toLowerCase();
+  document.querySelectorAll('.ad-card').forEach(card => {
+    const t = card.querySelector('.ad-card-title')?.textContent.toLowerCase();
+    card.style.display = (!q || t?.includes(q)) ? '' : 'none';
+  });
+});
+
+// ══════════════════════════════════════════════════════════════
+//  LUCKY PIXEL
+// ══════════════════════════════════════════════════════════════
+function claimLuckyPixel() {
+  const lastClaim = localStorage.getItem('pb_lucky_claim');
+  const today = new Date().toDateString();
+  if (lastClaim === today) { toast("You already claimed today's free pixel!", 'error'); return; }
+  localStorage.setItem('pb_lucky_claim', today);
+  toast('🎁 Free pixel unlocked! Click "Buy Pixels" to claim it.', 'success', 5000);
+  if (state.user) openBuyModal(); else openModal('login-modal');
+}
+
+function startLuckyTimer() {
+  const midnight = new Date(); midnight.setHours(24,0,0,0);
+  const update = () => {
+    const diff = midnight - new Date();
+    const h = String(Math.floor(diff/3600000)).padStart(2,'0');
+    const m = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    const s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    const el = document.getElementById('lucky-timer');
+    if (el) el.textContent = `${h}:${m}:${s}`;
+  };
+  update(); setInterval(update, 1000);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  COUNTER ANIMATION
+// ══════════════════════════════════════════════════════════════
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.dataset.count);
+    let current = 0;
+    const step = Math.ceil(target / 80);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = current.toLocaleString('en-IN');
+      if (current >= target) clearInterval(timer);
+    }, 16);
+  });
+}
+
+// ══════════════════════════════════════════════════════════════
+//  ADMIN PANEL
+// ══════════════════════════════════════════════════════════════
+function showAdminPanel() {
+  document.getElementById('user-menu').classList.add('hidden');
+  // Populate tables
+  document.getElementById('admin-pixels-tbody').innerHTML = state.ads.map(ad => `
+    <tr>
+      <td><div style="width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:4px;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff">${ad.title.charAt(0)}</div></td>
+      <td style="font-weight:600">${ad.title}</td>
+      <td>${ad.width}×${ad.height}</td>
+      <td style="color:var(--text-muted)">${ad.ownerName||'—'}</td>
+      <td style="color:var(--accent2)">${(ad.clicks||0).toLocaleString()}</td>
+      <td><span class="badge badge-green">Live</span></td>
+      <td><button class="btn btn-ghost btn-sm" onclick="removeAdAdmin('${ad.id}')">Remove</button></td>
+    </tr>`).join('');
+
+  document.getElementById('admin-users-tbody').innerHTML = DEMO_USERS.map(u => `
+    <tr>
+      <td style="font-weight:600">${u.displayName}</td>
+      <td style="color:var(--text-muted)">${u.email}</td>
+      <td>${u.pixelCount}</td>
+      <td style="color:var(--accent2)">₹${u.totalSpent.toLocaleString('en-IN')}</td>
+      <td style="color:var(--text-muted)">Dec 2024</td>
+    </tr>`).join('');
+
+  document.getElementById('admin-txn-tbody').innerHTML = DEMO_TXN.map(t => `
+    <tr>
+      <td style="font-family:monospace;font-size:12px;color:var(--text-muted)">${t.id}</td>
+      <td>${t.user}</td>
+      <td style="color:var(--accent2)">₹${t.amount.toLocaleString('en-IN')}</td>
+      <td>${t.size}</td>
+      <td style="color:var(--text-muted)">${t.date}</td>
+      <td><span class="badge ${t.status==='success'?'badge-green':'badge-amber'}">${t.status}</span></td>
+    </tr>`).join('');
+
+  openModal('admin-modal');
+}
+
+function removeAdAdmin(id) {
+  state.ads = state.ads.filter(a => a.id !== id);
+  pixelWall.loadAds(state.ads);
+  renderLeaderboards();
+  showAdminPanel();
+  toast('Ad removed', 'success');
+}
+
+// Admin tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    ['pixels','users','transactions'].forEach(tab => {
+      document.getElementById(`admin-tab-${tab}`).classList.toggle('hidden', tab !== btn.dataset.tab);
+    });
+  });
+});
+
+// ══════════════════════════════════════════════════════════════
+//  ZOOM ENGINE
+// ══════════════════════════════════════════════════════════════
+const zoomEngine = {
+  offsetX: 0, offsetY: 0, scale: 1,
+  minScale: 0.15, maxScale: 10,
+  _canvas: null, _dirty: null,
+  _isPanning: false, _lastMouse: null, _lastPinchDist: null,
+
+  init(canvas, onDirty) {
+    this._canvas = canvas; this._dirty = onDirty;
+    this._center(); this._bindEvents();
+  },
+  _center() {
+    const size = parseInt(this._canvas.style.width);
+    this.offsetX = (size - 1000 * this.scale) / 2;
+    this.offsetY = (size - 1000 * this.scale) / 2;
+  },
+  _bindEvents() {
+    const c = this._canvas;
+    c.addEventListener('wheel', e => this._onWheel(e), { passive: false });
+    c.addEventListener('mousedown', e => this._onMouseDown(e));
+    window.addEventListener('mousemove', e => this._onMouseMove(e));
+    window.addEventListener('mouseup', () => this._onMouseUp());
+    c.addEventListener('touchstart', e => this._onTouchStart(e), { passive: false });
+    c.addEventListener('touchmove',  e => this._onTouchMove(e),  { passive: false });
+    c.addEventListener('touchend',   () => this._onTouchEnd());
+  },
+  _onWheel(e) {
+    e.preventDefault();
+    const rect = this._canvas.getBoundingClientRect();
+    this._zoomAt(e.clientX - rect.left, e.clientY - rect.top, e.deltaY > 0 ? 0.85 : 1.18);
+  },
+  _zoomAt(mx, my, factor) {
+    const ns = Math.min(this.maxScale, Math.max(this.minScale, this.scale * factor));
+    const r  = ns / this.scale;
+    this.offsetX = mx - r * (mx - this.offsetX);
+    this.offsetY = my - r * (my - this.offsetY);
+    this.scale   = ns;
+    this._dirty && this._dirty();
+  },
+  _onMouseDown(e) {
+    if (e.button === 1 || e.button === 2 || e.altKey) {
+      this._isPanning = true;
+      this._lastMouse = { x: e.clientX, y: e.clientY };
+      this._canvas.style.cursor = 'grab';
+    }
+  },
+  _onMouseMove(e) {
+    if (!this._isPanning) return;
+    this.offsetX += e.clientX - this._lastMouse.x;
+    this.offsetY += e.clientY - this._lastMouse.y;
+    this._lastMouse = { x: e.clientX, y: e.clientY };
+    this._dirty && this._dirty();
+  },
+  _onMouseUp() { this._isPanning = false; if (this._canvas) this._canvas.style.cursor = 'default'; },
+  _onTouchStart(e) {
+    if (e.touches.length === 2) {
+      this._lastPinchDist = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+      e.preventDefault();
+    } else if (e.touches.length === 1) {
+      this._isPanning = true;
+      this._lastMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+  },
+  _onTouchMove(e) {
+    e.preventDefault();
+    if (e.touches.length === 2) {
+      const dist = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+      const rect = this._canvas.getBoundingClientRect();
+      const mx   = (e.touches[0].clientX+e.touches[1].clientX)/2 - rect.left;
+      const my   = (e.touches[0].clientY+e.touches[1].clientY)/2 - rect.top;
+      if (this._lastPinchDist) this._zoomAt(mx, my, dist / this._lastPinchDist);
+      this._lastPinchDist = dist;
+    } else if (e.touches.length === 1 && this._isPanning) {
+      this.offsetX += e.touches[0].clientX - this._lastMouse.x;
+      this.offsetY += e.touches[0].clientY - this._lastMouse.y;
+      this._lastMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      this._dirty && this._dirty();
+    }
+  },
+  _onTouchEnd() { this._lastPinchDist = null; this._isPanning = false; },
+  zoomIn()  { const s=parseInt(this._canvas.style.width)/2; this._zoomAt(s,s,1.3); },
+  zoomOut() { const s=parseInt(this._canvas.style.width)/2; this._zoomAt(s,s,0.75); },
+  reset()   { this.scale=1; this._center(); this._dirty&&this._dirty(); }
+};
+
+// ══════════════════════════════════════════════════════════════
+//  PIXEL WALL
+// ══════════════════════════════════════════════════════════════
+const GRID=1000, BLOCK=10, BLOCKS=100;
+
+class PixelWall {
+  constructor(canvasEl) {
+    this.canvas    = canvasEl;
+    this.ctx       = canvasEl.getContext('2d', { alpha: false });
+    this.ads       = new Map();
+    this.imgCache  = new Map();
+    this.dirty     = true;
+    this.hoveredBlock = null;
+    this.onBlockClick = null;
+    this.onBlockHover = null;
+    this._selectionMode = false;
+    this._selStart = null; this._selEnd = null;
+    this._dragging = false;
+    this._touchStartPos = null;
+
+    this._setupCanvas();
+    zoomEngine.init(canvasEl, () => { this.dirty = true; });
+    this._bindEvents();
+    this._startLoop();
+  }
+
+  _setupCanvas() {
+    const dpr  = window.devicePixelRatio || 1;
+    const size = Math.min(window.innerWidth - 40, 900);
+    this.canvas.style.width  = size + 'px';
+    this.canvas.style.height = size + 'px';
+    this.canvas.width  = size * dpr;
+    this.canvas.height = size * dpr;
+    this.ctx.scale(dpr, dpr);
+    this.displaySize = size;
+    this.dpr = dpr;
+  }
+
+  loadAds(arr) {
+    this.ads.clear();
+    arr.forEach(ad => { this.ads.set(`${ad.x},${ad.y}`, ad); if(ad.image) this._preloadImage(ad.image); });
+    this.dirty = true;
+  }
+
+  addAd(ad) {
+    this.ads.set(`${ad.x},${ad.y}`, ad);
+    if (ad.image) this._preloadImage(ad.image);
+    this.dirty = true;
+  }
+
+  _preloadImage(url) {
+    if (!url || this.imgCache.has(url)) return;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload  = () => { this.imgCache.set(url, img); this.dirty = true; };
+    img.onerror = () => this.imgCache.set(url, null);
+    img.src = url;
+  }
+
+  enableSelectionMode(on) {
+    this._selectionMode = on;
+    this._selStart = null; this._selEnd = null;
+    this.canvas.style.cursor = on ? 'crosshair' : 'default';
+    this.dirty = true;
+  }
+
+  getSelection() {
+    if (!this._selStart || !this._selEnd) return null;
+    const x1 = Math.min(this._selStart.bx, this._selEnd.bx);
+    const y1 = Math.min(this._selStart.by, this._selEnd.by);
+    const x2 = Math.max(this._selStart.bx, this._selEnd.bx);
+    const y2 = Math.max(this._selStart.by, this._selEnd.by);
+    return { x:x1*BLOCK, y:y1*BLOCK, w:(x2-x1+1)*BLOCK, h:(y2-y1+1)*BLOCK };
+  }
+
+  _startLoop() {
+    const loop = () => {
+      if (this.dirty) { this._draw(); this.dirty = false; }
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+
+  _draw() {
+    const ctx  = this.ctx;
+    const { offsetX, offsetY, scale } = zoomEngine;
+    const size = this.displaySize;
+
+    ctx.clearRect(0,0,size,size);
+    ctx.fillStyle = '#080e1c';
+    ctx.fillRect(0,0,size,size);
+
+    ctx.save();
+    ctx.translate(offsetX, offsetY);
+    ctx.scale(scale, scale);
+
+    // Grid
+    if (scale > 0.4) {
+      ctx.strokeStyle = 'rgba(99,102,241,0.12)';
+      ctx.lineWidth = 0.5 / scale;
+      for (let i=0; i<=BLOCKS; i++) {
+        ctx.beginPath(); ctx.moveTo(i*BLOCK,0); ctx.lineTo(i*BLOCK,GRID); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0,i*BLOCK); ctx.lineTo(GRID,i*BLOCK); ctx.stroke();
+      }
+    }
+
+    // Ads
+    const COLORS = ['#6366f1','#22c55e','#f59e0b','#ec4899','#14b8a6','#3b82f6','#a855f7'];
+    let ci = 0;
+    this.ads.forEach(ad => {
+      const img = this.imgCache.get(ad.image);
+      if (img) {
+        ctx.drawImage(img, ad.x, ad.y, ad.width, ad.height);
+      } else {
+        const c = COLORS[ci++ % COLORS.length];
+        const grad = ctx.createLinearGradient(ad.x, ad.y, ad.x+ad.width, ad.y+ad.height);
+        grad.addColorStop(0, c); grad.addColorStop(1, c+'88');
+        ctx.fillStyle = grad;
+        ctx.fillRect(ad.x, ad.y, ad.width, ad.height);
+        // Label if large enough
+        if (ad.width*scale > 30) {
+          ctx.fillStyle = 'rgba(255,255,255,0.85)';
+          ctx.font = `bold ${Math.min(ad.height*0.3, 8/scale)}px Syne, sans-serif`;
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(ad.title.slice(0,10), ad.x+ad.width/2, ad.y+ad.height/2);
+        }
+      }
+      ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+      ctx.lineWidth = 0.5/scale;
+      ctx.strokeRect(ad.x, ad.y, ad.width, ad.height);
+    });
+
+    // Hover
+    if (this.hoveredBlock && !this._selectionMode) {
+      const { bx, by } = this.hoveredBlock;
+      const ad = this.ads.get(`${bx*BLOCK},${by*BLOCK}`);
+      ctx.fillStyle = ad ? 'rgba(99,102,241,0.3)' : 'rgba(99,102,241,0.12)';
+      ctx.fillRect(bx*BLOCK, by*BLOCK, BLOCK, BLOCK);
+      ctx.strokeStyle = '#6366f1'; ctx.lineWidth = 1/scale;
+      ctx.strokeRect(bx*BLOCK, by*BLOCK, BLOCK, BLOCK);
+    }
+
+    // Selection
+    if (this._selectionMode && this._selStart && this._selEnd) {
+      const sel = this.getSelection();
+      if (sel) {
+        ctx.fillStyle = 'rgba(99,102,241,0.2)';
+        ctx.fillRect(sel.x, sel.y, sel.w, sel.h);
+        ctx.strokeStyle = '#6366f1'; ctx.lineWidth = 2/scale;
+        ctx.setLineDash([4/scale,4/scale]);
+        ctx.strokeRect(sel.x, sel.y, sel.w, sel.h);
+        ctx.setLineDash([]);
+      }
+    }
+
+    ctx.restore();
+    this._drawMinimap();
+  }
+
+  _drawMinimap() {
+    const ctx = this.ctx;
+    const mw=100, mh=100, mx=this.displaySize-mw-8, my=this.displaySize-mh-8;
+    ctx.save();
+    ctx.globalAlpha = 0.9;
+    ctx.fillStyle = '#0d1526';
+    ctx.strokeStyle = 'rgba(99,102,241,0.4)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.roundRect(mx,my,mw,mh,5); ctx.fill(); ctx.stroke();
+
+    const sc = mw/GRID;
+    const COLORS = ['#6366f1','#22c55e','#f59e0b','#ec4899','#14b8a6'];
+    let ci=0;
+    this.ads.forEach(ad => {
+      const img = this.imgCache.get(ad.image);
+      if (img) { ctx.drawImage(img, mx+ad.x*sc, my+ad.y*sc, ad.width*sc, ad.height*sc); }
+      else { ctx.fillStyle = COLORS[ci++%COLORS.length]; ctx.fillRect(mx+ad.x*sc, my+ad.y*sc, Math.max(1,ad.width*sc), Math.max(1,ad.height*sc)); }
+    });
+
+    const { offsetX, offsetY, scale } = zoomEngine;
+    const vx = mx + (-offsetX/scale)*sc;
+    const vy = my + (-offsetY/scale)*sc;
+    const vw = (this.displaySize/scale)*sc;
+    const vh = (this.displaySize/scale)*sc;
+    ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 1.5;
+    ctx.strokeRect(vx, vy, vw, vh);
+    ctx.globalAlpha = 1; ctx.restore();
+  }
+
+  _canvasToWorld(cx, cy) {
+    const { offsetX, offsetY, scale } = zoomEngine;
+    const wx = (cx - offsetX) / scale;
+    const wy = (cy - offsetY) / scale;
+    return { wx, wy, bx: Math.floor(wx/BLOCK), by: Math.floor(wy/BLOCK) };
+  }
+
+  _bindEvents() {
+    this.canvas.addEventListener('mousemove', e => this._onMouseMove(e));
+    this.canvas.addEventListener('click',     e => this._onClick(e));
+    this.canvas.addEventListener('mousedown', e => this._onMouseDown(e));
+    this.canvas.addEventListener('mouseup',   ()=> { this._dragging = false; });
+    this.canvas.addEventListener('mouseleave',()=> { this.hoveredBlock = null; this.dirty = true; document.getElementById('pixel-tooltip').classList.remove('visible'); });
+    this.canvas.addEventListener('touchstart',e => this._onTouchStart(e), { passive: true });
+    this.canvas.addEventListener('touchend',  e => this._onTouchEnd(e));
+  }
+
+  _onMouseMove(e) {
+    const rect = this.canvas.getBoundingClientRect();
+    const { bx, by } = this._canvasToWorld(e.clientX - rect.left, e.clientY - rect.top);
+    const inBounds = bx>=0 && by>=0 && bx<BLOCKS && by<BLOCKS;
+    const prev = this.hoveredBlock;
+    this.hoveredBlock = inBounds ? { bx, by } : null;
+    if (JSON.stringify(this.hoveredBlock) !== JSON.stringify(prev)) this.dirty = true;
+
+    if (inBounds && this.onBlockHover) this.onBlockHover(bx*BLOCK, by*BLOCK, this.ads.get(`${bx*BLOCK},${by*BLOCK}`));
+    if (this._selectionMode && this._dragging && this.hoveredBlock) { this._selEnd = this.hoveredBlock; this.dirty = true; }
+  }
+
+  _onMouseDown(e) {
+    if (this._selectionMode) {
+      const rect = this.canvas.getBoundingClientRect();
+      const pos  = this._canvasToWorld(e.clientX-rect.left, e.clientY-rect.top);
+      if (pos.bx>=0 && pos.by>=0 && pos.bx<BLOCKS && pos.by<BLOCKS) {
+        this._selStart = pos; this._selEnd = pos; this._dragging = true; this.dirty = true;
+      }
+    }
+  }
+
+  _onClick(e) {
+    if (this._selectionMode) { this._dragging = false; return; }
+    const rect = this.canvas.getBoundingClientRect();
+    const { bx, by } = this._canvasToWorld(e.clientX-rect.left, e.clientY-rect.top);
+    if (bx>=0 && by>=0 && bx<BLOCKS && by<BLOCKS) {
+      const ad = this.ads.get(`${bx*BLOCK},${by*BLOCK}`);
+      if (ad && this.onBlockClick) this.onBlockClick(ad);
+    }
+  }
+
+  _onTouchStart(e) {
+    if (e.touches.length===1) this._touchStartPos = this._canvasToWorld(e.touches[0].clientX - this.canvas.getBoundingClientRect().left, e.touches[0].clientY - this.canvas.getBoundingClientRect().top);
+  }
+  _onTouchEnd(e) {
+    if (this._touchStartPos && !this._selectionMode) {
+      const ad = this.ads.get(`${this._touchStartPos.bx*BLOCK},${this._touchStartPos.by*BLOCK}`);
+      if (ad && this.onBlockClick) this.onBlockClick(ad);
+    }
+    this._touchStartPos = null;
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  BOOT
+// ══════════════════════════════════════════════════════════════
+let pixelWall;
+
+function boot() {
+  // Init pixel wall
+  pixelWall = new PixelWall(document.getElementById('pixel-canvas'));
+  pixelWall.loadAds(state.ads);
+
+  // Hover tooltip
+  const tooltip = document.getElementById('pixel-tooltip');
+  pixelWall.onBlockHover = (x, y, ad) => {
+    if (!ad) { tooltip.classList.remove('visible'); return; }
+    tooltip.querySelector('.tip-title').textContent = ad.title || 'Ad';
+    tooltip.querySelector('.tip-link').textContent  = ad.link  || '';
+    tooltip.querySelector('.tip-clicks').textContent = `👁 ${ad.clicks||0} clicks`;
+    const img = tooltip.querySelector('img');
+    img.src = ad.image || ''; img.style.display = ad.image ? 'block' : 'none';
+    tooltip.classList.add('visible');
+  };
+
+  document.getElementById('pixel-canvas').addEventListener('mousemove', e => {
+    tooltip.style.left = (e.clientX + 16) + 'px';
+    tooltip.style.top  = (e.clientY - 10) + 'px';
+  });
+
+  // Ad popup
+  const adPopup = document.getElementById('ad-popup');
+  pixelWall.onBlockClick = ad => {
+    document.getElementById('popup-img').src = ad.image || '';
+    document.getElementById('popup-img').style.display = ad.image ? 'block' : 'none';
+    document.getElementById('popup-title').textContent = ad.title || 'Ad';
+    document.getElementById('popup-link-text').textContent = ad.link;
+    document.getElementById('popup-clicks').textContent = `👁 ${ad.clicks||0} clicks`;
+    document.getElementById('popup-visit').onclick = () => {
+      ad.clicks = (ad.clicks||0) + 1;
+      window.open(ad.link, '_blank', 'noopener');
+      adPopup.classList.remove('open');
+    };
+    adPopup.classList.add('open');
+  };
+  document.getElementById('popup-close').addEventListener('click', () => adPopup.classList.remove('open'));
+  adPopup.addEventListener('click', e => { if (e.target === adPopup) adPopup.classList.remove('open'); });
+
+  // Zoom controls
+  document.getElementById('btn-zoom-in').addEventListener('click', () => zoomEngine.zoomIn());
+  document.getElementById('btn-zoom-out').addEventListener('click',() => zoomEngine.zoomOut());
+  document.getElementById('btn-zoom-reset').addEventListener('click',()=> zoomEngine.reset());
+
+  // Leaderboards
+  renderLeaderboards();
+
+  // Lucky timer
+  startLuckyTimer();
+
+  // Show app
+  document.getElementById('app-loading').style.display = 'none';
+  document.getElementById('app-content').classList.remove('hidden');
+
+  // Counter animations
+  animateCounters();
+
+  // Fade in sections
+  const io = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('fade-in'); }), { threshold: 0.1 });
+  document.querySelectorAll('.section').forEach(s => io.observe(s));
+
+  // Responsive lb-grid
+  function checkLbGrid() {
+    const grid = document.querySelector('.lb-grid');
+    if (grid) grid.style.gridTemplateColumns = window.innerWidth < 768 ? '1fr' : '1fr 340px';
+  }
+  window.addEventListener('resize', checkLbGrid);
+  checkLbGrid();
+
+  // Simulate online count variation
+  setInterval(() => {
+    const el = document.getElementById('online-count');
+    if (el) { const base = 1247; el.textContent = (base + Math.floor(Math.random()*30-15)).toLocaleString(); }
+  }, 5000);
+}
+
+// Start when DOM ready
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+else setTimeout(boot, 600);
+</script>
+</body>
+</html>
