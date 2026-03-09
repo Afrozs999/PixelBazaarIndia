@@ -483,6 +483,8 @@ h1.hero-title {
 #pixelCanvas {
   display: block;
   width: 100%;
+  height: auto;
+  aspect-ratio: 1000 / 600;
   image-rendering: pixelated;
 }
 
@@ -1483,8 +1485,491 @@ footer {
   100% { opacity: 0; transform: translateY(-80px); }
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
+/* ===== BUY PANEL TABS ===== */
+.bp-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.bp-tab {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-dim);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.bp-tab.active {
+  background: rgba(123,47,255,0.2);
+  border-color: var(--purple-light);
+  color: var(--purple-light);
+}
+
+.bp-tab.done {
+  background: rgba(0,245,255,0.1);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+/* ===== SIZE MODE TOGGLE ===== */
+.size-mode-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.size-mode-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.size-mode-btn.active {
+  background: var(--purple);
+  color: white;
+  box-shadow: 0 0 20px rgba(123,47,255,0.4);
+}
+
+/* ===== PRESET GRID ===== */
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.preset-card {
+  background: rgba(255,255,255,0.03);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.preset-card:hover {
+  border-color: var(--purple-light);
+  background: rgba(123,47,255,0.08);
+  transform: translateY(-4px);
+}
+
+.preset-card.selected {
+  border-color: var(--cyan);
+  background: rgba(0,245,255,0.08);
+  box-shadow: 0 0 24px rgba(0,245,255,0.2);
+}
+
+.preset-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.preset-size {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.preset-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--yellow);
+}
+
+.preset-badge {
+  position: absolute;
+  top: -10px;
+  right: 8px;
+  background: var(--purple);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+}
+
+/* ===== CUSTOM SIZE ===== */
+.custom-size-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.custom-inputs-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.custom-input-group {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.custom-input-group label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.custom-spinner {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.custom-spinner button {
+  background: rgba(123,47,255,0.2);
+  border: none;
+  color: var(--text);
+  padding: 10px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  line-height: 1;
+}
+
+.custom-spinner button:hover { background: var(--purple); }
+
+.custom-spinner input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--cyan);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  width: 70px;
+}
+
+.custom-x {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  padding-top: 24px;
+}
+
+.dim-hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.custom-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.custom-preview-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.custom-preview-box {
+  background: rgba(0,0,0,0.4);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-preview-dims {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: var(--cyan);
+}
+
+.custom-price-box {
+  background: rgba(123,47,255,0.1);
+  border: 1px solid var(--purple);
+  border-radius: 10px;
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.cp-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.cp-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: -1px;
+}
+
+.cp-formula {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* ===== SELECTED SIZE SUMMARY ===== */
+.selected-size-summary {
+  background: rgba(0,245,255,0.06);
+  border: 1px solid rgba(0,245,255,0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: var(--cyan);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* ===== NAV BUTTONS ===== */
+.btn-next {
+  width: 100%;
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--purple-light);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-next:hover:not(:disabled) {
+  box-shadow: 0 0 30px rgba(123,47,255,0.5);
+  transform: translateY(-2px);
+}
+
+.btn-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-back {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-dim);
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back:hover {
+  background: rgba(255,255,255,0.1);
+  color: var(--text);
+}
+
+/* ===== IMAGE UPLOAD ===== */
+.img-upload-area {
+  border: 2px dashed rgba(0,245,255,0.35);
+  border-radius: 14px;
+  padding: 36px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: rgba(0,245,255,0.02);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-upload-area:hover, .img-upload-area.dragover {
+  border-color: var(--cyan);
+  background: rgba(0,245,255,0.06);
+  box-shadow: 0 0 30px rgba(0,245,255,0.1);
+}
+
+.upload-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.upload-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.upload-hint-box {
+  margin-top: 16px;
+  background: rgba(123,47,255,0.15);
+  border: 1px solid rgba(123,47,255,0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--purple-light);
+  display: inline-block;
+}
+
+.img-optional-note {
+  margin-top: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 10px;
+  background: rgba(255,215,0,0.05);
+  border: 1px solid rgba(255,215,0,0.15);
+  border-radius: 8px;
+}
+
+/* ===== CONFIRM STEP ===== */
+.confirm-wrap {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 600px) {
+  .confirm-wrap { grid-template-columns: 1fr; }
+}
+
+.confirm-preview-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.confirm-preview-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.confirm-canvas-wrap {
+  background: #000;
+  border-radius: 8px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  display: inline-block;
+}
+
+.confirm-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.confirm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.confirm-row.total {
+  border-bottom: none;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-top: 4px;
+}
+
+.cr-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.cr-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+  max-width: 200px;
+}
+
+/* ===== RESPONSIVE BUY FORM ===== */
+.buy-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 560px) {
+  .buy-form { grid-template-columns: 1fr; }
+  .preset-grid { grid-template-columns: repeat(2, 1fr); }
+  .custom-inputs-row { flex-direction: column; }
+  .custom-x { padding-top: 0; }
+}
+/* ===== END NEW CSS ===== */
+
   nav { padding: 14px 20px; }
   .nav-links { display: none; }
   .lb-header, .lb-row {
@@ -1638,38 +2123,208 @@ footer {
   <!-- BUY PANEL -->
   <div class="buy-panel" id="buyPanel">
     <div class="buy-panel-inner">
-      <h3>🎯 Claim Block <span id="selectedBlockInfo">—</span></h3>
-      <div class="buy-form">
-        <div class="form-group">
-          <label>Your Name / Brand</label>
-          <input type="text" id="inputName" placeholder="e.g. StartupX" />
-        </div>
-        <div class="form-group">
-          <label>Website URL</label>
-          <input type="text" id="inputUrl" placeholder="https://yourbrand.com" />
-        </div>
-        <div class="form-group">
-          <label>Block Size</label>
-          <select id="inputSize" onchange="updatePrice()">
-            <option value="1">1×1 Block (10×10 px) — ₹100</option>
-            <option value="4" selected>2×2 Blocks (20×20 px) — ₹350</option>
-            <option value="25">5×5 Blocks (50×50 px) — ₹1,500</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Pixel Color</label>
-          <input type="color" id="inputColor" value="#7B2FFF" style="height:48px;cursor:pointer;" />
-        </div>
-        <div class="form-group full">
-          <label>Tagline / Message (optional)</label>
-          <input type="text" id="inputTagline" placeholder="e.g. India's Best SaaS" />
-        </div>
-        <div class="price-display">
-          <span class="price-label">Total Price</span>
-          <span class="price-value" id="priceDisplay">₹350 <small>one-time forever</small></span>
-        </div>
-        <button class="btn-buy" onclick="purchasePixel()">⚡ BUY NOW — CLAIM FOREVER</button>
+      <h3>🎯 Apna Plot Claim Karo <span id="selectedBlockInfo" style="color:var(--cyan);">—</span></h3>
+
+      <!-- STEP TABS -->
+      <div class="bp-tabs">
+        <button class="bp-tab active" id="tab1" onclick="switchTab(1)">1 · Size Chuno</button>
+        <button class="bp-tab" id="tab2" onclick="switchTab(2)">2 · Details Bharo</button>
+        <button class="bp-tab" id="tab3" onclick="switchTab(3)">3 · Image Upload</button>
+        <button class="bp-tab" id="tab4" onclick="switchTab(4)">4 · Confirm & Buy</button>
       </div>
+
+      <!-- ── STEP 1 : SIZE ── -->
+      <div class="bp-step" id="step1">
+        <div class="size-mode-toggle">
+          <button class="size-mode-btn active" id="modePreset" onclick="switchMode('preset')">Preset Sizes</button>
+          <button class="size-mode-btn" id="modeCustom" onclick="switchMode('custom')">Custom Size</button>
+        </div>
+
+        <!-- PRESET -->
+        <div id="presetPanel">
+          <div class="preset-grid">
+            <div class="preset-card" onclick="selectPreset(10,10,100)" data-w="10" data-h="10">
+              <div class="preset-visual" style="width:30px;height:30px;background:var(--purple);border-radius:4px;"></div>
+              <div class="preset-name">Starter</div>
+              <div class="preset-size">10×10 px</div>
+              <div class="preset-price">₹100</div>
+            </div>
+            <div class="preset-card" onclick="selectPreset(20,20,350)" data-w="20" data-h="20">
+              <div class="preset-visual" style="width:48px;height:48px;background:var(--purple);border-radius:4px;"></div>
+              <div class="preset-name">Growth</div>
+              <div class="preset-size">20×20 px</div>
+              <div class="preset-price">₹350</div>
+              <div class="preset-badge">🔥 Popular</div>
+            </div>
+            <div class="preset-card" onclick="selectPreset(30,30,700)" data-w="30" data-h="30">
+              <div class="preset-visual" style="width:60px;height:60px;background:var(--purple);border-radius:4px;"></div>
+              <div class="preset-name">Pro</div>
+              <div class="preset-size">30×30 px</div>
+              <div class="preset-price">₹700</div>
+            </div>
+            <div class="preset-card" onclick="selectPreset(50,50,1500)" data-w="50" data-h="50">
+              <div class="preset-visual" style="width:80px;height:80px;background:var(--purple);border-radius:4px;"></div>
+              <div class="preset-name">Empire</div>
+              <div class="preset-size">50×50 px</div>
+              <div class="preset-price">₹1,500</div>
+              <div class="preset-badge">👑 Premium</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CUSTOM -->
+        <div id="customPanel" style="display:none;">
+          <div class="custom-size-wrap">
+            <div class="custom-inputs-row">
+              <div class="custom-input-group">
+                <label>Chaurai (Width px)</label>
+                <div class="custom-spinner">
+                  <button onclick="adjustDim('w',-10)">−</button>
+                  <input type="number" id="customW" value="10" min="10" max="500" step="10" oninput="clampCustom('w');calcCustomPrice()" />
+                  <button onclick="adjustDim('w',10)">+</button>
+                </div>
+                <span class="dim-hint">Min 10 · Max 500</span>
+              </div>
+              <div class="custom-x">×</div>
+              <div class="custom-input-group">
+                <label>Unchai (Height px)</label>
+                <div class="custom-spinner">
+                  <button onclick="adjustDim('h',-10)">−</button>
+                  <input type="number" id="customH" value="10" min="10" max="500" step="10" oninput="clampCustom('h');calcCustomPrice()" />
+                  <button onclick="adjustDim('h',10)">+</button>
+                </div>
+                <span class="dim-hint">Min 10 · Max 500</span>
+              </div>
+            </div>
+
+            <div class="custom-preview-wrap">
+              <div class="custom-preview-label">Preview (scaled)</div>
+              <div class="custom-preview-box">
+                <div id="customPreviewBlock" style="
+                  background: linear-gradient(135deg,var(--purple),var(--cyan));
+                  border-radius:4px;
+                  transition: all 0.3s;
+                  width:40px;height:40px;
+                  display:flex;align-items:center;justify-content:center;
+                  font-size:18px;
+                ">🏷️</div>
+              </div>
+              <div class="custom-preview-dims" id="customPreviewDims">10 × 10 pixels</div>
+            </div>
+
+            <div class="custom-price-box">
+              <div class="cp-label">Calculated Price</div>
+              <div class="cp-price" id="customPriceDisplay">₹100</div>
+              <div class="cp-formula">₹1 per pixel · Min ₹100</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="selected-size-summary" id="sizeSummary">
+          <span id="summaryText">Koi size select nahi hua</span>
+        </div>
+        <button class="btn-next" onclick="goToStep(2)" id="btnNext1" disabled>Aage Badho →</button>
+      </div>
+
+      <!-- ── STEP 2 : DETAILS ── -->
+      <div class="bp-step" id="step2" style="display:none;">
+        <div class="buy-form">
+          <div class="form-group">
+            <label>Aapka Naam / Brand</label>
+            <input type="text" id="inputName" placeholder="e.g. Arjun Kapoor ya ShopDesi.in" />
+          </div>
+          <div class="form-group">
+            <label>Website URL</label>
+            <input type="text" id="inputUrl" placeholder="https://aapkabrand.in" />
+          </div>
+          <div class="form-group full">
+            <label>Tagline (Optional)</label>
+            <input type="text" id="inputTagline" placeholder="e.g. India Ka Best Store" />
+          </div>
+          <div class="form-group">
+            <label>Background Color (Agar image nahi deni)</label>
+            <input type="color" id="inputColor" value="#7B2FFF" style="height:48px;cursor:pointer;width:100%;" />
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:24px;">
+          <button class="btn-back" onclick="goToStep(1)">← Wapas</button>
+          <button class="btn-next" onclick="goToStep(3)" style="flex:1;">Image Upload Karo →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3 : IMAGE UPLOAD ── -->
+      <div class="bp-step" id="step3" style="display:none;">
+        <div class="img-upload-area" id="imgUploadArea" onclick="document.getElementById('imgFileInput').click()" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+          <div id="uploadPlaceholder">
+            <div style="font-size:48px;margin-bottom:12px;">🖼️</div>
+            <div class="upload-title">Logo ya Image Upload Karo</div>
+            <div class="upload-sub">Click karo ya yahan drag & drop karo<br><span style="color:var(--text-dim);font-size:12px;">PNG, JPG, GIF · Max 5MB</span></div>
+            <div class="upload-hint-box">
+              <span id="uploadSizeHint">Aapka plot size: — px · Image automatically fit hogi</span>
+            </div>
+          </div>
+          <div id="uploadPreviewWrap" style="display:none;text-align:center;">
+            <img id="uploadedPreviewImg" style="max-width:100%;max-height:200px;border-radius:8px;border:2px solid var(--cyan);object-fit:contain;" />
+            <div style="margin-top:12px;font-size:13px;color:var(--cyan);" id="imgFitInfo"></div>
+            <button onclick="removeImage(event)" style="margin-top:10px;background:rgba(255,50,50,0.15);color:#ff6b6b;border:1px solid rgba(255,50,50,0.3);padding:6px 16px;border-radius:6px;cursor:pointer;font-size:12px;">✕ Remove Image</button>
+          </div>
+          <input type="file" id="imgFileInput" accept="image/*" style="display:none;" onchange="handleImageUpload(event)" />
+        </div>
+
+        <div class="img-optional-note">
+          <span>💡 Image optional hai — bina image ke sirf color/naam se bhi plot ban sakta hai</span>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:20px;">
+          <button class="btn-back" onclick="goToStep(2)">← Wapas</button>
+          <button class="btn-next" onclick="goToStep(4)" style="flex:1;">Review Karo →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 4 : CONFIRM ── -->
+      <div class="bp-step" id="step4" style="display:none;">
+        <div class="confirm-wrap">
+          <div class="confirm-preview-card">
+            <div class="confirm-preview-label">Aapka Plot Preview</div>
+            <div class="confirm-canvas-wrap">
+              <canvas id="confirmCanvas" width="200" height="200" style="border-radius:8px;border:2px solid var(--border);"></canvas>
+            </div>
+          </div>
+
+          <div class="confirm-details">
+            <div class="confirm-row">
+              <span class="cr-label">Plot Size</span>
+              <span class="cr-value" id="crSize">—</span>
+            </div>
+            <div class="confirm-row">
+              <span class="cr-label">Pixels</span>
+              <span class="cr-value" id="crPixels">—</span>
+            </div>
+            <div class="confirm-row">
+              <span class="cr-label">Naam</span>
+              <span class="cr-value" id="crName">—</span>
+            </div>
+            <div class="confirm-row">
+              <span class="cr-label">Link</span>
+              <span class="cr-value" id="crLink" style="color:var(--cyan);word-break:break-all;">—</span>
+            </div>
+            <div class="confirm-row">
+              <span class="cr-label">Image</span>
+              <span class="cr-value" id="crImage">—</span>
+            </div>
+            <div class="confirm-row total">
+              <span class="cr-label">Total Price</span>
+              <span class="cr-value" id="crPrice" style="color:var(--yellow);font-size:24px;font-weight:700;">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:24px;">
+          <button class="btn-back" onclick="goToStep(3)">← Wapas</button>
+          <button class="btn-buy" onclick="purchasePixel()" style="flex:1;">⚡ ABHI KHARIDO — FOREVER CLAIM KARO</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1786,7 +2441,7 @@ footer {
           <li>Custom color</li>
           <li>Pixel owner badge</li>
         </ul>
-        <button class="btn-price" onclick="scrollToGrid()">Claim Block →</button>
+        <button class="btn-price" onclick="openBuyWithPreset(10,10,100)">Claim Block →</button>
       </div>
 
       <div class="price-card popular">
@@ -1800,7 +2455,7 @@ footer {
           <li>Tagline text</li>
           <li>Featured in showcase</li>
         </ul>
-        <button class="btn-price" onclick="scrollToGrid()">🔥 Claim Block →</button>
+        <button class="btn-price" onclick="openBuyWithPreset(20,20,350)">🔥 Claim Block →</button>
       </div>
 
       <div class="price-card">
@@ -1814,7 +2469,7 @@ footer {
           <li>Top leaderboard listing</li>
           <li>Golden pixel eligible</li>
         </ul>
-        <button class="btn-price" onclick="scrollToGrid()">Claim Block →</button>
+        <button class="btn-price" onclick="openBuyWithPreset(50,50,1500)">Claim Block →</button>
       </div>
     </div>
   </div>
@@ -2027,6 +2682,31 @@ const ctx = canvas.getContext('2d');
 let pixelMap = {}; // key: "col,row" -> owner data
 
 let viewX = 0, viewY = 0, zoom = 1;
+
+// ── Compute minimum zoom so grid always fills the canvas ──
+function getMinZoom() {
+  // canvas internal resolution = 1000 × 600
+  // world size = GRID_COLS*BLOCK_SIZE × GRID_ROWS*BLOCK_SIZE = 1000 × 600
+  // minZoom = canvas/world = 1  (grid exactly fills at zoom 1)
+  // but we want to prevent zooming OUT past fit
+  return Math.min(
+    canvas.width  / (GRID_COLS * BLOCK_SIZE),
+    canvas.height / (GRID_ROWS * BLOCK_SIZE)
+  );
+}
+
+function clampView() {
+  const minZ = getMinZoom();
+  zoom = Math.max(minZ, zoom);
+  const maxViewX = Math.max(0, GRID_COLS * BLOCK_SIZE - canvas.width  / zoom);
+  const maxViewY = Math.max(0, GRID_ROWS * BLOCK_SIZE - canvas.height / zoom);
+  viewX = Math.max(0, Math.min(viewX, maxViewX));
+  viewY = Math.max(0, Math.min(viewY, maxViewY));
+}
+
+// Init: fit grid perfectly inside canvas
+zoom = getMinZoom();
+viewX = 0; viewY = 0;
 let isDragging = false, dragStartX, dragStartY, viewStartX, viewStartY;
 let hoveredBlock = null;
 let selectedBlock = null;
@@ -2063,8 +2743,20 @@ function drawGrid() {
   const H = canvas.height;
 
   ctx.clearRect(0, 0, W, H);
+
+  // Background — always fill full canvas
   ctx.fillStyle = '#030310';
   ctx.fillRect(0, 0, W, H);
+
+  // Grid world area fill
+  const { x: gx0, y: gy0 } = worldToCanvas(0, 0);
+  const { x: gx1, y: gy1 } = worldToCanvas(GRID_COLS * BLOCK_SIZE, GRID_ROWS * BLOCK_SIZE);
+  ctx.fillStyle = '#050518';
+  ctx.fillRect(gx0, gy0, gx1 - gx0, gy1 - gy0);
+  // Grid border
+  ctx.strokeStyle = 'rgba(123,47,255,0.4)';
+  ctx.lineWidth = 1.5;
+  ctx.strokeRect(gx0, gy0, gx1 - gx0, gy1 - gy0);
 
   const blockPx = BLOCK_SIZE * zoom;
   const startCol = Math.max(0, Math.floor(viewX / BLOCK_SIZE));
@@ -2073,23 +2765,15 @@ function drawGrid() {
   const endRow = Math.min(GRID_ROWS - 1, Math.ceil((viewY + H / zoom) / BLOCK_SIZE));
 
   // Draw grid lines
-  if (zoom > 0.5) {
-    ctx.strokeStyle = 'rgba(123,47,255,0.15)';
-    ctx.lineWidth = 0.5;
-    for (let c = startCol; c <= endCol + 1; c++) {
-      const { x } = worldToCanvas(c * BLOCK_SIZE, 0);
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, H);
-      ctx.stroke();
-    }
-    for (let r = startRow; r <= endRow + 1; r++) {
-      const { y } = worldToCanvas(0, r * BLOCK_SIZE);
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(W, y);
-      ctx.stroke();
-    }
+  ctx.strokeStyle = 'rgba(123,47,255,0.12)';
+  ctx.lineWidth = 0.5;
+  for (let c = startCol; c <= endCol + 1; c++) {
+    const { x } = worldToCanvas(c * BLOCK_SIZE, 0);
+    ctx.beginPath(); ctx.moveTo(x, gy0); ctx.lineTo(x, gy1); ctx.stroke();
+  }
+  for (let r = startRow; r <= endRow + 1; r++) {
+    const { y } = worldToCanvas(0, r * BLOCK_SIZE);
+    ctx.beginPath(); ctx.moveTo(gx0, y); ctx.lineTo(gx1, y); ctx.stroke();
   }
 
   // Draw blocks
@@ -2106,7 +2790,21 @@ function drawGrid() {
         ctx.fillStyle = owner.color;
         ctx.fillRect(x, y, blockPx - 0.5, blockPx - 0.5);
 
-        if (blockPx > 12) {
+        // Draw image slice if available
+        if (owner.img && owner.img.complete) {
+          const iw = owner.img.width;
+          const ih = owner.img.height;
+          const tw = owner.totalW * blockPx;
+          const th = owner.totalH * blockPx;
+          // compute where this block sits in the full image
+          const sx = (owner.imgOffX / owner.totalW) * iw;
+          const sy = (owner.imgOffY / owner.totalH) * ih;
+          const sw = iw / owner.totalW;
+          const sh = ih / owner.totalH;
+          try {
+            ctx.drawImage(owner.img, sx, sy, sw, sh, x, y, blockPx, blockPx);
+          } catch(e) {}
+        } else if (!owner.img && blockPx > 12) {
           ctx.font = `${Math.min(blockPx * 0.6, 16)}px serif`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -2186,8 +2884,7 @@ canvas.addEventListener('mousemove', (e) => {
     const dy = (cy - dragStartY) * (canvas.width / rect.width) / zoom;
     viewX = viewStartX - dx;
     viewY = viewStartY - dy;
-    viewX = Math.max(0, Math.min(viewX, GRID_COLS * BLOCK_SIZE - canvas.width / zoom));
-    viewY = Math.max(0, Math.min(viewY, GRID_ROWS * BLOCK_SIZE - canvas.height / zoom));
+    clampView();
     hoveredBlock = null;
     hideTooltip();
     return;
@@ -2257,26 +2954,31 @@ canvas.addEventListener('wheel', (e) => {
     x: cx / zoom + viewX,
     y: cy / zoom + viewY,
   };
-  zoom *= e.deltaY < 0 ? 1.15 : 0.87;
-  zoom = Math.max(0.3, Math.min(zoom, 8));
+  // Only allow zoom IN (scroll up = deltaY < 0) freely
+  // zoom OUT is clamped to minZoom
+  const factor = e.deltaY < 0 ? 1.18 : 0.85;
+  zoom *= factor;
+  zoom = Math.min(zoom, 10); // max zoom in = 10×
+  clampView(); // enforces minZoom and view bounds
+  // Reanchor view to mouse position
   viewX = worldBefore.x - cx / zoom;
   viewY = worldBefore.y - cy / zoom;
-  viewX = Math.max(0, Math.min(viewX, GRID_COLS * BLOCK_SIZE - canvas.width / zoom));
-  viewY = Math.max(0, Math.min(viewY, GRID_ROWS * BLOCK_SIZE - canvas.height / zoom));
+  clampView();
 }, { passive: false });
 
 function handleBlockClick(col, row, clientX, clientY) {
   createRipple(clientX, clientY);
   const key = blockKey(col, row);
   if (pixelMap[key]) {
-    // Show tooltip for owned block
     return;
   }
   selectedBlock = { c: col, r: row };
   document.getElementById('buyPanel').classList.add('visible');
   document.getElementById('selectedBlockInfo').textContent = `(${col}, ${row})`;
+  // Reset to step 1
+  goToStep(1);
   document.getElementById('buyPanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  showPixelFlash(clientX, clientY, 'Block Selected!');
+  showPixelFlash(clientX, clientY, '✅ Block Select!');
 }
 
 // ============================
@@ -2315,60 +3017,334 @@ function hideTooltip() {
 }
 
 // ============================
-// BUY PANEL
+// BUY PANEL STATE
 // ============================
-const prices = { "1": 100, "4": 350, "25": 1500 };
+let buyState = {
+  mode: 'preset',      // 'preset' | 'custom'
+  widthPx: 0,
+  heightPx: 0,
+  price: 0,
+  name: '',
+  url: '',
+  tagline: '',
+  color: '#7B2FFF',
+  imageDataUrl: null,  // base64 uploaded image
+  currentStep: 1,
+};
 
-function updatePrice() {
-  const size = document.getElementById('inputSize').value;
-  const price = prices[size];
-  document.getElementById('priceDisplay').innerHTML = `₹${price.toLocaleString()} <small>one-time forever</small>`;
+// ── TAB / STEP NAVIGATION ──
+function switchTab(n) { /* visual only — actual nav via goToStep */ }
+
+function goToStep(n) {
+  for (let i = 1; i <= 4; i++) {
+    const el = document.getElementById('step' + i);
+    if (el) el.style.display = i === n ? 'block' : 'none';
+    const tab = document.getElementById('tab' + i);
+    if (tab) {
+      tab.classList.remove('active','done');
+      if (i < n) tab.classList.add('done');
+      if (i === n) tab.classList.add('active');
+    }
+  }
+  buyState.currentStep = n;
+
+  if (n === 3) {
+    // Update upload hint
+    document.getElementById('uploadSizeHint').textContent =
+      `Aapka plot size: ${buyState.widthPx} × ${buyState.heightPx} px · Image exactly fit hogi`;
+  }
+
+  if (n === 4) {
+    populateConfirm();
+  }
 }
 
-function purchasePixel() {
-  const name = document.getElementById('inputName').value.trim() || 'Anonymous';
-  const url = document.getElementById('inputUrl').value.trim() || '#';
-  const color = document.getElementById('inputColor').value;
-  const size = parseInt(document.getElementById('inputSize').value);
-  const side = Math.sqrt(size);
+// ── MODE TOGGLE ──
+function switchMode(m) {
+  buyState.mode = m;
+  document.getElementById('modePreset').classList.toggle('active', m === 'preset');
+  document.getElementById('modeCustom').classList.toggle('active', m === 'custom');
+  document.getElementById('presetPanel').style.display = m === 'preset' ? 'block' : 'none';
+  document.getElementById('customPanel').style.display = m === 'custom' ? 'block' : 'none';
+  if (m === 'custom') calcCustomPrice();
+}
 
+// ── PRESET SELECT ──
+function selectPreset(w, h, price) {
+  buyState.widthPx = w;
+  buyState.heightPx = h;
+  buyState.price = price;
+
+  document.querySelectorAll('.preset-card').forEach(c => c.classList.remove('selected'));
+  const cards = document.querySelectorAll('.preset-card');
+  cards.forEach(c => {
+    if (parseInt(c.dataset.w) === w && parseInt(c.dataset.h) === h)
+      c.classList.add('selected');
+  });
+
+  updateSizeSummary();
+}
+
+// ── CUSTOM SIZE ──
+function adjustDim(axis, delta) {
+  const inp = document.getElementById(axis === 'w' ? 'customW' : 'customH');
+  let val = parseInt(inp.value) || 10;
+  val = Math.max(10, Math.min(500, val + delta));
+  // round to nearest 10
+  val = Math.round(val / 10) * 10;
+  inp.value = val;
+  clampCustom(axis);
+  calcCustomPrice();
+}
+
+function clampCustom(axis) {
+  const inp = document.getElementById(axis === 'w' ? 'customW' : 'customH');
+  let val = parseInt(inp.value) || 10;
+  val = Math.max(10, Math.min(500, val));
+  inp.value = val;
+}
+
+function calcCustomPrice() {
+  let w = parseInt(document.getElementById('customW').value) || 10;
+  let h = parseInt(document.getElementById('customH').value) || 10;
+  w = Math.max(10, Math.min(500, w));
+  h = Math.max(10, Math.min(500, h));
+
+  buyState.widthPx = w;
+  buyState.heightPx = h;
+
+  const pixels = w * h;
+  const price = Math.max(100, pixels); // ₹1 per pixel, min ₹100
+  buyState.price = price;
+
+  document.getElementById('customPriceDisplay').textContent = '₹' + price.toLocaleString('en-IN');
+  document.getElementById('customPreviewDims').textContent = `${w} × ${h} pixels`;
+
+  // Scale preview block (max 110px in the 140px box)
+  const maxDim = 110;
+  const ratio = Math.min(maxDim / w, maxDim / h, 1);
+  const pw = Math.max(10, Math.round(w * ratio));
+  const ph = Math.max(10, Math.round(h * ratio));
+  const block = document.getElementById('customPreviewBlock');
+  block.style.width = pw + 'px';
+  block.style.height = ph + 'px';
+  block.style.fontSize = Math.max(10, Math.min(pw, ph) * 0.4) + 'px';
+
+  updateSizeSummary();
+}
+
+function updateSizeSummary() {
+  const w = buyState.widthPx;
+  const h = buyState.heightPx;
+  const price = buyState.price;
+
+  if (!w || !h) {
+    document.getElementById('summaryText').textContent = 'Koi size select nahi hua';
+    document.getElementById('btnNext1').disabled = true;
+    return;
+  }
+
+  document.getElementById('summaryText').textContent =
+    `✅ ${w} × ${h} pixels select kiya · ${(w*h).toLocaleString()} total pixels · ₹${price.toLocaleString('en-IN')}`;
+  document.getElementById('btnNext1').disabled = false;
+}
+
+// ── IMAGE UPLOAD ──
+function handleDragOver(e) {
+  e.preventDefault();
+  document.getElementById('imgUploadArea').classList.add('dragover');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('imgUploadArea').classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) processImageFile(file);
+}
+
+function handleImageUpload(e) {
+  const file = e.target.files[0];
+  if (file) processImageFile(file);
+}
+
+function processImageFile(file) {
+  if (file.size > 5 * 1024 * 1024) {
+    alert('File 5MB se badi hai. Choti file upload karo.');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    buyState.imageDataUrl = ev.target.result;
+    document.getElementById('uploadPlaceholder').style.display = 'none';
+    document.getElementById('uploadPreviewWrap').style.display = 'block';
+    document.getElementById('uploadedPreviewImg').src = ev.target.result;
+    document.getElementById('imgFitInfo').textContent =
+      `✅ Image aapke ${buyState.widthPx}×${buyState.heightPx}px plot mein perfectly fit hogi`;
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeImage(e) {
+  e.stopPropagation();
+  buyState.imageDataUrl = null;
+  document.getElementById('uploadPlaceholder').style.display = 'block';
+  document.getElementById('uploadPreviewWrap').style.display = 'none';
+  document.getElementById('imgFileInput').value = '';
+}
+
+// ── CONFIRM STEP ──
+function populateConfirm() {
+  const name = document.getElementById('inputName').value.trim() || 'Anonymous';
+  const url = document.getElementById('inputUrl').value.trim() || '—';
+  buyState.name = name;
+  buyState.url = url;
+  buyState.color = document.getElementById('inputColor').value;
+
+  document.getElementById('crSize').textContent = `${buyState.widthPx} × ${buyState.heightPx} px`;
+  document.getElementById('crPixels').textContent = (buyState.widthPx * buyState.heightPx).toLocaleString() + ' pixels';
+  document.getElementById('crName').textContent = name;
+  document.getElementById('crLink').textContent = url;
+  document.getElementById('crImage').textContent = buyState.imageDataUrl ? '✅ Image ready' : '❌ Koi image nahi (sirf color)';
+  document.getElementById('crPrice').textContent = '₹' + buyState.price.toLocaleString('en-IN');
+
+  // Draw confirm canvas
+  const canvas = document.getElementById('confirmCanvas');
+  const ctx2 = canvas.getContext('2d');
+  const W = 200, H = 200;
+  canvas.width = W; canvas.height = H;
+
+  if (buyState.imageDataUrl) {
+    const img = new Image();
+    img.onload = () => {
+      ctx2.clearRect(0, 0, W, H);
+      // fill background
+      ctx2.fillStyle = buyState.color;
+      ctx2.fillRect(0, 0, W, H);
+      // draw image cover
+      const iw = img.width, ih = img.height;
+      const scale = Math.max(W / iw, H / ih);
+      const sw = iw * scale, sh = ih * scale;
+      ctx2.drawImage(img, (W - sw) / 2, (H - sh) / 2, sw, sh);
+      // overlay name
+      drawConfirmLabel(ctx2, name, W, H);
+    };
+    img.src = buyState.imageDataUrl;
+  } else {
+    ctx2.fillStyle = buyState.color;
+    ctx2.fillRect(0, 0, W, H);
+    drawConfirmLabel(ctx2, name, W, H);
+  }
+}
+
+function drawConfirmLabel(ctx2, name, W, H) {
+  // semi-transparent bar at bottom
+  ctx2.fillStyle = 'rgba(0,0,0,0.6)';
+  ctx2.fillRect(0, H - 36, W, 36);
+  ctx2.fillStyle = '#fff';
+  ctx2.font = 'bold 13px Inter, sans-serif';
+  ctx2.textAlign = 'center';
+  ctx2.textBaseline = 'middle';
+  ctx2.fillText(name, W / 2, H - 18);
+}
+
+// ── PURCHASE ──
+function purchasePixel() {
   if (!selectedBlock) return;
 
-  // Place blocks
+  const name = buyState.name || document.getElementById('inputName').value.trim() || 'Anonymous';
+  const url = buyState.url || document.getElementById('inputUrl').value.trim() || '#';
+  const color = buyState.color || document.getElementById('inputColor').value;
+  const imgData = buyState.imageDataUrl;
+
+  const wPx = buyState.widthPx;
+  const hPx = buyState.heightPx;
+
+  // Convert pixel dimensions to grid blocks (each block = 10px)
+  const wBlocks = Math.max(1, Math.ceil(wPx / BLOCK_SIZE));
+  const hBlocks = Math.max(1, Math.ceil(hPx / BLOCK_SIZE));
+
   const emojis = ['🚀','⚡','🎯','💎','🔮','🌟','🏆','🎨','💡','🔥'];
   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 
-  for (let dr = 0; dr < side; dr++) {
-    for (let dc = 0; dc < side; dc++) {
-      const c = selectedBlock.c + dc;
-      const r = selectedBlock.r + dr;
-      if (c < GRID_COLS && r < GRID_ROWS) {
-        pixelMap[blockKey(c, r)] = { name, emoji, color, link: url };
+  // If image provided, create an offscreen canvas to rasterize it per block
+  let blockImageMap = {};
+
+  const doPlace = () => {
+    for (let dr = 0; dr < hBlocks; dr++) {
+      for (let dc = 0; dc < wBlocks; dc++) {
+        const c = selectedBlock.c + dc;
+        const r = selectedBlock.r + dr;
+        if (c < GRID_COLS && r < GRID_ROWS) {
+          pixelMap[blockKey(c, r)] = {
+            name, emoji, color, link: url,
+            imageData: imgData,
+            imgOffX: dc / wBlocks,
+            imgOffY: dr / hBlocks,
+            imgW: 1 / wBlocks,
+            imgH: 1 / hBlocks,
+            totalW: wBlocks,
+            totalH: hBlocks,
+          };
+        }
       }
     }
+
+    document.getElementById('buyPanel').classList.remove('visible');
+    selectedBlock = null;
+    buyState = { mode:'preset', widthPx:0, heightPx:0, price:0, name:'', url:'', tagline:'', color:'#7B2FFF', imageDataUrl:null, currentStep:1 };
+
+    // Reset form
+    goToStep(1);
+    document.getElementById('inputName').value = '';
+    document.getElementById('inputUrl').value = '';
+    document.getElementById('inputTagline').value = '';
+    document.getElementById('btnNext1').disabled = true;
+    document.querySelectorAll('.preset-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('summaryText').textContent = 'Koi size select nahi hua';
+    removeImage({stopPropagation:()=>{}});
+
+    updateCounters();
+    showPurchasePopup(emoji, name, buyState.price || 100);
+    showPixelFlash(window.innerWidth / 2, window.innerHeight / 2, '🎉 Plot Claim Ho Gaya!');
+    launchConfetti();
+  };
+
+  if (imgData) {
+    // Pre-load image so canvas can draw it
+    const preloadImg = new Image();
+    preloadImg.onload = () => {
+      // Store the loaded image object on relevant blocks
+      for (let dr = 0; dr < hBlocks; dr++) {
+        for (let dc = 0; dc < wBlocks; dc++) {
+          const c = selectedBlock.c + dc;
+          const r = selectedBlock.r + dr;
+          if (c < GRID_COLS && r < GRID_ROWS) {
+            pixelMap[blockKey(c, r)] = {
+              name, emoji, color, link: url,
+              img: preloadImg,
+              imgOffX: dc, imgOffY: dr,
+              totalW: wBlocks, totalH: hBlocks,
+            };
+          }
+        }
+      }
+      document.getElementById('buyPanel').classList.remove('visible');
+      selectedBlock = null;
+      updateCounters();
+      showPurchasePopup(emoji, name, buyState.price || 100);
+      showPixelFlash(window.innerWidth / 2, window.innerHeight / 2, '🎉 Plot Claim Ho Gaya!');
+      launchConfetti();
+      goToStep(1);
+    };
+    preloadImg.src = imgData;
+  } else {
+    doPlace();
   }
-
-  // Hide panel, clear selection
-  document.getElementById('buyPanel').classList.remove('visible');
-  selectedBlock = null;
-
-  // Update counters
-  updateCounters();
-
-  // Show success popup
-  showPurchasePopup(emoji, name, prices[String(size)]);
-
-  // Flash
-  showPixelFlash(window.innerWidth / 2, window.innerHeight / 2, '🎉 Pixel Claimed!');
-
-  // Clear form
-  document.getElementById('inputName').value = '';
-  document.getElementById('inputUrl').value = '';
-  document.getElementById('inputTagline').value = '';
-
-  // Confetti
-  launchConfetti();
 }
+
+// ──── OLD updatePrice (kept for compatibility) ────
+function updatePrice() {}
+
 
 // ============================
 // LIVE COUNTER
@@ -2583,12 +3559,35 @@ function shareIG() {
   showPixelFlash(window.innerWidth / 2, 200, '📸 Screenshot & share on IG!');
 }
 
+function openBuyWithPreset(w, h, price) {
+  scrollToGrid();
+  // If no block selected, pick a random empty one
+  if (!selectedBlock) {
+    for (let attempt = 0; attempt < 200; attempt++) {
+      const c = Math.floor(Math.random() * GRID_COLS);
+      const r = Math.floor(Math.random() * GRID_ROWS);
+      if (!pixelMap[blockKey(c, r)]) {
+        selectedBlock = { c, r };
+        break;
+      }
+    }
+  }
+  document.getElementById('buyPanel').classList.add('visible');
+  document.getElementById('selectedBlockInfo').textContent =
+    selectedBlock ? `(${selectedBlock.c}, ${selectedBlock.r})` : '—';
+  selectPreset(w, h, price);
+  goToStep(1);
+  setTimeout(() => {
+    document.getElementById('buyPanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 300);
+}
+
+
+
 function scrollToGrid() {
   document.getElementById('pixel-wall').scrollIntoView({ behavior: 'smooth' });
 }
 
-// ============================
-// CLICK RIPPLE ON WHOLE PAGE
 // ============================
 document.addEventListener('click', (e) => {
   if (e.target !== canvas) {
